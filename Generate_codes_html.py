@@ -34,7 +34,7 @@ def save_html(path, html):
 data_path = '/Users/jiang/Documents/Github/easy_leetcode/easyleetcode'
 code_dir = os.path.join(data_path, 'leetcodes')
 md_dir = os.path.join(data_path, 'leetcodes_md')
-temp_html = get_index_temp_html('temp.html')
+temp_html = get_index_temp_html('temp_code.html')
 
 replace_code_str = '#CODE'
 replace_md_str = '#MARKDOWN'

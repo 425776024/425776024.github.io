@@ -38,10 +38,10 @@ def run(html_dir=html_dir):
         li_str = tp_li.replace('#FILE', fname).replace('#NAME', name)
         name_list.append(li_str)
     ALLCODELIS = ''.join(name_list)
-    index_html = get_index_temp_html('temp_index.html')
+    index_html = get_index_temp_html('temp_all_list.html')
     insert_code = ALLCODELIS
 
-    out_path = 'index.html'
+    out_path = 'all_list.html'
     code_html = index_html.replace(replace_str, insert_code)
 
     save_html(out_path, code_html)
