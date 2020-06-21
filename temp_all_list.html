@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/gitalk/gitalk.css">
-    <script src="/gitalk/gitalk.min.js"></script>
-    <script src="/gitalk/md5.min.js"></script>
     <title>千寻 425776024 Leetcode</title>
     <style>
         button{
@@ -14,6 +11,7 @@
             height: 40px;
             width: 10%;
         }
+
 
     </style>
 </head>
@@ -29,19 +27,6 @@
     #ALLCODELIS
 </div>
 
-<hr/>
-<div id="gitalk-container"></div>
-<script>
-const gitalk = new Gitalk({
-  clientID: '15813cf70c4a1eecc532',
-  clientSecret: 'ec6da806f2e8b1af41b47fe073aa555cc36d6c0d',
-  repo: '425776024.github.io',      // The repository of store comments,
-  owner: '425776024',
-  admin: ['425776024'],
-  id: md5(location.pathname),
-  distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
-})
-gitalk.render('gitalk-container')
-</script>
+
 </body>
 </html>
