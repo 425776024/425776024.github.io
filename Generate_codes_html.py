@@ -41,9 +41,13 @@ replace_md_str = '#MARKDOWN'
 
 
 def run(code_dir=code_dir, md_dir=md_dir):
+    fname_list = []
     for fname in os.listdir(code_dir):
         if '.py' not in fname:
             continue
+        fname_list.append(fname)
+    s_fname_list = sorted(fname_list)
+    for fname in s_fname_list:
         name = fname[:-3]
         py_path = os.path.join(code_dir, fname)
         md_path = os.path.join(md_dir, name + '.md')
