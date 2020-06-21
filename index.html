@@ -50,19 +50,21 @@ while True:
 
 
 <hr/>
-<div id="container"></div>
-<link rel="stylesheet" href="/gitment/default.css">
-<script src="/gitment/gitment.browser.js"></script>
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
 <script>
-var gitment = new Gitment({
+const gitalk = new Gitalk({
+  clientID: '15813cf70c4a1eecc532',
+  clientSecret: 'ec6da806f2e8b1af41b47fe073aa555cc36d6c0d',
+  repo: 'gitalk',      // The repository of store comments,
   owner: '425776024',
-  repo: 'gitalk',
-  oauth: {
-    client_id: '15813cf70c4a1eecc532',
-    client_secret: 'ec6da806f2e8b1af41b47fe073aa555cc36d6c0d',
-  },
+  admin: ['425776024'],
+  id: location.pathname,      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
 })
-gitment.render('comments')
+
+
 </script>
 <style>
     .markdown-here-wrapper {
@@ -251,6 +253,7 @@ gitment.render('comments')
         border: 1px solid #009688;
         background-color: #009688;
     }
+
 
 
 
