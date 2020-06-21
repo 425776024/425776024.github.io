@@ -5,6 +5,13 @@
 //        document.getElementById("show-area").innerHTML = html;
 //};
 
+code_names=['Leetcode_001_Two_Sum.py']
+
+function load_py_codes(path){
+
+
+};
+
 window.onload = function () {
 //    mdSwitch();
     var el = document.getElementById("editor");

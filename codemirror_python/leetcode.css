@@ -24,7 +24,7 @@
     font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
     float:center;
             spellcheck:false;
-            min-height: 600px;
+            min-height: 400px;
             width: 80%;
             margin-left: auto;
             margin-right: auto;
@@ -79,4 +79,7 @@ button{
     background-color: #F8F8F8;
     height: 40px;
     width: 10%;
+}
+ul li{
+    list-style-type: none;
 }
