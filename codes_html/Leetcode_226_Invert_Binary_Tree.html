@@ -13,6 +13,8 @@
     <script src="/Skulpt/js/skulpt.min.js" type="text/javascript"></script>
     <script src="/Skulpt/js/skulpt-stdlib.js" type="text/javascript"></script>
     <script src="/static/showdown.min.js"></script>
+    <link rel="stylesheet" href="/gitalk/gitalk.css">
+    <script src="/gitalk/gitalk.min.js"></script>
 </head>
 <body>
 <script src="/codemirror_python/Skulpt.js"></script>
@@ -109,18 +111,20 @@ class Solution(object):
 </div>
 
 <hr/>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<div id="gitalk-container"></div>
+
 <script>
-var gitment = new Gitment({
+const gitalk = new Gitalk({
+  clientID: '15813cf70c4a1eecc532',
+  clientSecret: 'ec6da806f2e8b1af41b47fe073aa555cc36d6c0d',
+  repo: '425776024.github.io',      // The repository of store comments,
   owner: '425776024',
-  repo: '425776024-blog',
-  oauth: {
-    client_id: '1ae2b8ebdff1e45ef460',
-    client_secret: 'be1a691d3c5617713409c7a72e763a0aec41a59e',
-  },
+  admin: ['425776024'],
+  id: location.pathname,      // Ensure uniqueness and length less than 50
+  distractionFreeMode: false  // Facebook-like distraction free mode
 })
-gitment.render('container')
+
+gitalk.render('gitalk-container')
 
 </script>
 <style>
@@ -316,11 +320,13 @@ gitment.render('container')
 
 
 
+
 </style>
 
 </body>
 </html>
-<script src="/codemirror_python/codemirror/lib/codemirror.js"></script>
+<script src="/codemirror_python/codemirror/lib/codemirror.js">
+</script>
 
 <script src="/codemirror_python/codemirror/addon/comment/comment.js"></script>
 
