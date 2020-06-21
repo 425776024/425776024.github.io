@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>千寻 425776024 Leetcode</title>
+    <link rel="stylesheet" href="/codemirror_python/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="/codemirror_python/codemirror/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="/codemirror_python/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="/codemirror_python/codemirror/addon/lint/lint.css">
+    <link rel="stylesheet" href="/codemirror_python/leetcode.css">
+    <script src="/Skulpt/js/skulpt.min.js" type="text/javascript"></script>
+    <script src="/Skulpt/js/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/static/showdown.min.js"></script>
+</head>
+<body>
+<script src="/codemirror_python/Skulpt.js"></script>
+<h1 align="center" id="code_name"> Leetcode_126_Word_Ladder_II </h1>
+
+
+<div align="center">
+    <button><a href="/index.html" target="_blank"> Home </a></button>
+    <form action="" align="left">
+        <textarea id="editor" class="editor">import string
+class Solution(object):
+    # def findLadders(self, beginWord, endWord, wordlist):
+    #     """
+    #     :type beginWord: str
+    #     :type endWord: str
+    #     :type wordlist: Set[str]
+    #     :rtype: List[List[int]]
+    #     """
+    #     # https://leetcode.com/discuss/99348/fast-python-solution-using-dbfs-beats-98%25
+    #     def construct_paths(begin, end, tree, path, paths):
+    #         if begin == end:
+    #             paths.append(path)
+    #             return
+    #         if begin in tree:
+    #             for elem in tree[begin]:
+    #                 construct_paths(elem, end, tree, path + [elem], paths)
+    #
+    #     def add_path(tree, word, neigh, is_forw):
+    #         if is_forw:
+    #             tree[word] = tree.get(word, []) + [neigh]
+    #         else:
+    #             tree[neigh] = tree.get(neigh, []) + [word]
+    #
+    #     def bfs_level(this_lev, oth_lev, tree, is_forw, words_set):
+    #         if len(this_lev) == 0:
+    #             return False
+    #         if len(this_lev) > len(oth_lev):
+    #             return bfs_level(oth_lev, this_lev, tree, not is_forw, words_set)
+    #         for word in (this_lev | oth_lev):
+    #             words_set.discard(word)
+    #         next_lev = set()
+    #         done = False
+    #         while len(this_lev):
+    #             word = this_lev.pop()
+    #             for c in string.ascii_lowercase:
+    #                 for index in range(len(word)):
+    #                     neigh = word[:index] + c + word[index + 1:]
+    #                     if neigh in oth_lev:
+    #                         done = True
+    #                         add_path(tree, word, neigh, is_forw)
+    #                     if not done and neigh in words_set:
+    #                         next_lev.add(neigh)
+    #                         add_path(tree, word, neigh, is_forw)
+    #         return done or bfs_level(next_lev, oth_lev, tree, is_forw, words_set)
+    #
+    #     tree, path, paths = {}, [beginWord], []
+    #     is_found = bfs_level(set([beginWord]), set([endWord]), tree, True, wordlist)
+    #     construct_paths(beginWord, endWord, tree, path, paths)
+    #     return paths
+
+
+    def findLadders(self, beginWord, endWord, wordlist):
+        # do not use single dfs or bfs, because both of them
+        # try to get result in single direction, which check lots
+        # of unnecessary branches
+        # https://leetcode.com/discuss/67716/my-30ms-bidirectional-bfs-and-dfs-based-java-solution
+        wordlist.discard(beginWord)
+        wordlist.discard(endWord)
+        hash_map, res = {}, []
+        self.bfs(set([beginWord]), set([endWord]), wordlist, False, hash_map)
+        print hash_map
+        self.dfs(res, [beginWord], beginWord, endWord, hash_map)
+        return res
+
+    def bfs(self, forward, backward, wordlist, reverse, hash_map):
+        if len(forward) == 0 or len(backward) == 0:
+            return
+        if len(forward) > len(backward):
+            self.bfs(backward, forward, wordlist, not reverse, hash_map)
+            return
+        is_connected = False
+        next_level = set()
+        for word in forward:
+            for c in string.ascii_lowercase:
+                for index in range(len(word)):
+                    neigh = word[:index] + c + word[index + 1:]
+                    if not reverse:
+                        key, value = word, neigh
+                    else:
+                        key, value = neigh, word
+                    if neigh in backward:
+                        hash_map[key] = hash_map.get(key, []) + [value]
+                        is_connected = True
+                    if not is_connected and neigh in wordlist:
+                        next_level.add(neigh)
+                        hash_map[key] = hash_map.get(key, []) + [value]
+                        wordlist.discard(neigh)
+
+        if not is_connected:
+            self.bfs(next_level, backward, wordlist, reverse, hash_map)
+
+    def dfs(self, res, path, begin, end, hash_map):
+        if begin == end:
+            res.append(path)
+            return
+        try:
+            next_step = hash_map[begin]
+            for word in next_step:
+                self.dfs(res, path + [word], word, end, hash_map)
+        except KeyError:
+            pass
+
+
+if __name__ == "__main__":
+    s = Solution()
+    # print s.findLadders('hit', 'cog', set(["hot","dot","dog","lot","log"]))
+    # print s.findLadders('a', 'b', set(['a', 'b', 'c']))
+    # print s.findLadders('hot', 'dog', set(['hot', 'dog']))
+    # print s.findLadders("qa", "sq", set(["si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"]))
+    print s.findLadders("hot", "dog", set(["hot","cog","dog","tot","hog","hop","pot","dot"]))
+
+</textarea>
+    </form>
+    <pre id="output"></pre>
+    <!-- If you want turtle graphics include a canvas -->
+    <div id="mycanvas"></div>
+    <button id="run_btn">Run Code</button>
+    <p id="md_v" style="display:none"># L 126 Word Ladder II
+ 
+--- 
+ 
+``` 
+import string
+class Solution(object):
+    # def findLadders(self, beginWord, endWord, wordlist):
+    #     """
+    #     :type beginWord: str
+    #     :type endWord: str
+    #     :type wordlist: Set[str]
+    #     :rtype: List[List[int]]
+    #     """
+    #     # https://leetcode.com/discuss/99348/fast-python-solution-using-dbfs-beats-98%25
+    #     def construct_paths(begin, end, tree, path, paths):
+    #         if begin == end:
+    #             paths.append(path)
+    #             return
+    #         if begin in tree:
+    #             for elem in tree[begin]:
+    #                 construct_paths(elem, end, tree, path + [elem], paths)
+    #
+    #     def add_path(tree, word, neigh, is_forw):
+    #         if is_forw:
+    #             tree[word] = tree.get(word, []) + [neigh]
+    #         else:
+    #             tree[neigh] = tree.get(neigh, []) + [word]
+    #
+    #     def bfs_level(this_lev, oth_lev, tree, is_forw, words_set):
+    #         if len(this_lev) == 0:
+    #             return False
+    #         if len(this_lev) > len(oth_lev):
+    #             return bfs_level(oth_lev, this_lev, tree, not is_forw, words_set)
+    #         for word in (this_lev | oth_lev):
+    #             words_set.discard(word)
+    #         next_lev = set()
+    #         done = False
+    #         while len(this_lev):
+    #             word = this_lev.pop()
+    #             for c in string.ascii_lowercase:
+    #                 for index in range(len(word)):
+    #                     neigh = word[:index] + c + word[index + 1:]
+    #                     if neigh in oth_lev:
+    #                         done = True
+    #                         add_path(tree, word, neigh, is_forw)
+    #                     if not done and neigh in words_set:
+    #                         next_lev.add(neigh)
+    #                         add_path(tree, word, neigh, is_forw)
+    #         return done or bfs_level(next_lev, oth_lev, tree, is_forw, words_set)
+    #
+    #     tree, path, paths = {}, [beginWord], []
+    #     is_found = bfs_level(set([beginWord]), set([endWord]), tree, True, wordlist)
+    #     construct_paths(beginWord, endWord, tree, path, paths)
+    #     return paths
+
+
+    def findLadders(self, beginWord, endWord, wordlist):
+        # do not use single dfs or bfs, because both of them
+        # try to get result in single direction, which check lots
+        # of unnecessary branches
+        # https://leetcode.com/discuss/67716/my-30ms-bidirectional-bfs-and-dfs-based-java-solution
+        wordlist.discard(beginWord)
+        wordlist.discard(endWord)
+        hash_map, res = {}, []
+        self.bfs(set([beginWord]), set([endWord]), wordlist, False, hash_map)
+        print hash_map
+        self.dfs(res, [beginWord], beginWord, endWord, hash_map)
+        return res
+
+    def bfs(self, forward, backward, wordlist, reverse, hash_map):
+        if len(forward) == 0 or len(backward) == 0:
+            return
+        if len(forward) > len(backward):
+            self.bfs(backward, forward, wordlist, not reverse, hash_map)
+            return
+        is_connected = False
+        next_level = set()
+        for word in forward:
+            for c in string.ascii_lowercase:
+                for index in range(len(word)):
+                    neigh = word[:index] + c + word[index + 1:]
+                    if not reverse:
+                        key, value = word, neigh
+                    else:
+                        key, value = neigh, word
+                    if neigh in backward:
+                        hash_map[key] = hash_map.get(key, []) + [value]
+                        is_connected = True
+                    if not is_connected and neigh in wordlist:
+                        next_level.add(neigh)
+                        hash_map[key] = hash_map.get(key, []) + [value]
+                        wordlist.discard(neigh)
+
+        if not is_connected:
+            self.bfs(next_level, backward, wordlist, reverse, hash_map)
+
+    def dfs(self, res, path, begin, end, hash_map):
+        if begin == end:
+            res.append(path)
+            return
+        try:
+            next_step = hash_map[begin]
+            for word in next_step:
+                self.dfs(res, path + [word], word, end, hash_map)
+        except KeyError:
+            pass
+
+
+if __name__ == "__main__":
+    s = Solution()
+    # print s.findLadders('hit', 'cog', set(["hot","dot","dog","lot","log"]))
+    # print s.findLadders('a', 'b', set(['a', 'b', 'c']))
+    # print s.findLadders('hot', 'dog', set(['hot', 'dog']))
+    # print s.findLadders("qa", "sq", set(["si","go","se","cm","so","ph","mt","db","mb","sb","kr","ln","tm","le","av","sm","ar","ci","ca","br","ti","ba","to","ra","fa","yo","ow","sn","ya","cr","po","fe","ho","ma","re","or","rn","au","ur","rh","sr","tc","lt","lo","as","fr","nb","yb","if","pb","ge","th","pm","rb","sh","co","ga","li","ha","hz","no","bi","di","hi","qa","pi","os","uh","wm","an","me","mo","na","la","st","er","sc","ne","mn","mi","am","ex","pt","io","be","fm","ta","tb","ni","mr","pa","he","lr","sq","ye"]))
+    print s.findLadders("hot", "dog", set(["hot","cog","dog","tot","hog","hop","pot","dot"]))
+
+
+ ```</p>
+    <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+<style>
+    .markdown-here-wrapper {
+        font-size: 16px;
+        line-height: 1.8em;
+        letter-spacing: 0.1em;
+    }
+
+    pre,code {
+        font-size: 14px;
+        font-family: Roboto, 'Courier New', Consolas, Inconsolata, Courier, monospace;
+        margin: auto 5px;
+    }
+    code {
+        white-space: pre-wrap;
+        border-radius: 2px;
+        display: inline;
+    }
+
+    pre {
+        font-size: 15px;
+        line-height: 1.4em;
+        display: block;
+         !important;
+    }
+
+    pre code {
+        white-space: pre;
+        overflow: auto;
+        border-radius: 3px;
+        padding: 1px 1px;
+        display: block !important;
+    }
+
+    strong,
+    b {
+        color: #BF360C;
+    }
+
+
+    hr {
+        margin: 1.5em auto;
+    }
+
+    p {
+        margin: 1.5em 5px !important;
+    }
+
+    table,
+    pre,
+    dl,
+    blockquote,
+    q,
+    ul,
+    ol {
+        margin: 10px 5px;
+    }
+
+    ul,
+    ol {
+        padding-left: 15px;
+    }
+
+    li {
+        margin: 10px;
+    }
+
+    li p {
+        margin: 10px 0 !important;
+    }
+
+    ul ul,
+    ul ol,
+    ol ul,
+    ol ol {
+        margin: 0;
+        padding-left: 10px;
+    }
+
+    ul {
+        list-style-type: circle;
+    }
+
+    dl {
+        padding: 0;
+    }
+
+    dl dt {
+        font-size: 1em;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    dl dd {
+        margin: 0 0 10px;
+        padding: 0 10px;
+    }
+
+    blockquote,
+    q {
+        border-left: 2px solid #009688;
+        padding: 0 10px;
+        color: #777;
+        quotes: none;
+        margin-left: 1em;
+    }
+
+    blockquote::before,
+    blockquote::after,
+    q::before,
+    q::after {
+        content: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 20px 0 10px;
+        padding: 0;
+        font-style: bold !important;
+        text-align: center !important;
+        margin: 1.5em 5px !important;
+        padding: 0.5em 1em !important;
+    }
+
+    h1 {
+        font-size: 24px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+
+    table {
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 1em;
+        font: inherit;
+        border: 0;
+        margin: 0 auto;
+    }
+
+    tbody {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    table tr {
+        border: 0;
+        border-top: 1px solid #CCC;
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+        background-color: #F8F8F8;
+    }
+
+    table tr th,
+    table tr td {
+        font-size: 16px;
+        border: 1px solid #CCC;
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    table tr th {
+        font-weight: bold;
+        color: #eee;
+        border: 1px solid #009688;
+        background-color: #009688;
+    }
+
+
+
+
+
+</style>
+
+</body>
+</html>
+<script src="/codemirror_python/codemirror/lib/codemirror.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/comment/comment.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/selection/active-line.js"></script>
+
+<script src="/codemirror_python/codemirror/keymap/sublime.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/hint/show-hint.js"></script>
+<script src="/codemirror_python/codemirror/mode/python/python.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/lint/lint.js"></script>
+<script src="/codemirror_python/codemirror/addon/lint/javascript-lint.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/fold/foldcode.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/foldgutter.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/brace-fold.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/indent-fold.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/comment-fold.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/edit/closebrackets.js"></script>
+<script src="/codemirror_python/codemirror/addon/edit/matchbrackets.js"></script>
+
+<script src="/codemirror_python/axios.js"></script>
+
+<script src="/codemirror_python/index.js"></script>

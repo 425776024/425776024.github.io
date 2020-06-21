@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>千寻 425776024 Leetcode</title>
+    <link rel="stylesheet" href="/codemirror_python/codemirror/lib/codemirror.css">
+    <link rel="stylesheet" href="/codemirror_python/codemirror/addon/fold/foldgutter.css">
+    <link rel="stylesheet" href="/codemirror_python/codemirror/addon/hint/show-hint.css">
+    <link rel="stylesheet" href="/codemirror_python/codemirror/addon/lint/lint.css">
+    <link rel="stylesheet" href="/codemirror_python/leetcode.css">
+    <script src="/Skulpt/js/skulpt.min.js" type="text/javascript"></script>
+    <script src="/Skulpt/js/skulpt-stdlib.js" type="text/javascript"></script>
+    <script src="/static/showdown.min.js"></script>
+</head>
+<body>
+<script src="/codemirror_python/Skulpt.js"></script>
+<h1 align="center" id="code_name"> SYL_4数学和位运算_8Update Bits </h1>
+
+
+<div align="center">
+    <button><a href="/index.html" target="_blank"> Home </a></button>
+    <form action="" align="left">
+        <textarea id="editor" class="editor">def updateBits(n, m, i, j):
+# 	-1，全1
+    ones = ~0
+# 	全0
+    mask = 0
+    if j < 31:
+        # 得到第i位到第j位的比特位为0，而其他位均为1的掩码mask。(1111...000...111)
+		# 111..0000
+        left = ones << (j + 1)
+		# 000...1111 :(000...10000 - 1 = 000...01111)
+        right = ((1 << i) - 1)
+		# 1111...000...1111
+        mask = left | right
+    else:
+# 		在j为31时j + 1为32，也就是说此时对left位移的操作已经超出了此时int的最大位宽：左边被消除了
+        mask = (1 << i) - 1
+
+    # mask与 N 进行按位与，清零 N 的第i位到第j位。
+    # M 右移i位，将 M 放到 N 中指定的位置。
+    # 返回 N | M 按位或的结果。
+    return (n & mask) | (m << i),mask
+
+'''
+0b10000000000
+    0b10101
+      i   j
+0b10001010100
+'''
+
+if __name__=='__main__':
+
+	a = 1024, 21, 2, 6
+
+
+	print(bin(1024))
+	print(' '*3,bin(21))
+	print(' '*5,'i',' '*1,'j')
+
+	s=updateBits(*a)
+	print(bin(s[1]))
+	print(bin(s[0]))
+</textarea>
+    </form>
+    <pre id="output"></pre>
+    <!-- If you want turtle graphics include a canvas -->
+    <div id="mycanvas"></div>
+    <button id="run_btn">Run Code</button>
+    <p id="md_v" style="display:none"># SYL 4数学和位运算 8Update Bits
+
+---
+
+```
+
+Given two 32-bit numbers, N and M, and two bit positions, i and j.
+Write a method to set all bits between i and j in N equal to M
+(e g , M becomes a substring of N located at i and starting at j)
+使用 M 代替 N 中的第i位到第j位
+Example
+Given N=(10000000000)2, M=(10101)2, i=2, j=6
+
+return N=(10001010100)2
+
+Note
+In the function, the numbers N and M will given in decimal,
+you should also return a decimal number.
+
+Challenge
+Minimum number of operations?
+
+
+```
+i=2,j=4 >>>
+
+> 1024:0b1000`00000`00
+> 
+> 21:0b`10101`
+> 
+> 0b1000`10101`00
+
+
+---</p>
+    <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+<style>
+    .markdown-here-wrapper {
+        font-size: 16px;
+        line-height: 1.8em;
+        letter-spacing: 0.1em;
+    }
+
+    pre,code {
+        font-size: 14px;
+        font-family: Roboto, 'Courier New', Consolas, Inconsolata, Courier, monospace;
+        margin: auto 5px;
+    }
+    code {
+        white-space: pre-wrap;
+        border-radius: 2px;
+        display: inline;
+    }
+
+    pre {
+        font-size: 15px;
+        line-height: 1.4em;
+        display: block;
+         !important;
+    }
+
+    pre code {
+        white-space: pre;
+        overflow: auto;
+        border-radius: 3px;
+        padding: 1px 1px;
+        display: block !important;
+    }
+
+    strong,
+    b {
+        color: #BF360C;
+    }
+
+
+    hr {
+        margin: 1.5em auto;
+    }
+
+    p {
+        margin: 1.5em 5px !important;
+    }
+
+    table,
+    pre,
+    dl,
+    blockquote,
+    q,
+    ul,
+    ol {
+        margin: 10px 5px;
+    }
+
+    ul,
+    ol {
+        padding-left: 15px;
+    }
+
+    li {
+        margin: 10px;
+    }
+
+    li p {
+        margin: 10px 0 !important;
+    }
+
+    ul ul,
+    ul ol,
+    ol ul,
+    ol ol {
+        margin: 0;
+        padding-left: 10px;
+    }
+
+    ul {
+        list-style-type: circle;
+    }
+
+    dl {
+        padding: 0;
+    }
+
+    dl dt {
+        font-size: 1em;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    dl dd {
+        margin: 0 0 10px;
+        padding: 0 10px;
+    }
+
+    blockquote,
+    q {
+        border-left: 2px solid #009688;
+        padding: 0 10px;
+        color: #777;
+        quotes: none;
+        margin-left: 1em;
+    }
+
+    blockquote::before,
+    blockquote::after,
+    q::before,
+    q::after {
+        content: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 20px 0 10px;
+        padding: 0;
+        font-style: bold !important;
+        text-align: center !important;
+        margin: 1.5em 5px !important;
+        padding: 0.5em 1em !important;
+    }
+
+    h1 {
+        font-size: 24px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+
+    table {
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 1em;
+        font: inherit;
+        border: 0;
+        margin: 0 auto;
+    }
+
+    tbody {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    table tr {
+        border: 0;
+        border-top: 1px solid #CCC;
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+        background-color: #F8F8F8;
+    }
+
+    table tr th,
+    table tr td {
+        font-size: 16px;
+        border: 1px solid #CCC;
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    table tr th {
+        font-weight: bold;
+        color: #eee;
+        border: 1px solid #009688;
+        background-color: #009688;
+    }
+
+
+
+
+
+</style>
+
+</body>
+</html>
+<script src="/codemirror_python/codemirror/lib/codemirror.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/comment/comment.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/selection/active-line.js"></script>
+
+<script src="/codemirror_python/codemirror/keymap/sublime.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/hint/show-hint.js"></script>
+<script src="/codemirror_python/codemirror/mode/python/python.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/lint/lint.js"></script>
+<script src="/codemirror_python/codemirror/addon/lint/javascript-lint.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/fold/foldcode.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/foldgutter.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/brace-fold.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/indent-fold.js"></script>
+<script src="/codemirror_python/codemirror/addon/fold/comment-fold.js"></script>
+
+<script src="/codemirror_python/codemirror/addon/edit/closebrackets.js"></script>
+<script src="/codemirror_python/codemirror/addon/edit/matchbrackets.js"></script>
+
+<script src="/codemirror_python/axios.js"></script>
+
+<script src="/codemirror_python/index.js"></script>
