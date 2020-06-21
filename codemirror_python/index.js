@@ -1,19 +1,14 @@
-//function mdSwitch() {
-//        var mdValue = document.getElementById("md_v").innerText;
-//        var converter = new showdown.Converter();
-//        var html = converter.makeHtml(mdValue);
-//        document.getElementById("show-area").innerHTML = html;
-//};
-
-code_names=['Leetcode_001_Two_Sum.py']
-
-function load_py_codes(path){
-
-
+function mdSwitch() {
+        var mdValue = document.getElementById("md_v").innerText;
+        var converter = new showdown.Converter();
+        var html = converter.makeHtml(mdValue);
+        document.getElementById("show-area").innerHTML = html;
 };
 
+
+
 window.onload = function () {
-//    mdSwitch();
+    mdSwitch();
     var el = document.getElementById("editor");
 	var version = "# version: Python3\n";
 	var codeAreaTip = "# Edit your code here:\n \n";
@@ -44,6 +39,8 @@ window.onload = function () {
     run_btn.onclick = function() {
         var value = myCodeMirror.getValue();
         runit(value);
-
     };
+    var value = myCodeMirror.getValue();
+    runit(value);
+
 };
