@@ -15,6 +15,7 @@
     <script src="/static/showdown.min.js"></script>
     <link rel="stylesheet" href="/gitalk/gitalk.css">
     <script src="/gitalk/gitalk.min.js"></script>
+    <script src="/gitalk/md5.min.js"></script>
 </head>
 <body>
 <script src="/codemirror_python/Skulpt.js"></script>
@@ -112,8 +113,8 @@ const gitalk = new Gitalk({
   repo: '425776024.github.io',      // The repository of store comments,
   owner: '425776024',
   admin: ['425776024'],
-  id: location.pathname,      // Ensure uniqueness and length less than 50
-  distractionFreeMode: false  // Facebook-like distraction free mode
+  id: md5(location.pathname),
+  distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
 })
 
 gitalk.render('gitalk-container')
