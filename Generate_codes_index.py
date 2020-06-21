@@ -16,8 +16,6 @@ def get_index_temp_html(path):
     return get_file_text(path)
 
 
-
-
 def save_html(path, html):
     with open(path, 'w', encoding='utf-8') as of:
         of.write(html)
@@ -31,7 +29,14 @@ replace_str = '#ALLCODELIS'
 def run(html_dir=html_dir):
     name_list = []
     tp_li = '<li><a href="/codes_html/#FILE" target="_blank">#NAME</a></li>\n'
+    fname_list = []
     for fname in os.listdir(html_dir):
+        if '.html' not in fname:
+            continue
+        fname_list.append(fname)
+    s_fname_list = sorted(fname_list)
+
+    for fname in s_fname_list:
         if '.html' not in fname:
             continue
         name = fname.replace('.html', '')
