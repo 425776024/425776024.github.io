@@ -28,7 +28,8 @@ replace_str = '#ALLCODELIS'
 
 def run(html_dir=html_dir):
     name_list = []
-    tp_li = '<li><a href="/codes_html/#FILE" target="_blank">#NAME</a></li>\n'
+    # '<ul align="left"><a href="/codes_html/#FILE" target="_blank">#NAME</a><hr/></ul>'
+    tp_li = '<ul align="left"><a href="/codes_html/#FILE" target="_blank">#NAME</a><hr/></ul>\n'
     fname_list = []
     for fname in os.listdir(html_dir):
         if '.html' not in fname:
