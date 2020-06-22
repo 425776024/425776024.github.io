@@ -18,6 +18,7 @@
     <script src="https://pyleetcode.gitee.io/Skulpt/js/skulpt-stdlib.js" type="text/javascript"></script>
     <script src="https://pyleetcode.gitee.io/static/showdown.min.js"></script>
     <script src="https://pyleetcode.gitee.io/codemirror_python/Skulpt.js"></script>
+    <script src="https://pyleetcode.gitee.io/Skulpt/external/d3/d3.min.js"></script>
 </head>
 <body>
 
@@ -66,11 +67,11 @@ class Solution:
                 v = head1.val + head2.val + p
                 head1 = head1.next
                 head2 = head2.next
-        # 2: 前者有，后者没有
+            # 2: 前者有，后者没有
             elif head1 is not None and head2 is None:
                 v = head1.val + p
                 head1 = head1.next
-            else: # 3，后者有
+            else:  # 3，后者有
                 v = head2.val + p
                 head2 = head2.next
             # 进位情况
@@ -128,9 +129,6 @@ Given two lists, 3->1->5->null and 5->9->2->null, return 8->0->8->null
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 
-<div id="particles-js">
-</div>
-
 
 <hr/>
 <!-- 来必力City版安装代码 -->
@@ -147,6 +145,7 @@ Given two lists, 3->1->5->null and 5->9->2->null, return 8->0->8->null
 
        e.parentNode.insertBefore(j, e);
    })(document, 'script');
+
 
     </script>
     <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
@@ -350,6 +349,7 @@ Given two lists, 3->1->5->null and 5->9->2->null, return 8->0->8->null
 
 
 
+
 </style>
 
 </body>
@@ -381,6 +381,3 @@ Given two lists, 3->1->5->null and 5->9->2->null, return 8->0->8->null
 <script src="https://pyleetcode.gitee.io/codemirror_python/axios.js"></script>
 
 <script src="https://pyleetcode.gitee.io/codemirror_python/index.js"></script>
-<!-- scripts -->
-<script src="https://pyleetcode.gitee.io/static/particles.js"></script>
-<script src="https://pyleetcode.gitee.io/static/js/app.js"></script>
