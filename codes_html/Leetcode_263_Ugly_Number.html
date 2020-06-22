@@ -28,10 +28,9 @@
     <h1 align="center" id="code_name"> Leetcode_263_Ugly_Number </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-
-class Solution:
-    def kthPrimeNumber(self, k: int):
+        <textarea id="editor" class="editor">class Solution:
+    def kthPrimeNumber(self, k):
+		# 暴力求解，时间复杂度很高，接近：n^3
         if k <= 0:
             return -1
         count = 0
@@ -53,8 +52,39 @@ class Solution:
         return num == 1
 
 
+class Solution2:
+    def nthUglyNumber(self, n):
+        a = [0] * (n + 1)
+        p1 = p2 = p3 = k = 0
+        # a[0]=1
+        a[k] = 1
+        k += 1
+        if n == 1:
+            return a[n]
+        while True:
+			# 上一位的丑数，与 factors 3, 5 and 7.想乘，取最小，就是这一位的丑数！
+            temp = min(a[p1] * 3, min(a[p2] * 5, a[p3] * 7))
+			# 记录这一位丑数
+            a[k] = temp
+            k += 1
+            # 其中p1,p2,p3一直在维护着，得到上一轮丑数“谁做了贡献”
+			# “谁做了贡献”下一轮还想做贡献，就得“往下走一步”（原地不动能得到下一个数么？）
+            if temp == a[p1] * 3:
+                p1 += 1
+            if temp == a[p2] * 5:
+                p2 += 1
+            if temp == a[p3] * 7:
+                p3 += 1
+            # 判断是否为第n小，是则返回, 不是则继续循环判断
+            if k - 1 == n:
+                return a[n]
+
+
 s = Solution()
+s2 = Solution2()
+
 print(s.kthPrimeNumber(4))
+print(s2.nthUglyNumber(4))
 </textarea>
     </form>
     <pre id="output"></pre>
@@ -81,8 +111,25 @@ O(K log K) or O(K) time.
 '''
 
 
- ```</p>
+ ```
+
+- 思路1:暴力求解
+
+- 思路2:# 上一位的丑数，与 factors 3, 5 and 7.想乘，取最小，就是这一位的丑数！
+
+对于任意丑数x，2x， 3x，5x也都是丑数，因此每次生成最小的一位丑数然后记录到数组，直到生成第n小的丑数
+
+```
+f(temp == a[p1]*3) p1++;
+if(temp == a[p2]*5) p2++;
+if(temp == a[p3]*7) p3++;
+其中p1, p2, p3一直维护 最大，次大，第三大的值
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+<div id="particles-js">
 </div>
 
 <hr/>
@@ -334,3 +381,6 @@ O(K log K) or O(K) time.
 <script src="https://pyleetcode.gitee.io/codemirror_python/axios.js"></script>
 
 <script src="https://pyleetcode.gitee.io/codemirror_python/index.js"></script>
+<!-- scripts -->
+<script src="https://pyleetcode.gitee.io/static/particles.js"></script>
+<script src="https://pyleetcode.gitee.io/static/js/app.js"></script>
