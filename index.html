@@ -18,7 +18,7 @@
 </head>
 <body>
 <h1 align="center" id="code_name"> Leetcode Python </h1>
-
+<p align="center">Python ? LeetCode ? Numpy ? Matplotlib ? ok</p>
 <script src="https://pyleetcode.gitee.io/codemirror_python/Skulpt.js"></script>
 <div align="center">
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
@@ -26,18 +26,19 @@
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-import turtle
+import numpy as np
+import matplotlib.pyplot as plt
 
+a = 2.0
+t = np.linspace(0.20 , 2.0 * np.pi, 200)
+X = a*(2.0*np.cos(t)-np.cos(2*t))
+Y = a*(2.0*np.sin(t)-np.sin(2*t))
 
-print('>>>>> Easy Leetcode ! <<<<<')
-
-t = turtle.Turtle()
-
-while True:
-    for c in ['red', 'green', 'yellow', 'blue']:
-        t.color(c)
-        t.forward(75)
-        t.left(75)
+plt.plot(Y, X,color='r')
+title = 'Hello Python LeetCode Love'
+print(title)
+plt.title(title)
+plt.show()
         </textarea>
     </form>
     <pre id="output"></pre>
