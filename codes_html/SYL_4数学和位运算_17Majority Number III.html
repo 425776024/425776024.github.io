@@ -28,8 +28,7 @@
     <h1 align="center" id="code_name"> SYL_4数学和位运算_17Majority Number III </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-from copy import deepcopy
+        <textarea id="editor" class="editor">from copy import deepcopy
 
 
 class Solution:
@@ -43,14 +42,16 @@ class Solution:
                 d[num] += 1
             else:
                 d[num] = 1
+			# num的次数d[num]，超过 n/k，则记录满足的结果，返回之
             if d[num] * k > len(nums):
                 majority = num
                 break
+			# 执行，清理函数，每次快超过k了，就清理空间（O(k) extra space）
             if len(d) >= k:
                 self.clean(d)
         return majority
 
-    def clean(self, d: dict):
+    def clean(self, d):
         max_v = 0
         for v in d.values():
             if v > max_v:
@@ -100,6 +101,9 @@ O(n) time and O(k) extra space
 ----
 </p>
     <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+<div id="particles-js">
 </div>
 
 <hr/>
@@ -351,3 +355,6 @@ O(n) time and O(k) extra space
 <script src="https://pyleetcode.gitee.io/codemirror_python/axios.js"></script>
 
 <script src="https://pyleetcode.gitee.io/codemirror_python/index.js"></script>
+<!-- scripts -->
+<script src="https://pyleetcode.gitee.io/static/particles.js"></script>
+<script src="https://pyleetcode.gitee.io/static/js/app.js"></script>

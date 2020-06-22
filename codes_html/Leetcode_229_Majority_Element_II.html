@@ -28,8 +28,7 @@
     <h1 align="center" id="code_name"> Leetcode_229_Majority_Element_II </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class Solution:
+        <textarea id="editor" class="editor">class Solution:
     def majorityElement(self, nums):
         res = []
         a = 0
@@ -42,6 +41,7 @@ class Solution:
             if cnt1 == 0:
                 a = num
                 cnt1 = 1
+			# 这步关键，得a不匹配中num，且cnt2没有记录的时候
             elif cnt2 == 0 and a != num:
                 b = num
                 cnt2 = 1
@@ -106,6 +106,9 @@ O(n) time and O(1) extra space.
 
  ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+<div id="particles-js">
 </div>
 
 <hr/>
@@ -357,3 +360,6 @@ O(n) time and O(1) extra space.
 <script src="https://pyleetcode.gitee.io/codemirror_python/axios.js"></script>
 
 <script src="https://pyleetcode.gitee.io/codemirror_python/index.js"></script>
+<!-- scripts -->
+<script src="https://pyleetcode.gitee.io/static/particles.js"></script>
+<script src="https://pyleetcode.gitee.io/static/js/app.js"></script>
