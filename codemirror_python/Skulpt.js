@@ -6,11 +6,14 @@ function outf(text) {
 //  "./numpy/__init__.js": "https://cdn.jsdelivr.net/gh/ebertmi/skulpt_numpy@master/numpy/__init__.js",
 // for numpy
 var externalLibs = {
-    "./numpy/__init__.js": "https://cdn.jsdelivr.net/gh/ebertmi/skulpt_numpy@master/numpy/__init__.js",
-    "./matplotlib/__init__.js": "https://cdn.jsdelivr.net/gh/ebertmi/skulpt_matplotlib@master/matplotlib/__init__.js",
-    "./numpy/random/__init__.js": "https://cdn.jsdelivr.net/gh/ebertmi/skulpt_numpy@master/numpy/random/__init__.js",
-    "./matplotlib/pyplot/__init__.js": "https://cdn.jsdelivr.net/gh/ebertmi/skulpt_matplotlib@master/matplotlib/pyplot/__init__.js",
+    "./numpy/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/numpy/init.js",
+    "./math/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/math/math.js",
+    "./matplotlib/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/matplotlib/init.js",
+    "./numpy/random/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/random/init.js",
+    "./matplotlib/pyplot/__init__.js":"https://pyleetcode.gitee.io/Skulpt/external/matplotlib/pyplot/init.js",
+
 };
+
 
 
 
