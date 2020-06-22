@@ -6,7 +6,7 @@ function outf(text) {
 //  "./numpy/__init__.js": "https://cdn.jsdelivr.net/gh/ebertmi/skulpt_numpy@master/numpy/__init__.js",
 // for numpy
 var externalLibs = {
-    "./numpy/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/numpy/__init__.js",
+    "./numpy/__init__.js": "https://gitee.com/pyleetcode/pyleetcode/raw/master/Skulpt/external/numpy/__init__.js",
     "./math/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/math/math.js",
     "./matplotlib/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/matplotlib/__init__.js",
     "./numpy/random/__init__.js": "https://pyleetcode.gitee.io/Skulpt/external/numpy/__init__.js",
