@@ -23,7 +23,7 @@ window.onload = function () {
         lineNumbers: true,
         smartIndent: true,
         indentUnit: 4,
-        indentWithTabs: true,
+        indentWithTabs: false,
         lineWrapping: true,
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
         foldGutter: true,
