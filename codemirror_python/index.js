@@ -8,17 +8,7 @@ function mdSwitch() {
 
 
 window.onload = function () {
-    const gitalk = new Gitalk({
-      clientID: '15813cf70c4a1eecc532',
-      clientSecret: 'ec6da806f2e8b1af41b47fe073aa555cc36d6c0d',
-      repo: '425776024.github.io',      // The repository of store comments,
-      owner: '425776024',
-      admin: ['425776024'],
-      id: md5(location.pathname),
-      distractionFreeMode: '{{ theme.gitalk.distractionFreeMode }}'
-    });
 
-    gitalk.render('gitalk-container');
 
     mdSwitch();
     var el = document.getElementById("editor");
