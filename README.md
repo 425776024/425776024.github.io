@@ -7,6 +7,8 @@
 
 use it, from web, just browser:[https://425776024.github.io/](https://425776024.github.io/)
 
+use it, from web, just browser（国内更快）:[https://pyleetcode.gitee.io/](https://pyleetcode.gitee.io/)
+
 use it, from pip：[https://github.com/425776024/easy_leetcode](https://github.com/425776024/easy_leetcode)
 
 use it, from source code : [https://github.com/425776024/easy_leetcode](https://github.com/425776024/easy_leetcode)
