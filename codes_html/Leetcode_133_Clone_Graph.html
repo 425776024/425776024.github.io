@@ -30,33 +30,8 @@
     <h1 align="center" id="code_name"> Leetcode_133_Clone_Graph </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor"># Definition for a undirected graph node
-# class UndirectedGraphNode(object):
-#     def __init__(self, x):
-#         self.label = x
-#         self.neighbors = []
-
+        <textarea id="editor" class="editor">
 class Solution(object):
-
-    # def __init__(self):
-    #     self.label_map = {}
-
-    # def cloneGraph(self, node):
-    #     """
-    #     :type node: UndirectedGraphNode
-    #     :rtype: UndirectedGraphNode
-    #     """
-    #     # DFS
-    #     if node is None:
-    #         return None
-    #     res = UndirectedGraphNode(node.label)
-    #     self.label_map[node.label] = res
-    #     for ne in node.neighbors:
-    #         if ne.label not in self.label_map:
-    #             res.neighbors.append(self.cloneGraph(ne))
-    #         else:
-    #             res.neighbors.append(self.label_map[ne.label])
-    #     return res
 
     def cloneGraph(self, node):
         # BFS
@@ -86,59 +61,7 @@ class Solution(object):
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 133 Clone Graph
  
---- 
- 
-``` 
-# Definition for a undirected graph node
-# class UndirectedGraphNode(object):
-#     def __init__(self, x):
-#         self.label = x
-#         self.neighbors = []
-
-class Solution(object):
-
-    # def __init__(self):
-    #     self.label_map = {}
-
-    # def cloneGraph(self, node):
-    #     """
-    #     :type node: UndirectedGraphNode
-    #     :rtype: UndirectedGraphNode
-    #     """
-    #     # DFS
-    #     if node is None:
-    #         return None
-    #     res = UndirectedGraphNode(node.label)
-    #     self.label_map[node.label] = res
-    #     for ne in node.neighbors:
-    #         if ne.label not in self.label_map:
-    #             res.neighbors.append(self.cloneGraph(ne))
-    #         else:
-    #             res.neighbors.append(self.label_map[ne.label])
-    #     return res
-
-    def cloneGraph(self, node):
-        # BFS
-        if node is None:
-            return None
-        label_map = {}
-        queue = [node]
-        graphCopy = UndirectedGraphNode(node.label)
-        label_map[node.label] = graphCopy
-        while len(queue) > 0:
-            curr = queue.pop(0)
-            for ne in curr.neighbors:
-                if ne.label in label_map:
-                    label_map[curr.label].neighbors.append(label_map[ne.label])
-                else:
-                    neighborCopy = UndirectedGraphNode(ne.label)
-                    label_map[curr.label].neighbors.append(neighborCopy)
-                    label_map[ne.label] = neighborCopy
-                    queue.append(ne)
-        return graphCopy
-
-
- ```</p>
+[https://www.bilibili.com/video/BV1JK4y1t7BG](https://www.bilibili.com/video/BV1JK4y1t7BG)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

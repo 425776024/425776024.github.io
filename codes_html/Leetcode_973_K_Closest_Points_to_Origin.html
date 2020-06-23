@@ -31,15 +31,7 @@
 
     <form action="" align="left">
         <textarea id="editor" class="editor">class Solution(object):
-    # def kClosest(self, points, K):
-    #     """
-    #     :type points: List[List[int]]
-    #     :type K: int
-    #     :rtype: List[List[int]]
-    #     """
-    #     # Sort
-    #     return sorted(points, key=lambda x: x[0] ** 2 + x[1] ** 2)[:K]
-    
+
     def kClosest(self, points, K):
         # K smallest heaq
         return heapq.nsmallest(K, points, key=lambda x: x[0] ** 2 + x[1] ** 2)
@@ -51,24 +43,7 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 973 K Closest Points to Origin
  
---- 
- 
-``` 
-class Solution(object):
-    # def kClosest(self, points, K):
-    #     """
-    #     :type points: List[List[int]]
-    #     :type K: int
-    #     :rtype: List[List[int]]
-    #     """
-    #     # Sort
-    #     return sorted(points, key=lambda x: x[0] ** 2 + x[1] ** 2)[:K]
-    
-    def kClosest(self, points, K):
-        # K smallest heaq
-        return heapq.nsmallest(K, points, key=lambda x: x[0] ** 2 + x[1] ** 2)
-
- ```</p>
+[https://www.bilibili.com/video/BV1UV411k7Db](https://www.bilibili.com/video/BV1UV411k7Db)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

@@ -51,24 +51,7 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 055 Jump Game
  
---- 
- 
-``` 
-class Solution(object):
-    def canJump(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
-        # greedy
-        # https://leetcode.com/articles/jump-game/
-        length = len(nums)
-        begin = length - 1
-        for i in reversed(range(length - 1)):
-            if i + nums[i] >= begin:
-                begin = i
-        return not begin
- ```</p>
+[https://www.bilibili.com/video/BV1NK4y1t7xZ](https://www.bilibili.com/video/BV1NK4y1t7xZ)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

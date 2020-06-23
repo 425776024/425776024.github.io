@@ -56,29 +56,7 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 383 Ransom Note
  
---- 
- 
-``` 
-class Solution(object):
-    def canConstruct(self, ransomNote, magazine):
-        """
-        :type ransomNote: str
-        :type magazine: str
-        :rtype: bool
-        """
-        letter_map = {}
-        for letter in magazine:
-            letter_map[letter] = letter_map.get(letter, 0) + 1
-        for letter in ransomNote:
-            letter_map[letter] = letter_map.get(letter, 0) - 1
-            if letter_map[letter] < 0:
-                return False
-        return True
-
-    # def canConstruct(self, ransomNote, magazine):
-    #     return not collections.Counter(ransomNote) - collections.Counter(magazine)
-
- ```</p>
+[https://www.bilibili.com/video/BV1Gg4y1B7aQ](https://www.bilibili.com/video/BV1Gg4y1B7aQ)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

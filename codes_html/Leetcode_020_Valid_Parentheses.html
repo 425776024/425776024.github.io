@@ -73,23 +73,7 @@ class Solution:
             return False
 
 
-    # def isValid(self, s):
-    #     # python replace
-    #     n = len(s)
-    #     if n == 0:
-    #         return True
-    #
-    #     if n % 2 != 0:
-    #         return False
-    #
-    #     while '()' in s or '{}' in s or '[]' in s:
-    #         s = s.replace('{}', '').replace('()', '').replace('[]', '')
-    #
-    #     if s == '':
-    #         return True
-    #     else:
-    #         return False
-</textarea>
+    </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
@@ -97,70 +81,7 @@ class Solution:
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 020 Valid Parentheses
  
---- 
- 
-``` 
-# class Solution(object):
-#     def isValid(self, s):
-        
-#
-class Solution:
-    def isValid(self, s):
-        """
-        :type s: str
-        :rtype: bool
-        """
-        if s is None:
-            return True
-        stack = []
-        for t in s:
-            if t == ')':
-                try:
-                    current = stack.pop()
-                    if current != '(':
-                        return False
-                except:
-                    return False
-            elif t == '}':
-                try:
-                    current = stack.pop()
-                    if current != '{':
-                        return False
-                except:
-                    return False
-            elif t == ']':
-                try:
-                    current = stack.pop()
-                    if current != '[':
-                        return False
-                except:
-                    return False
-            else:
-                stack.append(t)
-        if len(stack) == 0:
-            return True
-        else:
-            return False
-
-
-    # def isValid(self, s):
-    #     # python replace
-    #     n = len(s)
-    #     if n == 0:
-    #         return True
-    #
-    #     if n % 2 != 0:
-    #         return False
-    #
-    #     while '()' in s or '{}' in s or '[]' in s:
-    #         s = s.replace('{}', '').replace('()', '').replace('[]', '')
-    #
-    #     if s == '':
-    #         return True
-    #     else:
-    #         return False
-
- ```</p>
+[https://www.bilibili.com/video/BV1zC4y1H7Qb](https://www.bilibili.com/video/BV1zC4y1H7Qb)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

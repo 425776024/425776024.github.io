@@ -30,13 +30,175 @@
     <h1 align="center" id="code_name"> Leetcode_023_Merge_k_Sorted_Lists </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">print('Leetcode_023_Merge_k_Sorted_Lists')</textarea>
+        <textarea id="editor" class="editor">class ListNode:
+    def __init__(self, x):
+        self.val = x
+        self.next = None
+
+
+def make_list(arr):
+    head_node = None
+    p_node = None
+    for a in arr:
+        new_node = ListNode(a)
+        if head_node is None:
+            head_node = new_node
+            p_node = new_node
+        else:
+            p_node.next = new_node
+            p_node = new_node
+    return head_node
+
+
+def print_list(head):
+    while head is not None:
+        print(head.val, end=',')
+        head = head.next
+    print()
+
+
+class Solution_mergeTwoLists(object):
+    def mergeTwoLists(self, l1, l2):
+        pos = dummyHead = ListNode(0)
+        while l1 is not None and l2 is not None:
+            if l1.val <= l2.val:
+                pos.next = l1
+                l1 = l1.next
+            else:
+                pos.next = l2
+                l2 = l2.next
+            pos = pos.next
+        # merge residual l1
+        if l1 is not None:
+            pos.next = l1
+        # merge residual l2
+        if l2 is not None:
+            pos.next = l2
+        return dummyHead.next
+
+
+class Solution(object):
+
+    def mergeKLists(self, merge2Lists, K_list):
+        head = K_list[0]
+        for i in range(1, len(K_list)):
+            head = merge2Lists(head, K_list[i])
+
+        return head
+    
+    def mergeKLists2(self, merge2Lists, K_list):
+        # 二分两两不同的合并，合并一轮了，再两两合并，直到只剩一条list
+        # 递归函数helper：合并star <-> end的list:  
+        	# start == end :return List[start]
+            # start+1 == end :return merge2Lists(List[start],List[end])
+            # left = helper(start, start + (end - start) / 2)
+        	# right = helper(start + (end - start) / 2 + 1, end)
+            # return merge2Lists(left,right)
+
+        pass
+
+
+s1 = Solution_mergeTwoLists()
+s = Solution()
+l1 = make_list([1, 3, 5])
+l2 = make_list([2, 4, 6, 8, 10])
+l3 = make_list([7, 8, 9, 11, 14])
+K_list = [l1, l2, l3]
+
+head = s.mergeKLists(s1.mergeTwoLists, K_list)
+print_list(head)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_023_Merge_k_Sorted_Lists</p>
+    <p id="md_v" style="display:none"># Leetcode_023_Merge_k_Sorted_Lists
+
+[https://www.bilibili.com/video/BV1Ct4y117Ua](https://www.bilibili.com/video/BV1Ct4y117Ua)
+
+```
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+
+Example:
+
+Input:
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+Output: 1->1->2->3->4->4->5->6
+
+```
+
+- 1.迭代调用Merge Two Sorted Lists，两两合并
+> 先合并链表1和2，接着将合并后的新链表再与链表3合并，如此反复直至 vector 内所有链表均已完全
+
+- 2.使用二分法对其进行归并，从中间索引处进行二分归并
+
+```
+/**
+ * Definition of ListNode
+ * class ListNode {
+ * public:
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int val) {
+ *         this->val = val;
+ *         this->next = NULL;
+ *     }
+ * }
+ */
+
+class Solution {
+public:
+    /**
+     * @param lists: a list of ListNode
+     * @return: The head of one sorted list.
+     */
+    ListNode *mergeKLists(vector<ListNode *> &lists) {
+        if (lists.empty()) {
+            return NULL;
+        }
+
+        return helper(lists, 0, lists.size() - 1);
+    }
+
+private:
+    ListNode *helper(vector<ListNode *> &lists, int start, int end) {
+        if (start == end) {
+            return lists[start];
+        } else if (start + 1 == end) {
+            return merge2Lists(lists[start], lists[end]);
+        }
+
+        ListNode *left = helper(lists, start, start + (end - start) / 2);
+        ListNode *right = helper(lists, start + (end - start) / 2 + 1, end);
+
+        return merge2Lists(left, right);
+    }
+
+    ListNode *merge2Lists(ListNode *left, ListNode *right) {
+        ListNode *dummy = new ListNode(0);
+        ListNode *last = dummy;
+
+        while (NULL != left && NULL != right) {
+            if (left->val < right->val) {
+                last->next = left;
+                left = left->next;
+            } else {
+                last->next = right;
+                right = right->next;
+            }
+            last = last->next;
+        }
+        last->next = (NULL != left) ? left : right;
+
+        return dummy->next;
+    }
+};
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

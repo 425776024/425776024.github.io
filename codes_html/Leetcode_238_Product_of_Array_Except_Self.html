@@ -52,25 +52,7 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 238 Product of Array Except Self
  
---- 
- 
-``` 
-class Solution(object):
-    def productExceptSelf(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[int]
-        """
-        ans = [1] * len(nums)
-        for i in range(1, len(nums)):
-            ans[i] = ans[i - 1] * nums[i - 1]
-        right = 1
-        for i in range(len(nums) - 1, -1, -1):
-            ans[i] *= right
-            right *= nums[i]
-        return ans
-
- ```</p>
+[https://www.bilibili.com/video/BV19f4y1m76E](https://www.bilibili.com/video/BV19f4y1m76E)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 
