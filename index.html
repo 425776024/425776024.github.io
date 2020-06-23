@@ -21,24 +21,28 @@
 <p align="center">Python ? LeetCode ? Numpy ? Matplotlib ? ok</p>
 <script src="https://pyleetcode.gitee.io/codemirror_python/Skulpt.js"></script>
 <div align="center">
-    <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
+    <button><a href="/all_list.html" target="_blank"> Py LeetCode</a></button>
     <button><a href="https://github.com/425776024/easy_leetcode" target="_blank">Github</a></button>
+    <button><a href="/about.html" target="_blank">About</a></button>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
 import numpy as np
+import time
 import matplotlib.pyplot as plt
 
-a = 2.0
-t = np.linspace(0.20 , 2.0 * np.pi, 200)
-X = a*(2.0*np.cos(t)-np.cos(2*t))
-Y = a*(2.0*np.sin(t)-np.sin(2*t))
+title = 'Hello Python LeetCoder'
+print('<h1 style=\'color:red\'>',title,'</h1>')
 
-plt.plot(Y, X,color='r')
-title = 'Hello Python LeetCode Love'
-print(title)
-plt.title(title)
+t = np.linspace(0 , 2.0 * np.pi, 100)
+time.sleep(2)
+for i in t:
+    X = i*(2.0*np.cos(t)-np.cos(2.0*t))
+    Y = i*(2.0*np.sin(t)-np.sin(2.0*t))
+    plt.plot(Y, X,color='r')
 plt.show()
+
+
         </textarea>
     </form>
     <pre id="output"></pre>
@@ -46,21 +50,20 @@ plt.show()
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># Use It On your local computer ？可以在你本地使用！
+> ( Run On your local computer . Support the function of adding, saving codes and making markdown notes .
+>
+> 本地运行的话，支持增加、保存代码，和做markdown笔记的功能 )
 
-        `( Run On your local computer . Support the function of adding,
-        saving codes and making markdown notes . 本地运行的话，支持增加、保存代码，和做markdown笔记的功能 )`
+look . 访问: [https://github.com/425776024/easy_leetcode](https://github.com/425776024/easy_leetcode)
 
-        look 访问: [https://github.com/425776024/easy_leetcode](https://github.com/425776024/easy_leetcode)
+or . 或者直接：`pip install easyleetcode`
 
-        or
-        , just 或者直接：`pip install easyleetcode`
-
-        then , only 2 line code , in any location 然后2行代码搞定:
-        ```python
-        from easyleetcode import run
-        run()
-        # or run(host="127.0.0.1", port=8080)
-        ```
+then , only 2 line code , in any location .然后2行代码搞定:
+```python
+from easyleetcode import run
+run()
+# or run(host="127.0.0.1", port=8080)
+```
     </p>
     <div id="show-area" class="clearfix" align="left"></div>
 
