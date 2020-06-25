@@ -1,4 +1,4 @@
-.cm-s-leetcode.CodeMirror { color: #000000; background: #FFFFFF; }
+.cm-s-leetcode.CodeMirror{  background: rgb(255,255,255);  }
 .cm-s-leetcode span.cm-meta {color: rgb(7, 32, 170);}
 .cm-s-leetcode span.cm-keyword { color: rgb(16, 51, 246); }
 .cm-s-leetcode span.cm-atom {color: rgb(88, 92, 246);}
@@ -16,18 +16,24 @@
 .cm-s-leetcode span.cm-qualifier {color: #555;}
 
 
+.CodeMirror-linenumber{
+    font-size:1em;
+    width:10px;
+}
+
 .CodeMirror{
-    font-family: 'Monaco','Menlo','Ubuntu Mono','Consolas','source-code-pro',monospace;
+    font-family: 'Monaco';
     float:center;
+    margin:0;
+    font-size:0.6em;
             spellcheck:false;
-            min-height: 400px;
-            width: 80%;
+            min-height: 500px;
+            width: 90%;
             margin-left: auto;
             margin-right: auto;
-            padding: 3px;
+            padding: 0px;
             outline: 0;
             border: 1px solid #a0b3d6;
-            font-size: 15px;
             line-height: 24px;
             word-wrap: break-word;
             overflow-x: hidden;
@@ -36,16 +42,10 @@
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
 }
 
-#test{
-    background-color: #F8F8F8;
-    height: 40px;
-    width: 10%;
-}
-
 #output{
     float:center;
     text-align:left;
-    line-height: 24px;
+    line-height: 20px;
     word-wrap: break-word;
     overflow-x: hidden;
     overflow-y: auto;
@@ -54,15 +54,18 @@
     spellcheck:false;
     border: 1px solid #a0b3d6;
     align:center;
-    width: 80%;
-    min-height: 100px;
+    width: 90%;
+    min-height: 50px;
 }
 
+
 #show-area {
-        width: 80%;
+        width: 90%;
+        float:center;
+        margin:10;
         height: auto;
         word-wrap: break-word;
-            overflow-x: hidden;
+        overflow-x: hidden;
             overflow-y: auto;
             border-color: rgba(82, 168, 236, 0.8);
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
@@ -71,10 +74,6 @@
 button{
     background-color: #F8F8F8;
     height: 40px;
-    width: 10%;
+    width: auto;
+    font-size:0.5em;
 }
-ul li{
-    list-style-type: none;
-}
-
-
