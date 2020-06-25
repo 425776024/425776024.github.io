@@ -16,7 +16,7 @@ window.onload = function () {
 	var codeAreaTip = "# Edit your code here:\n \n";
 	var code = "print('hello world')";
 //    var initValue = version + codeAreaTip  + code;
-    var myCodeMirror = CodeMirror.fromTextArea(el, {
+     var myCodeMirror = CodeMirror.fromTextArea(el, {
         mode: "python",
         theme: "leetcode",
         keyMap: "sublime",
@@ -24,7 +24,9 @@ window.onload = function () {
         smartIndent: true,
         indentUnit: 4,
         indentWithTabs: false,
+        coverGutterNextToScrollbar: false,
         lineWrapping: true,
+        extraKeys: {"Ctrl": "autocomplete"},
         gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter", "CodeMirror-lint-markers"],
         foldGutter: true,
         autofocus: true,
