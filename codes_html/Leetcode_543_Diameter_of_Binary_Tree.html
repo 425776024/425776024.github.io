@@ -30,21 +30,46 @@
     <h1 align="center" id="code_name"> Leetcode_543_Diameter_of_Binary_Tree </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
+        <textarea id="editor" class="editor">class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
+
 class Solution(object):
-    # https://leetcode.com/problems/diameter-of-binary-tree/solution/
     def diameterOfBinaryTree(self, root):
-        self.ans = 1
+        self.nodes = 1
         def depth(node):
+            # 计算node最大路径
             if not node: return 0
             L = depth(node.left)
             R = depth(node.right)
-            self.ans = max(self.ans, L+R+1)
+            # 节点是左右节点 + 1。（4节点直径是3）
+            # L + R + 1 : L(2,4)  + R(3) + root(1)
+            self.nodes = max(self.nodes, L + R + 1)
+            # 最长路径节点（深度），你不能每个路径都要，只能要最大的
             return max(L, R) + 1
 
         depth(root)
         # number of nodes - 1 = length
-        return self.ans - 1
+        return self.nodes - 1
+
+
+n1 = TreeNode(1)
+n2 = TreeNode(2)
+n3 = TreeNode(3)
+n4 = TreeNode(4)
+n5 = TreeNode(5)
+
+n1.left = n2
+n1.right = n3
+
+n2.left = n4
+n2.right = n5
+s = Solution()
+a = s.diameterOfBinaryTree(n1)
+print(a)
 </textarea>
     </form>
     <pre id="output"></pre>
@@ -53,7 +78,27 @@ class Solution(object):
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 543 Diameter of Binary Tree
  
-[https://www.bilibili.com/video/BV1hK4y1871N](https://www.bilibili.com/video/BV1hK4y1871N)</p>
+[https://www.bilibili.com/video/BV1hK4y1871N](https://www.bilibili.com/video/BV1hK4y1871N)
+
+
+```
+Given a binary tree
+
+          1
+         / \
+        2   3
+       / \
+      4   5
+
+
+Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
+
+Note: The length of path between two nodes is represented by the number of edges between them.
+二叉树的直径
+
+例子中的那两个最长路径[4,2,1,3] 和 [5,2,1,3]，我们转换一种角度来看，是不是其实就是根结点1的左右两个子树的深度之和
+***：其实就是根结点1的左右两个子树的深度之和呢
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

@@ -30,50 +30,34 @@
     <h1 align="center" id="code_name"> Leetcode_102_Binary_Tree_Level_Order_Traversal </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor"># Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+        <textarea id="editor" class="editor">
+class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 
 class Solution(object):
-    # def levelOrder(self, root):
-    #     """
-    #     :type root: TreeNode
-    #     :rtype: List[List[int]]
-    #     """
-    #     res = []
-    #     if root is None:
-    #         return []
-    #     self.get_level(res, root, 0)
-    #     return res
-    #
-    # def get_level(self, res, root, depth):
-    #     if root is None:
-    #         return
-    #     if depth == len(res):
-    #         res.append([])
-    #     res[depth].append(root.val)
-    #     self.get_level(res, root.left, depth + 1)
-    #     self.get_level(res, root.right, depth + 1)
+    # 借助队列
+    def levelOrder(self, root: TreeNode):
+        res = []
+        if not root: return res
 
-    def levelOrder(self, root):
-        # https://leetcode.com/discuss/90680/9-lines-python-code
-        if root is None:
-            return []
-        q = [[root]]
-        for level in q:
-            record = []
-            for node in level:
-                if node.left:
-                    record.append(node.left)
-                if node.right:
-                    record.append(node.right)
-            if record:
-                q.append(record)
-        return [[x.val for x in level] for level in q]
+        q = [root]
+        while q != []:
+            rs = []
+            for i in range(len(q)):
+                first = q[0]
+                q.remove(first)
+                rs.append(first.val)
+                if first.left:
+                    q.append(first.left)
 
+                if first.right:
+                    q.append(first.right)
+            res.append(rs)
+        print(res)
 </textarea>
     </form>
     <pre id="output"></pre>
@@ -85,50 +69,30 @@ class Solution(object):
 --- 
  
 ``` 
-# Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
 
-class Solution(object):
-    # def levelOrder(self, root):
-    #     """
-    #     :type root: TreeNode
-    #     :rtype: List[List[int]]
-    #     """
-    #     res = []
-    #     if root is None:
-    #         return []
-    #     self.get_level(res, root, 0)
-    #     return res
-    #
-    # def get_level(self, res, root, depth):
-    #     if root is None:
-    #         return
-    #     if depth == len(res):
-    #         res.append([])
-    #     res[depth].append(root.val)
-    #     self.get_level(res, root.left, depth + 1)
-    #     self.get_level(res, root.right, depth + 1)
+Given a binary tree, return the level order traversal of its nodes' values. (ie, from left to right, level by level).
 
-    def levelOrder(self, root):
-        # https://leetcode.com/discuss/90680/9-lines-python-code
-        if root is None:
-            return []
-        q = [[root]]
-        for level in q:
-            record = []
-            for node in level:
-                if node.left:
-                    record.append(node.left)
-                if node.right:
-                    record.append(node.right)
-            if record:
-                q.append(record)
-        return [[x.val for x in level] for level in q]
+Example
+Given binary tree {3,9,20,#,#,15,7},
 
+    3
+   / \
+  9  20
+    /  \
+   15   7
+copy
+return its level order traversal as:
+
+[
+  [3],
+  [9,20],
+  [15,7]
+]
+copy
+Challenge
+Challenge 1: Using only 1 queue to implement it.
+
+Challenge 2: Use DFS algorithm to do it.
 
  ```</p>
     <div id="show-area" class="clearfix" align="left"></div>

@@ -30,7 +30,103 @@
     <h1 align="center" id="code_name"> Leetcode_138_Copy_List_with_Random_Pointer </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">print('Leetcode_138_Copy_List_with_Random_Pointer')</textarea>
+        <textarea id="editor" class="editor">
+def make_list(arr):
+    head_node = None
+    p_node = None
+    for a in arr:
+        new_node = RandomListNode(a)
+        if head_node is None:
+            head_node = new_node
+            p_node = new_node
+        else:
+            p_node.next = new_node
+            p_node = new_node
+    return head_node
+
+
+def print_list(head):
+    while head is not None:
+        print(head.label, end=',')
+        head = head.next
+    print()
+
+
+# Definition for singly-linked list with a random pointer.
+class RandomListNode:
+    def __init__(self, x):
+        self.label = x
+        self.next = None
+        self.random = None
+
+
+class Solution:
+
+    def copyRandomList(self, head):
+        dummy = RandomListNode(0)
+        curNode = dummy
+        randomMap = {}
+        # copy list , 此时 拷贝后节点的random pointer指向的还是原来的节点，并没有完全拷贝出来
+        while head is not None:
+            # link newNode to new List
+            newNode = RandomListNode(head.label)
+            curNode.next = newNode
+            # map old node head to newNode
+            randomMap[head] = newNode
+            # copy old node random pointer,拷贝旧链表中的 random 指针
+            newNode.random = head.random
+            head = head.next
+            curNode = curNode.next
+
+        # copy random
+        curNode = dummy.next
+        while curNode is not None:
+            if curNode.random is not None:
+                # 右边，curNode.random是原来list中的node
+                # randomMap[curNode.random] 是list中的node的独自拷贝
+                # 更新新链表中的 random 指针
+                curNode.random = randomMap[curNode.random]
+            curNode = curNode.next
+
+        return dummy.next
+
+    def copyRandomList2(self, head):
+        dummy = RandomListNode(0)
+        curNode = dummy
+        hash_map = {}
+
+        while head is not None:
+            # link newNode to new List
+            if head in hash_map.keys():
+                newNode = hash_map[head]
+            else:
+                newNode = RandomListNode(head.label)
+            curNode.next = newNode
+            # map old node head to newNode
+            hash_map[head] = newNode
+            # copy old node random pointer
+            if head.random is not None:
+                if head.random in hash_map.keys():
+                    newNode.random = hash_map[head.random]
+                else:
+                    # 这样下一到random的地方，就不会创建newNode，而是返回曾经创建好的hash_map[head.random]
+                    newNode.random = RandomListNode(head.random.label)
+                    hash_map[head.random] = newNode.random
+            #
+            head = head.next
+            curNode = curNode.next
+
+        return dummy.next
+
+
+head = make_list([1, 2, 3, 4])
+# 1->3
+head.random = head.next.next
+print_list(head)
+s = Solution()
+copy_head = s.copyRandomList2(head)
+print_list(copy_head)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
@@ -55,15 +151,14 @@ Return a deep copy of the list.
 容易混淆的地方在于原链表中的随机指针指向的是原链表中的节点，深拷贝则要求将随机指针指向新链表中的节点。
 
 
+根据 next 指针新建链表
+维护新旧节点的映射关系
+拷贝旧链表中的 random 指针
+更新新链表中的 random 指针
 
-这道链表的深度拷贝题的难点就在于如何处理随机指针的问题，由于每一个节点都有一个随机指针，
-这个指针可以为空，也可以指向链表的任意一个节点，
-如果在每生成一个新节点给其随机指针赋值时，都要去遍历原链表的话，OJ 上肯定会超时，
-所以可以考虑用 HashMap 来缩短查找时间，第一遍遍历生成所有新节点时同时建立一个原节点和新节点的 
-HashMap，
-第二遍给随机指针赋值时，查找时间是常数级。
+---
 
----</p>
+![](https://raw.githubusercontent.com/billryan/algorithm-exercise/master/shared-files/images/copy_list_with_random_pointer.jpg)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

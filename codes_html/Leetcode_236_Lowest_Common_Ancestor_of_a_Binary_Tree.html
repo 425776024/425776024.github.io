@@ -30,7 +30,32 @@
     <h1 align="center" id="code_name"> Leetcode_236_Lowest_Common_Ancestor_of_a_Binary_Tree </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">print('Leetcode_236_Lowest_Common_Ancestor_of_a_Binary_Tree')</textarea>
+        <textarea id="editor" class="editor">
+class Solution:
+    def lowestCommonAncestor(self, root, p, q):
+        # 首先看当前结点是否为空，若为空则直接返回空，若为p或q中的任意一个，也直接返回当前结点
+
+        if not root or p == root or q == root:
+            return root
+        # 因为是递归，left返回了值，又不和p,q相等，则是最小：公共父节点
+        left = self.lowestCommonAncestor(root.left, p, q)
+        if left and left != p and left != q:
+            return left
+
+        right = self.lowestCommonAncestor(root.right, p, q)
+
+        # root is the LCA of p and q
+        # 若p和q分别位于左右子树中，那么对左右子结点调用递归函数，会分别返回p和q结点的位置，
+        # 而当前结点正好就是p和q的最小共同父结点，直接返回当前结点即可
+        if left and right:
+            return root
+        # 都在右边
+        # 可能叶子节点，返回的left,right是None，有才返回
+        if left:
+            return left
+        if right:
+            return right
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
@@ -38,7 +63,36 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># Leetcode_236_Lowest_Common_Ancestor_of_a_Binary_Tree
 
-[https://www.bilibili.com/video/BV16p4y1Q7Rq](https://www.bilibili.com/video/BV16p4y1Q7Rq)</p>
+[https://www.bilibili.com/video/BV16p4y1Q7Rq](https://www.bilibili.com/video/BV16p4y1Q7Rq)
+
+```
+
+
+Problem Statement
+Given the root and two nodes in a Binary Tree. Find the lowest common ancestor(LCA) of the two nodes.
+
+The lowest common ancestor is the node with largest depth which is the ancestor of both nodes.
+
+Example
+For the following binary tree:
+
+  4
+ / \
+3   7
+   / \
+  5   6
+copy
+LCA(3, 5) = 4
+
+LCA(5, 6) = 7
+
+LCA(6, 7) = 7
+
+二叉树的最小共同父节点
+
+
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

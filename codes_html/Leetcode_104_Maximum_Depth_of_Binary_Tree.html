@@ -30,24 +30,47 @@
     <h1 align="center" id="code_name"> Leetcode_104_Maximum_Depth_of_Binary_Tree </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor"># Definition for a  binary tree node
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+        <textarea id="editor" class="editor">
+
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
+
 
 class Solution:
     def maxDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
+        # 递归，没啥好说的
         if root is None:
             return 0
         ld = self.maxDepth(root.left)
         rd = self.maxDepth(root.right)
         return 1 + max(ld, rd)
+
+    def maxDepth2(self, root):
+        # 非递归，厉害了
+        if None == root: return 0
+        # 根节点开始，进行，层次遍历！
+        q = []
+        q.append(root)
+        # 遍历一层，+1
+        max_depth = 0
+        while q != []:
+            for i in range(len(q)):
+                # 取出这层的全部节点！
+                node = q[0]
+                q.remove(node)
+
+                if (node.left):
+                    q.append(node.left)
+
+                if (node.right):
+                    q.append(node.right)
+			# 过一层，+1
+            max_depth += 1
+
+        return max_depth
 </textarea>
     </form>
     <pre id="output"></pre>
@@ -59,26 +82,25 @@ class Solution:
 --- 
  
 ``` 
-# Definition for a  binary tree node
-# class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+Given a binary tree, find its maximum depth.
 
-class Solution:
-    def maxDepth(self, root):
-        """
-        :type root: TreeNode
-        :rtype: int
-        """
-        if root is None:
-            return 0
-        ld = self.maxDepth(root.left)
-        rd = self.maxDepth(root.right)
-        return 1 + max(ld, rd)
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
- ```</p>
+Example
+Given a binary tree as follow:
+
+  1
+ / \
+2   3
+   / \
+  4   5
+copy
+The maximum depth is 3.
+
+ ```
+
+- 1.递归
+- 2.迭代，stack or queue</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

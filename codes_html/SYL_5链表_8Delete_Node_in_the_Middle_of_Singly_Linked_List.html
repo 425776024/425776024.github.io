@@ -27,64 +27,75 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_144_Binary_Tree_Preorder_Traversal </h1>
+    <h1 align="center" id="code_name"> SYL_5链表_8Delete_Node_in_the_Middle_of_Singly_Linked_List </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">class TreeNode(object):
+        <textarea id="editor" class="editor">
+
+class ListNode:
     def __init__(self, x):
         self.val = x
-        self.left = None
-        self.right = None
+        self.next = None
 
-class Solution(object):
 
-    def preorderTraversal(self, root):
-        # stack
-        if root is None:
-            return []
-        res = []
-        stack = [root]
-        while len(stack) > 0:
-            curr = stack.pop()
-            res.append(curr.val)
-            if curr.right is not None:
-                stack.append(curr.right)
-            if curr.left is not None:
-                stack.append(curr.left)
-        return res
+def make_list(arr):
+    head_node = None
+    p_node = None
+    for a in arr:
+        new_node = ListNode(a)
+        if head_node is None:
+            head_node = new_node
+            p_node = new_node
+        else:
+            p_node.next = new_node
+            p_node = new_node
+    return head_node
 
+
+def print_list(head):
+    while head is not None:
+        print(head.val, end=',')
+        head = head.next
+    print()
+
+
+class Solution:
+    def deleteNode(self, node):
+        if node == None: return None
+        if node.next == None: node = None
+
+        node.val = node.next.val
+        node.next = node.next.next
+
+
+head = make_list([1, 3, 4, 5, 7, 9, 111])
+print_list(head)
+s = Solution()
+# del 5
+node = head.next.next.next
+s.deleteNode(node)
+print_list(head)
 </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># L 144 Binary Tree Preorder Traversal
- 
---- 
- 
-``` 
+    <p id="md_v" style="display:none"># SYL_5链表_8Delete_Node_in_the_Middle_of_Singly_Linked_List
 
+```
 
-Problem Statement
-Given a binary tree, return the preorder traversal of its nodes' values.
+Implement an algorithm to delete a nodein the middle of a singly linked list,
+given only access to that node.
 
 Example
-Given binary tree {1,#,2,3}:
+Given 1->2->3->4, and node 3. return 1->2->4
 
-1
- \
-  2
- /
-3
-copy
-return [1,2,3].
+ps:无法知道欲删除节点的前一个节点
+找不到前一个节点，那么也就意味着不能用通常的方法删除给定节点。
+这种另类『删除』方法就是——使用下一个节点的值覆盖当前节点的值，删除下一个节点。
 
-Challenge
-Can you do it without recursion?
-
-
- ```</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 
