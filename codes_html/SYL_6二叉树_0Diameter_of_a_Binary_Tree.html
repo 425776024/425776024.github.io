@@ -27,71 +27,76 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_031_Next_Permutation </h1>
+    <h1 align="center" id="code_name"> SYL_6二叉树_0Diameter_of_a_Binary_Tree </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class Solution:
-    # @param num :  a list of integer
-    # @return : a list of integer
-    def nextPermutation(self, num):
-        if num is None or len(num) <= 1:
-            return num
-        # step1: find nums[i] < nums[i + 1], Loop backwards
-        i = 0
-        for i in range(len(num) - 2, -1, -1):
-            if num[i] < num[i + 1]:
-                break
-            elif i == 0:
-                # reverse nums if reach maximum
-                num.reverse()
-                return num
-        # step2: find nums[i] < nums[j], Loop backwards
-        j = 0
-        for j in range(len(num) - 1, i, -1):
-            if num[i] < num[j]:
-                break
-        # step3: swap betwenn nums[i] and nums[j]
-        num[i], num[j] = num[j], num[i]
-        # step4: reverse between [i + 1, n - 1]
-        num[i + 1:len(num)] = num[len(num) - 1:i:-1]
-        return num
+        <textarea id="editor" class="editor">class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
-print(Solution().nextPermutation([3,2,1]))
-print(Solution().nextPermutation([1,2,3]))</textarea>
+
+class Solution(object):
+    def diameterOfBinaryTree(self, root):
+        self.nodes = 1
+
+        def depth(node):
+            # 计算以node为终点的最大路径
+            if not node: return 0
+            L = depth(node.left)
+            R = depth(node.right)
+            # 节点是左右节点 + 1。（4节点直径是3）
+            # L + R + 1 : L(2,4)  + R(3) + root(1)
+            self.nodes = max(self.nodes, L + R + 1)
+            # 最长路径节点（深度），你不能每个路径都要，只能要最大的
+            return max(L, R) + 1
+
+        depth(root)
+        # number of nodes - 1 = length
+        return self.nodes - 1
+
+
+n1 = TreeNode(1)
+n2 = TreeNode(2)
+n3 = TreeNode(3)
+n4 = TreeNode(4)
+n5 = TreeNode(5)
+
+n1.left = n2
+n1.right = n3
+
+n2.left = n4
+n2.right = n5
+s = Solution()
+a = s.diameterOfBinaryTree(n1)
+print(a)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># L 031 Next Permutation
- 
-[https://www.bilibili.com/video/BV1vK411W71S](https://www.bilibili.com/video/BV1vK411W71S)
+    <p id="md_v" style="display:none"># SYL_6二叉树_0Diameter_of_a_Binary_Tree
 
 ```
-Given a list of integers, which denote a permutation.
 
-Find the next permutation in ascending order.
+Given a binary tree
 
-Example
-For [1,3,2,3], the next permutation is [1,3,3,2]
+          1
+         / \
+        2   3
+       / \
+      4   5
 
-For [4,3,2,1], the next permutation is [1,2,3,4]
 
-Note
-The list may contains duplicate integers.
+Return 3, which is the length of the path [4,2,1,3] or [5,2,1,3].
 
-找下一个升序排列
-'''
+Note: The length of path between two nodes is represented by the number of edges between them.
+二叉树的直径
 
-'''
-字典序算法：
-
-从后往前寻找索引满足 a[k] < a[k + 1], 如果此条件不满足，则说明已遍历到最后一个。
-从后往前遍历，找到第一个比a[k]大的数a[l], 即a[k] < a[l].
-交换a[k]与a[l].
-反转k + 1 ~ n之间的元素。
-由于这道题中规定对于[4,3,2,1], 输出为[1,2,3,4], 故在第一步稍加处理即可。
+例子中的那两个最长路径[4,2,1,3] 和 [5,2,1,3]，我们转换一种角度来看，是不是其实就是根结点1的左右两个子树的深度之和
+***：其实就是根结点1的左右两个子树的深度之和呢
 
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>

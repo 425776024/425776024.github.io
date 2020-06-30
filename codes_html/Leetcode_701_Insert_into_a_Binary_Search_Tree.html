@@ -27,71 +27,70 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_031_Next_Permutation </h1>
+    <h1 align="center" id="code_name"> Leetcode_701_Insert_into_a_Binary_Search_Tree </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class Solution:
-    # @param num :  a list of integer
-    # @return : a list of integer
-    def nextPermutation(self, num):
-        if num is None or len(num) <= 1:
-            return num
-        # step1: find nums[i] < nums[i + 1], Loop backwards
-        i = 0
-        for i in range(len(num) - 2, -1, -1):
-            if num[i] < num[i + 1]:
-                break
-            elif i == 0:
-                # reverse nums if reach maximum
-                num.reverse()
-                return num
-        # step2: find nums[i] < nums[j], Loop backwards
-        j = 0
-        for j in range(len(num) - 1, i, -1):
-            if num[i] < num[j]:
-                break
-        # step3: swap betwenn nums[i] and nums[j]
-        num[i], num[j] = num[j], num[i]
-        # step4: reverse between [i + 1, n - 1]
-        num[i + 1:len(num)] = num[len(num) - 1:i:-1]
-        return num
 
-print(Solution().nextPermutation([3,2,1]))
-print(Solution().nextPermutation([1,2,3]))</textarea>
+class TreeNode:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+
+class Solution:
+    def insertIntoBST(self, root, val):
+        if root is None:
+            return TreeNode(val)
+
+        # 小于，往左走
+        # 大于，往右走
+        if val <= root.val:
+            root.left = self.insertIntoBST(root.left, val)
+        else:
+            root.right = self.insertIntoBST(root.right, val)
+
+        return root
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># L 031 Next Permutation
- 
-[https://www.bilibili.com/video/BV1vK411W71S](https://www.bilibili.com/video/BV1vK411W71S)
+    <p id="md_v" style="display:none"># Leetcode_701_Insert_into_a_Binary_Search_Tree
 
 ```
-Given a list of integers, which denote a permutation.
 
-Find the next permutation in ascending order.
+Given a binary search tree  and a new tree node, insert the node into the tree. You should keep the tree still be a valid binary search tree.
 
 Example
-For [1,3,2,3], the next permutation is [1,3,3,2]
+Given binary search tree as follow:
 
-For [4,3,2,1], the next permutation is [1,2,3,4]
+     2
 
-Note
-The list may contains duplicate integers.
+  /    \
 
-找下一个升序排列
-'''
+1        4
 
-'''
-字典序算法：
+         /
 
-从后往前寻找索引满足 a[k] < a[k + 1], 如果此条件不满足，则说明已遍历到最后一个。
-从后往前遍历，找到第一个比a[k]大的数a[l], 即a[k] < a[l].
-交换a[k]与a[l].
-反转k + 1 ~ n之间的元素。
-由于这道题中规定对于[4,3,2,1], 输出为[1,2,3,4], 故在第一步稍加处理即可。
+       3
+
+after Insert node 6, the tree should be:
+
+     2
+
+  /    \
+
+1        4
+
+         /   \
+
+       3        6
+
+Challenge
+Do it without recursion
 
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>

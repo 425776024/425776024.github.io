@@ -30,28 +30,28 @@
     <h1 align="center" id="code_name"> Leetcode_078_Subsets </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">class Solution(object):
-
+        <textarea id="editor" class="editor">
+class Solution(object):
 
     def subsets(self, nums):
         # Sort and iteratively generate n subset with n-1 subset, O(n^2) and O(2^n)
+        # 根据题意，最终返回结果中子集类的元素应该按照升序排列，故首先需要对原数组进行排序
         nums.sort()
         res = [[]]
+        # 对数组遍历，每一轮都保存之前的结果并将其依次加入到最终返回结果中。
         for index in range(len(nums)):
-            size = len(res)
             # use existing subsets to generate new subsets
-            for j in range(size):
-                curr = list(res[j])
+            for j in range(len(res)):
+                # copy list
+                curr = res[j][:]
                 curr.append(nums[index])
                 res.append(curr)
         return res
 
 
-
-
 if __name__ == "__main__":
     s = Solution()
-    print s.subsets([1,2,3])
+    print(s.subsets([1, 2, 3]))
 </textarea>
     </form>
     <pre id="output"></pre>
@@ -60,7 +60,36 @@ if __name__ == "__main__":
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 078 Subsets
  
-[https://www.bilibili.com/video/BV1Yp4y1Q7dJ](https://www.bilibili.com/video/BV1Yp4y1Q7dJ)</p>
+[https://www.bilibili.com/video/BV1Yp4y1Q7dJ](https://www.bilibili.com/video/BV1Yp4y1Q7dJ)
+
+
+```
+Given a set of distinct integers, nums, return all possible subsets.
+
+Note:
+Elements in a subset must be in non-descending order.
+The solution set must not contain duplicate subsets.
+For example,
+If nums = [1,2,3], a solution is:
+
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+
+
+[]
+[]  -> [1]
+[][1]  -> [2][1,2]
+[][1][2][1,2]  -> [3][1,3][2,3][1,2,3]
+将上述过程转化为代码即为对数组遍历，每一轮都保存之前的结果并将其依次加入到最终返回结果中
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

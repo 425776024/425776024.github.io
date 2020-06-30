@@ -27,71 +27,74 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_031_Next_Permutation </h1>
+    <h1 align="center" id="code_name"> SYL_8穷竭搜索_3Unique_Binary_Search_Trees_II </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class Solution:
-    # @param num :  a list of integer
-    # @return : a list of integer
-    def nextPermutation(self, num):
-        if num is None or len(num) <= 1:
-            return num
-        # step1: find nums[i] < nums[i + 1], Loop backwards
-        i = 0
-        for i in range(len(num) - 2, -1, -1):
-            if num[i] < num[i + 1]:
-                break
-            elif i == 0:
-                # reverse nums if reach maximum
-                num.reverse()
-                return num
-        # step2: find nums[i] < nums[j], Loop backwards
-        j = 0
-        for j in range(len(num) - 1, i, -1):
-            if num[i] < num[j]:
-                break
-        # step3: swap betwenn nums[i] and nums[j]
-        num[i], num[j] = num[j], num[i]
-        # step4: reverse between [i + 1, n - 1]
-        num[i + 1:len(num)] = num[len(num) - 1:i:-1]
-        return num
 
-print(Solution().nextPermutation([3,2,1]))
-print(Solution().nextPermutation([1,2,3]))</textarea>
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+
+
+class Solution:
+    # @paramn n: An integer
+    # @return: A list of root
+    def generateTrees(self, n):
+        return self.helper(1, n)
+
+    def helper(self, start, end):
+        # 递归地构造左右子树并将其链接到相应的根节点中
+        result = []
+        if start > end:
+            result.append(None)
+            return result
+        for i in range(start, end + 1):
+            # 小于i的数作为左子树，大于i的数作为右子树
+            leftTree = self.helper(start, i - 1)
+            rightTree = self.helper(i + 1, end)
+            # 使用两重循环将左右子树所有可能的组合链接到以i为根节点的节点上。
+            for j in range(len(leftTree)):
+                for k in range(len(rightTree)):
+                    root = TreeNode(i)
+                    root.left = leftTree[j]
+                    root.right = rightTree[k]
+                    result.append(root)
+
+        return result
+
+
+s = Solution()
+res = s.generateTrees(3)
+print(res)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># L 031 Next Permutation
- 
-[https://www.bilibili.com/video/BV1vK411W71S](https://www.bilibili.com/video/BV1vK411W71S)
+    <p id="md_v" style="display:none"># SYL_8穷竭搜索_3Unique_Binary_Search_Trees_II
 
 ```
-Given a list of integers, which denote a permutation.
 
-Find the next permutation in ascending order.
+Given n, generate all structurally unique BST's
+(binary search trees) that store values 1...n.
 
 Example
-For [1,3,2,3], the next permutation is [1,3,3,2]
+Given n = 3, your program should return all 5 unique BST's shown below.
 
-For [4,3,2,1], the next permutation is [1,2,3,4]
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
 
-Note
-The list may contains duplicate integers.
 
-找下一个升序排列
-'''
+利用『二叉搜索树』的定义，如果以 i 为根节点，那么其左子树由[1, i - 1]构成，右子树由[i + 1, n] 构成
 
-'''
-字典序算法：
-
-从后往前寻找索引满足 a[k] < a[k + 1], 如果此条件不满足，则说明已遍历到最后一个。
-从后往前遍历，找到第一个比a[k]大的数a[l], 即a[k] < a[l].
-交换a[k]与a[l].
-反转k + 1 ~ n之间的元素。
-由于这道题中规定对于[4,3,2,1], 输出为[1,2,3,4], 故在第一步稍加处理即可。
+要构建包含1到n的二叉搜索树，只需遍历1到n中的数作为根节点，以i为界将数列分为左右两部分，
+小于i的数作为左子树，大于i的数作为右子树，使用两重循环将左右子树所有可能的组合链接到以i为根节点的节点上。
 
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>

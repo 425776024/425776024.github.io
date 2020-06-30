@@ -30,30 +30,13 @@
     <h1 align="center" id="code_name"> Leetcode_700_Search_in_a_Binary_Search_Tree </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor"># Definition for a binary tree node.
-# class TreeNode(object):
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+        <textarea id="editor" class="editor">class TreeNode(object):
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.right = None
 
 class Solution(object):
-    # def searchBST(self, root, val):
-    #     """
-    #     :type root: TreeNode
-    #     :type val: int
-    #     :rtype: TreeNode
-    #     """
-    #     # Recursive
-    #     if not root:
-    #         return None
-    #     if root.val == val:
-    #         return root
-    #     elif root.val > val:
-    #         return self.searchBST(root.left, val)
-    #     else:
-    #         return self.searchBST(root.right, val)
-
     def searchBST(self, root, val):
         while root:
             if root.val == val:
@@ -71,7 +54,41 @@ class Solution(object):
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 700 Search in a Binary Search Tree
  
-[https://www.bilibili.com/video/BV11p4y1D7mu](https://www.bilibili.com/video/BV11p4y1D7mu)</p>
+[https://www.bilibili.com/video/BV11p4y1D7mu](https://www.bilibili.com/video/BV11p4y1D7mu)
+
+
+```
+Given a binary search tree  and a new tree node, insert the node into the tree. You should keep the tree still be a valid binary search tree.
+
+Example
+Given binary search tree as follow:
+
+     2
+
+  /    \
+
+1        4
+
+         /
+
+       3
+
+after Insert node 6, the tree should be:
+
+     2
+
+  /    \
+
+1        4
+
+         /   \
+
+       3        6
+
+Challenge
+Do it without recursion
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 
