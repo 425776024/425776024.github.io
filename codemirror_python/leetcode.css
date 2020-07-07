@@ -79,6 +79,10 @@
     width:70%;
     float:center;
 }
+iframe{
+        width:50%;
+        height:500px;
+}
 
 button{
     background-color: #F8F8F8;
