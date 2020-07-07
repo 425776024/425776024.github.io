@@ -43,15 +43,15 @@ class Solution:
         path = []
         res = []
         # 注意要传入 size ，在 range 中， size 取不到
-        self.__dfs(candidates, 0, size, path, res, target)
+        self.__dfs(candidates, 0, path, res, target)
         return res
 
-    def __dfs(self, candidates, begin, size, path, res, target):
+    def __dfs(self, candidates, begin, path, res, target):
         if target == 0:
             res.append(path[:])
             return
 
-        for index in range(begin, size):
+        for index in range(begin, len(candidates)):
             # 减去candidates[index]，求，和为residue的集合
             residue = target - candidates[index]
             # “剪枝”操作，不必递归到下一层，并且后面的分支也不必执行
@@ -59,8 +59,8 @@ class Solution:
                 break
             # 记住减去的路径，如果最后target==0，则拷贝此路径作为一个结果
             path.append(candidates[index])
-            # 因为下一层不能比上一层还小，起始索引还从 index 开始
-            self.__dfs(candidates, index, size, path, res, residue)
+            # 因为不限次数的使用，[2, 3, 6, 7] 7，可以是 2+2+4，所以还能本index开始
+            self.__dfs(candidates, index, path, res, residue)
             path.pop()
 
 

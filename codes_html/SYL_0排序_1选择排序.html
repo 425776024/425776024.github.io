@@ -30,8 +30,7 @@
     <h1 align="center" id="code_name"> SYL_0排序_1选择排序 </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-def Sort(arr):
+        <textarea id="editor" class="editor">def Sort(arr):
     for i in range(len(arr)):
         min_i = i
         for j in range(i, len(arr)):
@@ -40,11 +39,12 @@ def Sort(arr):
         arr[i], arr[min_i] = arr[min_i], arr[i]
     return arr
 
-
+print('<iframe src="//player.bilibili.com/player.html?aid=371135586&bvid=BV1wZ4y1p7Fe&cid=207954024&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>')
 if __name__ == '__main__':
     arr = Sort([3, 5, 1, 2, 6, 7, 9, 11,22])
     print(arr)
-</textarea>
+
+    </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
