@@ -58,7 +58,7 @@ def run(html_dir=html_dir):
         if 'class Solution' in md_summary:
             md_summary = name
 
-        md_summary = md_summary.replace('#', '').replace('_', ' ').replace("'''", '')
+        md_summary = md_summary.replace('#', '').replace('_', ' ').replace("```", '').replace('---','')
         li_str = tp_li.replace('#FILE', fname).replace('#NAME', name).replace('#SUMMARY', md_summary)
         name_list.append(li_str)
     ALLCODELIS = ''.join(name_list)
