@@ -35,7 +35,9 @@ def run(html_dir=html_dir):
     name_list = []
     tp_li = '''
     <ul align="left">
-        <a href="/codes_html/#FILE" target="_blank">#NAME</a>
+        <button><a href="/codes_html/#FILENAME.html" target="_blank">#NAME</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/#FILENAME.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/#FILENAME.md" target="_blank">Edit Github Markdown</a></button>
         <pre>#SUMMARY</pre>
     </ul>
     '''
@@ -49,17 +51,20 @@ def run(html_dir=html_dir):
     for fname in s_fname_list:
         if '.html' not in fname:
             continue
-        name = fname.replace('.html', '').replace('_', ' ')
+        FILENAME = fname.replace('.html', '')
+        NAME = FILENAME.replace('_', ' ')
+
         md_name = fname.replace('.html', '.md')
         md_file = os.path.join(md_dir, md_name)
+
         md_summary = get_file_text(md_file)
         if len(md_summary) > 300 and '```' in md_summary:
             md_summary = md_summary.split('```')[1]
         if 'class Solution' in md_summary:
-            md_summary = name
+            md_summary = NAME
 
-        md_summary = md_summary.replace('#', '').replace('_', ' ').replace("```", '').replace('---','')
-        li_str = tp_li.replace('#FILE', fname).replace('#NAME', name).replace('#SUMMARY', md_summary)
+        md_summary = md_summary.replace('#', '').replace('_', ' ').replace("```", '').replace('---', '')
+        li_str = tp_li.replace('#FILENAME', FILENAME).replace('#NAME', NAME).replace('#SUMMARY', md_summary)
         name_list.append(li_str)
     ALLCODELIS = ''.join(name_list)
     index_html = get_index_temp_html('temp_all_list.html')
