@@ -17,12 +17,12 @@ use it, from source code : [https://github.com/425776024/easy_leetcode](https://
 ## Introduction
 
 
-- Hello Python 程序员//Hello Python programmer
-- 你可以用它//You can use it
-- 成为轻松刷Leetcode的大神//Become the God of leetcode
-- 你可以用它//You can use it
-- 在线运行或添加你的任意Python代码//Run or add your arbitrary Python code online
-- 它运行非常流畅//It runs very smoothly
+- Hello Python programmer
+- You can use it
+- Study Python leetcode
+- You can use it
+- Run or add your arbitrary Python code online
+- It runs very smoothly
 
 
 ---
