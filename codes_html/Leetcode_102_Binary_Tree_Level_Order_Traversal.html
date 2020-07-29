@@ -30,8 +30,7 @@
     <h1 align="center" id="code_name"> Leetcode_102_Binary_Tree_Level_Order_Traversal </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class TreeNode(object):
+        <textarea id="editor" class="editor">class TreeNode(object):
     def __init__(self, x):
         self.val = x
         self.left = None
@@ -40,14 +39,15 @@ class TreeNode(object):
 
 class Solution(object):
     # 借助队列
-    def levelOrder(self, root: TreeNode):
+    def levelOrder(self, root):
         res = []
         if not root: return res
 
         q = [root]
         while q != []:
             rs = []
-            for i in range(len(q)):
+            size=len(q)
+            for i in range(size):
                 first = q[0]
                 q.remove(first)
                 rs.append(first.val)

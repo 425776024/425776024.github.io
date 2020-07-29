@@ -32,24 +32,18 @@
     <form action="" align="left">
         <textarea id="editor" class="editor">class Solution:
     def uniquePaths(self, m, n):
-        """
-        :type m: int
-        :type n: int
-        :rtype: int
-        """
+        # dmap[m][n] 从起点到坐标(m,n)的路径数目
         dmap = [[0] * n for _ in range(m)]
+        # 因为只能下/右，到“左边上边”的任意位置的路径数量，只能是1
         for i in range(m):
             dmap[i][0] = 1
         for j in range(n):
             dmap[0][j] = 1
+        # 到非“左边上边”坐标上点的路径数
         for i in range(1, m):
             for j in range(1, n):
-                l = u = 0
-                if i-1 >= 0:
-                    u = dmap[i-1][j]
-                if j-1>= 0:
-                    l = dmap[i][j-1]
-                dmap[i][j] = l + u
+                # 从起点到坐标(i,j)的路径数目 = 从起点到(i,j)上边点(i-1,j)的路径数 + 从起点到(i,j)左边点(i,j-1)的路径数
+                dmap[i][j] = dmap[i-1][j] + dmap[i][j-1]
         return dmap[m-1][n-1]
 </textarea>
     </form>
@@ -62,27 +56,17 @@
 --- 
  
 ``` 
-class Solution:
-    def uniquePaths(self, m, n):
-        """
-        :type m: int
-        :type n: int
-        :rtype: int
-        """
-        dmap = [[0] * n for _ in range(m)]
-        for i in range(m):
-            dmap[i][0] = 1
-        for j in range(n):
-            dmap[0][j] = 1
-        for i in range(1, m):
-            for j in range(1, n):
-                l = u = 0
-                if i-1 >= 0:
-                    u = dmap[i-1][j]
-                if j-1>= 0:
-                    l = dmap[i][j-1]
-                dmap[i][j] = l + u
-        return dmap[m-1][n-1]
+A robot is located at the top-left corner of a m x n grid
+(marked 'Start' in the diagram below).
+
+The robot can only move either down or right at any point in time.
+The robot is trying to reach the bottom-right corner of the grid
+(marked 'Finish' in the diagram below).
+
+How many possible unique paths are there?
+
+Note
+m and n will be at most 100.
 
  ```</p>
     <div id="show-area" class="clearfix" align="left"></div>

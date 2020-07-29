@@ -77,7 +77,13 @@
 
 #show-area img{
     width:70%;
+    margin-left:10%;
     float:center;
+}
+#show-area a{
+            margin:1%;
+            float:right;
+            width:40%;
 }
 iframe{
     width:800px;
@@ -89,4 +95,7 @@ button{
     height: 40px;
     width: auto;
     font-size:0.5em;
+}
+body{
+    background:rgb(16 142 255 / 34%);
 }

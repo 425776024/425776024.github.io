@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>千寻 425776024 Leetcode</title>
+    <title>新蕾Python Leetcode</title>
     <link rel="stylesheet"
           href="https://pyleetcode.gitee.io/codemirror_python/codemirror/lib/codemirror.css">
     <link rel="stylesheet"
@@ -23,79 +23,143 @@
 </head>
 <body>
 
-
+<h1>新蕾Python Leetcode</h1>
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> SYL_4数学和位运算_13A plus B Problem </h1>
+    <h1 align="center" id="code_name"> SYL_6二叉树_2Binary_Tree_Serialization </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+
 
 class Solution:
-    def aplusb(self, a, b):
-        result = a ^ b
-        carry = a & b
-        carry <<= 1
-        if carry != 0:
-            result = self.aplusb(result, carry)
 
-        return result
+    def serialize(self, root):
+        if not root:
+            return ''
 
-    def add(self, a, b):
-        # 非递归
-        # 只要进位不为0。某次b=0，意味着没有进位了，加完不用改变（就是答案）
-        while b != 0:
-            # 忽略a+b的进位，计算a+b个位值
-            temp = a ^ b
-            # 计算a+b的进位
-            b = (a & b) << 1
-            a = temp
-            # 下一轮，拿计算的进位值+个位值
-        return a
+        def post_order(root):
+            if root:
+                # 先左->右->中
+                post_order(root.left)
+                post_order(root.right)
+                ret[0] += str(root.val) + ','
+            else:
+                ret[0] += '#,'
+
+        ret = ['']
+        post_order(root)
+
+        return ret[0][:-1]  # remove last ,
+
+    def deserialize(self, data):
+        if not data:
+            return
+
+        nodes = data.split(',')
+
+        def post_order(nodes):
+            if nodes[-1] == '#':
+                nodes.pop()
+                return None
+            # 从最后一个值开始pop， 构成tree的时候， 就应该先中->右->左。
+            v = nodes.pop()
+            root = TreeNode(int(v))
+            root.right = post_order(nodes)
+            root.left = post_order(nodes)
+            return root
+
+        return post_order(nodes)
 
 
-s = Solution()
-print(s.add(13, 34))
+import collections
+
+
+class Solution2:
+    # serialize：根左右 顺序 变成 str
+    # deserialize：根左右 顺序 变成 解析成二叉树
+    def serialize(self, root):
+        if not root:
+            return
+
+        ret = []
+        queue = collections.deque()
+        queue.append(root)
+        # 前序遍历
+        while queue:
+            node = queue.popleft()
+            if node:
+                ret.append(str(node.val))
+                queue.append(node.left)
+                queue.append(node.right)
+            else:
+                ret.append('#')
+        # 根左右
+        return ','.join(ret)
+
+    def deserialize(self, data):
+        if not data:
+            return
+        nodes = data.split(',')
+        # 根
+        root = TreeNode(int(nodes[0]))
+        i = 1
+        queue = collections.deque()
+        queue.append(root)
+        while queue:
+            node = queue.popleft()
+            # 左
+            if nodes[i] == '#':
+                node.left = None
+            else:
+                t = TreeNode(int(nodes[i]))
+                node.left = t
+                queue.append(t)
+            i += 1
+            # 右
+            if nodes[i] == '#':
+                node.right = None
+            else:
+                t = TreeNode(int(nodes[i]))
+                node.right = t
+                queue.append(t)
+            i += 1
+        return root
 </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># SYL_4数学和位运算_13A plus B Problem
-
----
+    <p id="md_v" style="display:none"># SYL_6二叉树_2Binary_Tree_Serialization
 
 ```
-'''
-Write a function that add two numbers A and B.
-You should not use + or any arithmetic operators.
-
+Design an algorithm and write code to serialize and deserialize a binary tree.
+Writing the tree to a file is called 'serialization'
+and reading back from the file to reconstruct
+the exact same binary tree is 'deserialization'.
+There is no limit of how you deserialize or serialize a binary tree,
+you only need to make sure you can serialize a binary tree to a string
+and deserialize this string to the original structure.
+Have you met this question in a real interview? Yes
 Example
-Given a=1 and b=2 return 3
-'''
+An example of testdata: Binary tree {3,9,20,#,#,15,7},
+denote the following structure:
+  3
+ / \
+9  20
+  /  \
+ 15   7
+Our data serialization use bfs traversal.
+This is just for when you got wrong answer and want to debug the input.
 
-'''
-异或求得部分和，相与求得进位，最后将进位作为加法器的输入
-'''
-'''
- 5+7=12
- 首先看十进制是如何做的： 5+7=12，
- 三步走 第一步：相加各位的值，不算进位，得到2。 
- 第二步：计算进位值，得到10. 如果这一步的进位值为0，那么第一步得到的值就是最终结果
- 第三步：重复上述两步，只是相加的值变成上述两步的得到的结果2和10，得到12。
- 
- 
- 5-101，7-111 
- 第一步：相加各位的值，不算进位，得到010，二进制每位相加就相当于各位做异或操作，101^111。 
- 第二步：计算进位值，得到1010，相当于各位做与操作得到101，再向左移一位得到1010，(101&111)<<1
- 第三步重复上述两步， 各位相加 010^1010=1000，进位值为100=(010&1010)<<1
- 继续重复上述两步：1000^100 = 1100 （-2），进位值为0 = (1000&100)<<1
-'''
-
-```
----</p>
+You can use other method to do serializaiton and deserialization.
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

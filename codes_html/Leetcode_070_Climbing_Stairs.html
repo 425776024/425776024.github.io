@@ -31,42 +31,16 @@
 
     <form action="" align="left">
         <textarea id="editor" class="editor">class Solution(object):
-    # def climbStairs(self, n):
-    #     """
-    #     :type n: int
-    #     :rtype: int
-    #     """
-    #     dp = [0] * (n + 1)
-    #     dp[0] = 1
-    #     dp[1] = 1
-    #     for i in range(2, n + 1):
-    #         dp[i] = dp[i - 2] + dp[i- 1]
-    #     return dp[n]
-
     def climbStairs(self, n):
         if n <= 1:
             return 1
+        # Stairs 1 = 1 , Stairs 2 = 1+1 = 2
         dp = [1] * 2
         for i in range(2, n + 1):
+            # Stairs 3 = Stairs 2 + Stairs 1
+            # Stairs 4 = Stairs 3 + Stairs 2
             dp[1], dp[0] = dp[1] + dp[0], dp[1]
         return dp[1]
-
-
-
-    # C = {1: 1, 2: 2}
-    # def climbStairs(self, n):
-    #     """
-    #     :type n: int
-    #     :rtype: int
-    #     """
-    #     if n in Solution.C:
-    #         return Solution.C[n]
-    #     else:
-    #         result = Solution.C.get(n - 1, self.climbStairs(n - 1)) + \
-    #                  Solution.C.get(n - 2, self.climbStairs(n - 2))
-    #         Solution.C[n] = result
-    #         return result
-
 </textarea>
     </form>
     <pre id="output"></pre>
@@ -78,44 +52,17 @@
 --- 
  
 ``` 
-class Solution(object):
-    # def climbStairs(self, n):
-    #     """
-    #     :type n: int
-    #     :rtype: int
-    #     """
-    #     dp = [0] * (n + 1)
-    #     dp[0] = 1
-    #     dp[1] = 1
-    #     for i in range(2, n + 1):
-    #         dp[i] = dp[i - 2] + dp[i- 1]
-    #     return dp[n]
+You are climbing a stair case. It takes n steps to reach to the top.
 
-    def climbStairs(self, n):
-        if n <= 1:
-            return 1
-        dp = [1] * 2
-        for i in range(2, n + 1):
-            dp[1], dp[0] = dp[1] + dp[0], dp[1]
-        return dp[1]
+Each time you can either climb 1 or 2 steps.
+In how many distinct ways can you climb to the top?
 
+Example
+Given an example n=3 , 1+1+1=2+1=1+2=3
 
+return 3
 
-    # C = {1: 1, 2: 2}
-    # def climbStairs(self, n):
-    #     """
-    #     :type n: int
-    #     :rtype: int
-    #     """
-    #     if n in Solution.C:
-    #         return Solution.C[n]
-    #     else:
-    #         result = Solution.C.get(n - 1, self.climbStairs(n - 1)) + \
-    #                  Solution.C.get(n - 2, self.climbStairs(n - 2))
-    #         Solution.C[n] = result
-    #         return result
-
-
+到达顶端的方法数
  ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>

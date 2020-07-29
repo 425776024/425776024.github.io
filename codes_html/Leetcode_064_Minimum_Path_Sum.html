@@ -30,16 +30,14 @@
     <h1 align="center" id="code_name"> Leetcode_064_Minimum_Path_Sum </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">class Solution(object):
+        <textarea id="editor" class="editor">
+class Solution(object):
     def minPathSum(self, grid):
-        """
-        :type grid: List[List[int]]
-        :rtype: int
-        """
         height = len(grid)
         if height == 0:
             return 0
         width = len(grid[0])
+        # height x width
         pathmap = []
         for i in range(height):
             pathmap.append([100000000000] * width)
@@ -48,10 +46,12 @@
             for j in range(width):
                 compare = [pathmap[i][j]]
                 if i - 1 >= 0:
+                    # up
                     compare.append(pathmap[i - 1][j] + grid[i][j])
                 if j - 1 >= 0:
+                    # left
                     compare.append(pathmap[i][j - 1] + grid[i][j])
-                # min choice
+                # min choice，得到从i,j走到x,y的最小路径和
                 pathmap[i][j] = min(compare)
         return pathmap[-1][-1]</textarea>
     </form>
@@ -61,7 +61,22 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 064 Minimum Path Sum
  
-[https://www.bilibili.com/video/BV1aK411W7C7](https://www.bilibili.com/video/BV1aK411W7C7)</p>
+---
+
+```
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+
+Note
+You can only move either down or right at any point in time.
+
+题解
+State: f[x][y] 从坐标(0,0)走到(x,y)的最短路径和
+Function: f[x][y] = (x, y) + min{f[x-1][y], f[x][y-1]}
+Initialization: f[0][0] = A[0][0], f[i][0] = sum(0,0 -> i,0), f[0][i] = sum(0,0 -> 0,i)
+Answer: f[m-1][n-1]
+注意最后返回为f[m-1][n-1]而不是f[m][n].
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

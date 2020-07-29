@@ -27,62 +27,44 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV </h1>
+    <h1 align="center" id="code_name"> SYL_9动态规划_2Complete_Pack_完全背包问题 </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">class Solution(object):
-    def maxProfit(self,prices,k=2):
-        if not prices: return 0
-        if k >= len(prices): return self.solveMaxProfit(prices)
-        
-        # [i] : at most i transactions.
-        g =[0]*(k+1) # global profit
-        l =[0]*(k+1) # local profit
-        for i in range(len(prices)-1):
-            # transactions profit
-            diff = prices[i + 1] - prices[i]
-            for j in range(k,0,-1):
-                 # i次局部最大收益，是j-1次全局最大收益+diff 或者 j-1次局部最大收益+diff，取最大的
-                l[j] = max(g[j - 1] + max(diff, 0), l[j] + diff)
-                g[j] = max(l[j], g[j])
-        return g[k]
-    
-    def solveMaxProfit(self,prices):
-        res = 0
-        for i in range(1,len(prices)):
-            res += max(0,prices[i] - prices[i - 1])
-        return res
-    
+        <textarea id="editor" class="editor">
+def CompletePack(V, weight, value):
+    """
+    完全背包问题(每个物品可以取无限次)
+    :param V: 背包总容量, 如V=15
+    :param weight: 每个物品的容量数组表示, 如weight=[5,4,7,2,6]
+    :param value: 每个物品的价值数组表示, 如value=[12,3,10,3,6]
+    :return: 返回最大的总价值
+    """
+    N = len(value)
+    # 初始化f[N+1][V+1]为0，f[i][j]表示前i件物品恰放入一个容量为j的背包可以获得的最大价值
+    f = [[0 for col in range(V + 1)] for row in range(N + 1)]
 
-s=Solution()
-print(s.maxProfit([4,4,6,1,1,4,2,5],k=2))
-print(s.maxProfit([4,4,6,1,1,4,2,5],k=8))
+    for i in range(1, N + 1):
+        for j in range(1, V + 1):
+            # 注意由于weight、value数组下标从0开始，第i个物品的容量为weight[i-1],价值为value[i-1]
+            # j/weight[i-1]表示容量为j时，物品i最多可以取多少次
+            f[i][j] = f[i - 1][j]  # 初始取k=0为最大，下面的循环是把取了k个物品i能获得的最大价值赋值给f[i][j]
+            k = 1
+            while j - k * weight[i - 1] >= 0:
+                f[i][j] = max(f[i][j], f[i - 1][j - k * weight[i - 1]] + k * value[i - 1])  # 状态方程
+                k += 1
+    return f[N][V]
 
+
+if __name__ == '__main__':
+    V, weight, value = 10, [2, 3, 5, 7], [1, 5, 2, 4]
+    print(CompletePack(V, weight, value))
 </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV
-
-```
-Say you have an array for
-which the ith element is the price of a given stock on day i.
-
-Design an algorithm to find the maximum profit.
-You may complete at most k transactions.
-
-Example
-Given prices = [4,4,6,1,1,4,2,5], and k = 2, return 6.
-
-Note
-You may not engage in multiple transactions at the same time
-(i.e., you must sell the stock before you buy again).
-
-Challenge
-O(nk) time.
-```</p>
+    <p id="md_v" style="display:none"># SYL_9动态规划_2Complete_Pack_完全背包问题</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

@@ -31,7 +31,6 @@
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-
 class TreeNode(object):
     def __init__(self, x):
         self.val = x
@@ -49,8 +48,8 @@ class Solution(object):
     def minDepth2(self, root):
         if root is None:
             return 0
-        ld = self.minDepth(root.left)
-        rd = self.minDepth(root.right)
+        ld = self.minDepth2(root.left)
+        rd = self.minDepth2(root.right)
         if root.left == None:
             return 1 + rd
         elif root.right == None:

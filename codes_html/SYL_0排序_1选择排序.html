@@ -54,7 +54,24 @@ if __name__ == '__main__':
 
 - n^2遍历，每遍历一轮选择一个最小/大值，
 - 然后与当前位替换
-- 最终得到排序结果</p>
+- 最终得到排序结果
+
+---
+
+```
+是否原地排序	是否稳定	最好、最坏、平均时间复杂度	空间复杂度	是否基于比较
+冒泡排序	是	是	O(n)、 O(n^2)、 O(n^2)	O(1)	是
+插入排序	是	是	O(n)、 O(n^2)、 O(n^2)	O(1)	是
+选择排序	是	否	O(n^2)、 O(n2)、O(n2)	O(1)	是
+希尔排序	是	否	O(n)、O(n2)、O(n1.3)	O(1)	是
+快速排序	是	否	O(nlogn)、O(n^2)、O(nlogn)	O(logn)~O(n)	是
+归并排序	否	是	O(nlogn)、O(nlogn)、O(nlogn)	O(n)	是
+计数排序	否	是	O(n+k)、O(n+k)、O(n+k)，k 是数据范围	O(n+k)	否
+桶排序	  否	  是	O(n)、O(n)、O(n)	O(N+M)，N表示待排数据个数，M表示桶个数	否
+基数排序	否	是	O(nk)、O(nk)、O(n*k)，k 是维度	O(n+k)	否
+堆排序	  是	  否	O(nlogn)、O(nlogn)、O(nlogn)	O(1)	是
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

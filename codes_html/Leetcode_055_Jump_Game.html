@@ -32,17 +32,13 @@
     <form action="" align="left">
         <textarea id="editor" class="editor">class Solution(object):
     def canJump(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: bool
-        """
-        # greedy
-        # https://leetcode.com/articles/jump-game/
         length = len(nums)
         begin = length - 1
+        # 4，3，2，1，0
         for i in reversed(range(length - 1)):
             if i + nums[i] >= begin:
                 begin = i
+        # begin == 0 : return True
         return not begin</textarea>
     </form>
     <pre id="output"></pre>
@@ -51,7 +47,25 @@
     <button id="run_btn">Run Code</button>
     <p id="md_v" style="display:none"># L 055 Jump Game
  
-[https://www.bilibili.com/video/BV1NK4y1t7xZ](https://www.bilibili.com/video/BV1NK4y1t7xZ)</p>
+```
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Determine if you are able to reach the last index.
+
+Example
+A = [2,3,1,1,4], return true.
+A = [3,2,1,0,4], return false.
+
+State: f[i] 从起点出发能否达到i
+
+从坐标i出发所能到达最远的位置为
+f[i] = i + A[i]
+如果要到达最终位置，即存在某个i使得
+f[i]≥N−1, 而想到达i, 则又需存在某个j
+使得f[j]≥i−1. 依此类推直到下标为0.
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

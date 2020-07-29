@@ -32,24 +32,27 @@
     <form action="" align="left">
         <textarea id="editor" class="editor">class Solution(object):
     def numDistinct(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: int
-        """
-        # https://discuss.leetcode.com/topic/51131/space-o-mn-and-o-n-python-solutions
-        dp = [[0 for j in xrange(0, len(t) + 1)] for i in xrange(0, len(s) + 1)]
-        for j in xrange(1, len(t) + 1):
+        
+        #  dp[i][j] s中 [0, i] 的子串中能组成t中[0, j] 的子串的子序列的个数
+        dp = [[0 for j in range(0, len(t) + 1)] for i in range(0, len(s) + 1)]
+        for j in range(1, len(t) + 1):
             dp[0][j] = 0
-        for i in xrange(1, len(s) + 1):
+        for i in range(1, len(s) + 1):
             dp[i][0] = 1
+            
         dp[0][0] = 1
-        for i in xrange(1, len(s) + 1):
-            for j in xrange(1, len(t) + 1):
+        for i in range(1, len(s) + 1):
+            for j in range(1, len(t) + 1):
                 dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1] * (s[i - 1] == t[j - 1])
 
         return dp[-1][-1]
-</textarea>
+
+
+s=Solution()
+
+
+print(s.numDistinct(s = "rabbbit", t = "rabbit"))
+print(s.numDistinct(s = "babgbag", t = "bag"))</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
@@ -60,27 +63,53 @@
 --- 
  
 ``` 
-class Solution(object):
-    def numDistinct(self, s, t):
-        """
-        :type s: str
-        :type t: str
-        :rtype: int
-        """
-        # https://discuss.leetcode.com/topic/51131/space-o-mn-and-o-n-python-solutions
-        dp = [[0 for j in xrange(0, len(t) + 1)] for i in xrange(0, len(s) + 1)]
-        for j in xrange(1, len(t) + 1):
-            dp[0][j] = 0
-        for i in xrange(1, len(s) + 1):
-            dp[i][0] = 1
-        dp[0][0] = 1
-        for i in xrange(1, len(s) + 1):
-            for j in xrange(1, len(t) + 1):
-                dp[i][j] = dp[i - 1][j] + dp[i - 1][j - 1] * (s[i - 1] == t[j - 1])
+Given a string S and a string T, count the number of distinct subsequences of S which equals T.
 
-        return dp[-1][-1]
+A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
 
- ```</p>
+Example 1:
+
+Input: S = "rabbbit", T = "rabbit"
+Output: 3
+Explanation:
+
+As shown below, there are 3 ways you can generate "rabbit" from S.
+(The caret symbol ^ means the chosen letters)
+
+rabbbit
+^^^^ ^^
+rabbbit
+^^ ^^^^
+rabbbit
+^^^ ^^^
+Example 2:
+
+Input: S = "babgbag", T = "bag"
+Output: 5
+Explanation:
+
+As shown below, there are 5 ways you can generate "bag" from S.
+(The caret symbol ^ means the chosen letters)
+
+babgbag
+^^ ^
+babgbag
+^^    ^
+babgbag
+^    ^^
+babgbag
+  ^  ^^
+babgbag
+    ^^^
+ ```
+
+S[i] == T[j]: 
+- 两个字符串的最后一个字符相等，我们可以选择 S[i] 和 T[j] 配对，那么此时有 f[i][j] = f[i-1][j-1]; 
+- 若不使 S[i] 和 T[j] 配对，而是选择 S[0:i-1] 中的某个字符和 T[j] 配对，那么 f[i][j] = f[i-1][j]. 综合以上两种选择，
+- 可得知在S[i] == T[j]时有 f[i][j] = f[i-1][j-1] + f[i-1][j]
+
+S[i] != T[j]: 
+- 最后一个字符不等时，S[i] 不可能和 T[j] 配对，故 f[i][j] = f[i-1][j]</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

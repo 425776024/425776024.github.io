@@ -46,9 +46,12 @@ class Solution(object):
         if root is None:
             return []
         q = [[root]]
-        for level in q:
+        temp = []
+        while q:
+            level=q.pop(0)
             record = []
             for node in level:
+                temp.append(node.val)
                 if node.left:
                     record.append(node.left)
                 if node.right:
@@ -57,8 +60,7 @@ class Solution(object):
                 q.append(record)
         # zigzag order
         res = []
-        for index, level in enumerate(q):
-            temp = [x.val for x in level]
+        for index, level in enumerate(temp):
             if index % 2 == 0:
                 res.append(temp)
             else:

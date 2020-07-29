@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <title>新蕾Python Leetcode</title>
+    <script src="https://pyleetcode.gitee.io/static/showdown.min.js"></script>
+</head>
+<body>
+<h1 align="center" id="code_name">1字符串</h1>
+
+<div align="center">
+    <p id="md_v" style="display:none">[Leetcode_028_Implement_strStr](https://pyleetcode.gitee.io/codes_html/Leetcode_028_Implement_strStr.html)
+[是否同一个字符串](https://pyleetcode.gitee.io/codes_html/SYL_1%E5%AD%97%E7%AC%A6%E4%B8%B2_2%E6%98%AF%E5%90%A6%E5%90%8C%E4%B8%80%E4%B8%AA%E5%AD%97%E7%AC%A6%E4%B8%B2.html)
+[字符串是否是子集](https://pyleetcode.gitee.io/codes_html/SYL_1%E5%AD%97%E7%AC%A6%E4%B8%B2_3%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%98%AF%E5%90%A6%E6%98%AF%E5%AD%90%E9%9B%86.html)
+[Longest Common Substring最长公共子串](https://pyleetcode.gitee.io/codes_html/SYL_1%E5%AD%97%E7%AC%A6%E4%B8%B2_10Longest%20Common%20Substring.html)
+[Leetcode 1143 Longest Common Subsequence](https://pyleetcode.gitee.io/codes_html/Leetcode_1143_Longest_Common_Subsequence.html)
+[翻转单词](https://pyleetcode.gitee.io/codes_html/SYL_1%E5%AD%97%E7%AC%A6%E4%B8%B2_4%E7%BF%BB%E8%BD%AC%E5%8D%95%E8%AF%8D.html)
+[Leetcode 125 Valid Palindrome](https://pyleetcode.gitee.io/codes_html/Leetcode_125_Valid_Palindrome.html)
+[Leetcode 005 Longest Palindromic Substring](https://pyleetcode.gitee.io/codes_html/Leetcode_005_Longest_Palindromic_Substring.html)
+[空格替换](https://pyleetcode.gitee.io/codes_html/SYL_1%E5%AD%97%E7%AC%A6%E4%B8%B2_7%E7%A9%BA%E6%A0%BC%E6%9B%BF%E6%8D%A2.html)
+[Leetcode 044 4Wildcard Matching](https://pyleetcode.gitee.io/codes_html/Leetcode_044_4Wildcard_Matching.html)
+[Leetcode 038 Count and Say](https://pyleetcode.gitee.io/codes_html/Leetcode_038_Count_and_Say.html)
+
+    </p>
+    <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+
+<style>
+    .markdown-here-wrapper {
+        font-size: 16px;
+        line-height: 1.8em;
+        letter-spacing: 0.1em;
+    }
+
+    pre,code {
+        font-size: 14px;
+        font-family: Roboto, 'Courier New', Consolas, Inconsolata, Courier, monospace;
+        margin: auto 5px;
+    }
+    code {
+        white-space: pre-wrap;
+        border-radius: 2px;
+        display: inline;
+    }
+
+    pre {
+        font-size: 15px;
+        line-height: 1.4em;
+        display: block;
+         !important;
+    }
+
+    pre code {
+        white-space: pre;
+        overflow: auto;
+        border-radius: 3px;
+        padding: 1px 1px;
+        display: block !important;
+    }
+
+    strong,
+    b {
+        color: #BF360C;
+    }
+
+
+    hr {
+        margin: 1.5em auto;
+    }
+
+    p {
+        margin: 1.5em 5px !important;
+    }
+
+    table,
+    pre,
+    dl,
+    blockquote,
+    q,
+    ul,
+    ol {
+        margin: 10px 5px;
+    }
+
+    ul,
+    ol {
+        padding-left: 15px;
+    }
+
+    li {
+        margin: 10px;
+    }
+
+    li p {
+        margin: 10px 0 !important;
+    }
+
+    ul ul,
+    ul ol,
+    ol ul,
+    ol ol {
+        margin: 0;
+        padding-left: 10px;
+    }
+
+    ul {
+        list-style-type: circle;
+    }
+
+    dl {
+        padding: 0;
+    }
+
+    dl dt {
+        font-size: 1em;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    dl dd {
+        margin: 0 0 10px;
+        padding: 0 10px;
+    }
+
+    blockquote,
+    q {
+        border-left: 2px solid #009688;
+        padding: 0 10px;
+        color: #777;
+        quotes: none;
+        margin-left: 1em;
+    }
+
+    blockquote::before,
+    blockquote::after,
+    q::before,
+    q::after {
+        content: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 20px 0 10px;
+        padding: 0;
+        font-style: bold !important;
+        text-align: center !important;
+        margin: 1.5em 5px !important;
+        padding: 0.5em 1em !important;
+    }
+
+    h1 {
+        font-size: 24px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+
+    table {
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 1em;
+        font: inherit;
+        border: 0;
+        margin: 0 auto;
+    }
+
+    tbody {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    table tr {
+        border: 0;
+        border-top: 1px solid #CCC;
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+        background-color: #F8F8F8;
+    }
+
+    table tr th,
+    table tr td {
+        font-size: 16px;
+        border: 1px solid #CCC;
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    table tr th {
+        font-weight: bold;
+        color: #eee;
+        border: 1px solid #009688;
+        background-color: #009688;
+    }
+
+
+
+
+</style>
+
+</body>
+</html>
+<script src="https://pyleetcode.gitee.io/codemirror_python/index.js"></script>

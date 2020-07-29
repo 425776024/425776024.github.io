@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no">
+
+    <title>新蕾Python Leetcode</title>
+    <script src="https://pyleetcode.gitee.io/static/showdown.min.js"></script>
+</head>
+<body>
+<h1 align="center" id="code_name">4数学和位运算</h1>
+
+<div align="center">
+    <p id="md_v" style="display:none">[Leetcode 136 Single Number](https://pyleetcode.gitee.io/codes_html/Leetcode_136_Single_Number.html)
+[Leetcode 137 Single Number II](https://pyleetcode.gitee.io/codes_html/Leetcode_137_Single_Number_II.html)
+[Leetcode 260 Single Number III](https://pyleetcode.gitee.io/codes_html/Leetcode_260_Single%20Number%20III.html)
+[Check Power of 2](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_4Check%20Power%20of%202.html)
+[Convert Integer A to Integer B](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_5Convert%20Integer%20A%20to%20Integer%20B.html)
+[Leetcode 172 Factorial Trailing Zeroes](https://pyleetcode.gitee.io/codes_html/Leetcode_172_Factorial%20Trailing%20Zeroes.html)
+[Leetcode 096 Unique Binary Search Trees](https://pyleetcode.gitee.io/codes_html/Leetcode_096_Unique_Binary_Search_Trees.html)
+[Update Bits](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_8Update%20Bits.html)
+[Fast Power](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_9Fast%20Power.html)
+[Hash Function](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_10Hash%20Function.html)
+[Count 1 in Binary](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_11Count%201%20in%20Binary.html)
+[Fibonacci](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_12Fibonacci.html)
+[A plus B Problem](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_13A_plus_B_Problem.html)
+[Print Numbers by Recursion](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_14Print%20Numbers%20by%20Recursion.html)
+[Leetcode 169 Majority Element](https://pyleetcode.gitee.io/codes_html/Leetcode_169_Majority%20Element.html)
+[Leetcode 229 Majority Element II](https://pyleetcode.gitee.io/codes_html/Leetcode_229_Majority_Element_II.html)
+[Majority Number III](https://pyleetcode.gitee.io/codes_html/SYL_4%E6%95%B0%E5%AD%A6%E5%92%8C%E4%BD%8D%E8%BF%90%E7%AE%97_17Majority%20Number%20III.html)
+[Leetcode 233 Number of Digit One](https://pyleetcode.gitee.io/codes_html/Leetcode_233_Number_of_Digit_One.html)
+[Leetcode 263 Ugly Number](https://pyleetcode.gitee.io/codes_html/Leetcode_263_Ugly_Number.html)
+[Leetcode 066 Plus One](https://pyleetcode.gitee.io/codes_html/Leetcode_066_Plus_One.html)
+    </p>
+    <div id="show-area" class="clearfix" align="left"></div>
+</div>
+
+
+<style>
+    .markdown-here-wrapper {
+        font-size: 16px;
+        line-height: 1.8em;
+        letter-spacing: 0.1em;
+    }
+
+    pre,code {
+        font-size: 14px;
+        font-family: Roboto, 'Courier New', Consolas, Inconsolata, Courier, monospace;
+        margin: auto 5px;
+    }
+    code {
+        white-space: pre-wrap;
+        border-radius: 2px;
+        display: inline;
+    }
+
+    pre {
+        font-size: 15px;
+        line-height: 1.4em;
+        display: block;
+         !important;
+    }
+
+    pre code {
+        white-space: pre;
+        overflow: auto;
+        border-radius: 3px;
+        padding: 1px 1px;
+        display: block !important;
+    }
+
+    strong,
+    b {
+        color: #BF360C;
+    }
+
+
+    hr {
+        margin: 1.5em auto;
+    }
+
+    p {
+        margin: 1.5em 5px !important;
+    }
+
+    table,
+    pre,
+    dl,
+    blockquote,
+    q,
+    ul,
+    ol {
+        margin: 10px 5px;
+    }
+
+    ul,
+    ol {
+        padding-left: 15px;
+    }
+
+    li {
+        margin: 10px;
+    }
+
+    li p {
+        margin: 10px 0 !important;
+    }
+
+    ul ul,
+    ul ol,
+    ol ul,
+    ol ol {
+        margin: 0;
+        padding-left: 10px;
+    }
+
+    ul {
+        list-style-type: circle;
+    }
+
+    dl {
+        padding: 0;
+    }
+
+    dl dt {
+        font-size: 1em;
+        font-weight: bold;
+        font-style: italic;
+    }
+
+    dl dd {
+        margin: 0 0 10px;
+        padding: 0 10px;
+    }
+
+    blockquote,
+    q {
+        border-left: 2px solid #009688;
+        padding: 0 10px;
+        color: #777;
+        quotes: none;
+        margin-left: 1em;
+    }
+
+    blockquote::before,
+    blockquote::after,
+    q::before,
+    q::after {
+        content: none;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 20px 0 10px;
+        padding: 0;
+        font-style: bold !important;
+        text-align: center !important;
+        margin: 1.5em 5px !important;
+        padding: 0.5em 1em !important;
+    }
+
+    h1 {
+        font-size: 24px !important;
+    }
+
+    h2 {
+        font-size: 20px !important;
+        border-bottom: 1px solid #eee !important;
+    }
+
+    h3 {
+        font-size: 18px;
+    }
+
+    h4 {
+        font-size: 16px;
+    }
+
+
+    table {
+        padding: 0;
+        border-collapse: collapse;
+        border-spacing: 0;
+        font-size: 1em;
+        font: inherit;
+        border: 0;
+        margin: 0 auto;
+    }
+
+    tbody {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    table tr {
+        border: 0;
+        border-top: 1px solid #CCC;
+        background-color: white;
+        margin: 0;
+        padding: 0;
+    }
+
+    table tr:nth-child(2n) {
+        background-color: #F8F8F8;
+    }
+
+    table tr th,
+    table tr td {
+        font-size: 16px;
+        border: 1px solid #CCC;
+        margin: 0;
+        padding: 5px 10px;
+    }
+
+    table tr th {
+        font-weight: bold;
+        color: #eee;
+        border: 1px solid #009688;
+        background-color: #009688;
+    }
+
+
+
+
+</style>
+
+</body>
+</html>
+<script src="https://pyleetcode.gitee.io/codemirror_python/index.js"></script>

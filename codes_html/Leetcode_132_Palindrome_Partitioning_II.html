@@ -31,43 +31,19 @@
 
     <form action="" align="left">
         <textarea id="editor" class="editor">class Solution(object):
-    # def minCut(self, s):
-    #     """
-    #     :type s: str
-    #     :rtype: int
-    #     """
-    #     # https://discuss.leetcode.com/topic/2840/my-solution-does-not-need-a-table-for-palindrome-is-it-right-it-uses-only-o-n-space
-        ls = len(s)
-        cut = [i -1 for i in range(ls + 1)]
-        for i in range(ls):
-            # odd length
-            pos = 0
-            while i - pos >= 0 and i + pos < ls and s[i - pos] == s[i + pos]:
-                cut[i + pos + 1] = min(cut[i + pos + 1], 1 + cut[i - pos])
-                pos += 1
-            # even length
-            pos = 1
-            while i - pos + 1 >= 0 and i + pos < ls and s[i - pos + 1] == s[i + pos]:
-                cut[i + pos + 1] = min(cut[i + pos + 1], 1 + cut[i - pos + 1])
-                pos += 1
-        return cut[ls]
+    def minCut(self, s):
+        if not s:
+            return 0
+        cut = [i - 1 for i in range(1 + len(s))]
+        for i in range(1 + len(s)):
+            for j in range(i):
+                # s[j:i] is palindrome
+                if s[j:i] == s[j:i][::-1]:
+                    # 如果  0:i部分需要的最少切割数 >  0:j (j<i)部分需要的最少切割数,则更新
+                    cut[i] = min(cut[i], 1 + cut[j])
+        return cut[-1]
 
-    # def minCut(self, s):
-    #     if len(s) <= 1:
-    #         return 0
-    #     ls = len(s)
-    #     d = [0] * ls
-    #     pal = [[False] * ls for _ in range(ls)]
-    #     for i in range(ls - 1, -1, -1):
-    #         d[i] = ls - i - 1
-    #         for j in range(i, ls):
-    #             if s[i] == s[j] and (j - i < 2 or pal[i + 1][j - 1]):
-    #                 pal[i][j] = True
-    #                 if j == ls - 1:
-    #                     d[i] = 0
-    #                 elif d[j + 1] + 1 < d[i]:
-    #                     d[i] = d[j + 1] + 1
-    #     return d[0]</textarea>
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
@@ -77,45 +53,20 @@
  
 --- 
  
-``` 
-class Solution(object):
-    # def minCut(self, s):
-    #     """
-    #     :type s: str
-    #     :rtype: int
-    #     """
-    #     # https://discuss.leetcode.com/topic/2840/my-solution-does-not-need-a-table-for-palindrome-is-it-right-it-uses-only-o-n-space
-        ls = len(s)
-        cut = [i -1 for i in range(ls + 1)]
-        for i in range(ls):
-            # odd length
-            pos = 0
-            while i - pos >= 0 and i + pos < ls and s[i - pos] == s[i + pos]:
-                cut[i + pos + 1] = min(cut[i + pos + 1], 1 + cut[i - pos])
-                pos += 1
-            # even length
-            pos = 1
-            while i - pos + 1 >= 0 and i + pos < ls and s[i - pos + 1] == s[i + pos]:
-                cut[i + pos + 1] = min(cut[i + pos + 1], 1 + cut[i - pos + 1])
-                pos += 1
-        return cut[ls]
+```
 
-    # def minCut(self, s):
-    #     if len(s) <= 1:
-    #         return 0
-    #     ls = len(s)
-    #     d = [0] * ls
-    #     pal = [[False] * ls for _ in range(ls)]
-    #     for i in range(ls - 1, -1, -1):
-    #         d[i] = ls - i - 1
-    #         for j in range(i, ls):
-    #             if s[i] == s[j] and (j - i < 2 or pal[i + 1][j - 1]):
-    #                 pal[i][j] = True
-    #                 if j == ls - 1:
-    #                     d[i] = 0
-    #                 elif d[j + 1] + 1 < d[i]:
-    #                     d[i] = d[j + 1] + 1
-    #     return d[0]
+Given a string s, cut s into some substrings such that
+every substring is a palindrome.
+
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+Example
+For example, given s = "aab",
+
+Return 1 since the palindrome partitioning ["aa","b"] could be produced
+using 1 cut.
+
+f[i] 索引i 处时需要的最少切割数
  ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>

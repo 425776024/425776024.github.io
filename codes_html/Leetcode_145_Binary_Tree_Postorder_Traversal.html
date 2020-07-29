@@ -66,12 +66,12 @@ class Solution2:
             noChild = curr.left is None and curr.right is None
             # 子节点是否被查看
             childVisited = (prev is not None) and (curr.left == prev or curr.right == prev)
-            # 无子节点，或者子节点被查看（记录）了，就记录当前节点。否则，有右子节点就加入，有左子节点就加入（这样pop出来的先是做节点数据）
+            # 无子节点，或者子节点被查看（记录）了，就记录当前节点
             if noChild or childVisited:
                 result.append(curr.val)
                 s.pop()
                 prev = curr
-            else:
+            else:#否则，有右子节点就加入，有左子节点就加入（这样pop出来的先是左节点数据）
                 if curr.right is not None:
                     s.append(curr.right)
                 if curr.left is not None:

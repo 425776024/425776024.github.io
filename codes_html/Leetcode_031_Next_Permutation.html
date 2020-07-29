@@ -30,8 +30,7 @@
     <h1 align="center" id="code_name"> Leetcode_031_Next_Permutation </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class Solution:
+        <textarea id="editor" class="editor">class Solution:
     # @param num :  a list of integer
     # @return : a list of integer
     def nextPermutation(self, num):
@@ -53,7 +52,7 @@ class Solution:
                 break
         # step3: swap betwenn nums[i] and nums[j]
         num[i], num[j] = num[j], num[i]
-        # step4: reverse between [i + 1, n - 1]
+        # step4: reverse between [i + 1, n - 1]，i后元素都小于num[j].且是从大到小的，需要反转之以获得最小的序列
         num[i + 1:len(num)] = num[len(num) - 1:i:-1]
         return num
 

@@ -27,61 +27,77 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV </h1>
+    <h1 align="center" id="code_name"> SYL_9动态规划_2Backpack_01背包问题 </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">class Solution(object):
-    def maxProfit(self,prices,k=2):
-        if not prices: return 0
-        if k >= len(prices): return self.solveMaxProfit(prices)
-        
-        # [i] : at most i transactions.
-        g =[0]*(k+1) # global profit
-        l =[0]*(k+1) # local profit
-        for i in range(len(prices)-1):
-            # transactions profit
-            diff = prices[i + 1] - prices[i]
-            for j in range(k,0,-1):
-                 # i次局部最大收益，是j-1次全局最大收益+diff 或者 j-1次局部最大收益+diff，取最大的
-                l[j] = max(g[j - 1] + max(diff, 0), l[j] + diff)
-                g[j] = max(l[j], g[j])
-        return g[k]
-    
-    def solveMaxProfit(self,prices):
-        res = 0
-        for i in range(1,len(prices)):
-            res += max(0,prices[i] - prices[i - 1])
-        return res
-    
+        <textarea id="editor" class="editor">class Solution:
+    def backPack(self, M, A):
+        if A == None or len(A) == 0:
+            return 0
+        N = len(A)
+        # bp = [N + 1][M + 1]
+        bp = [[0] * (M + 1) for _ in range(N + 1)]
 
-s=Solution()
-print(s.maxProfit([4,4,6,1,1,4,2,5],k=2))
-print(s.maxProfit([4,4,6,1,1,4,2,5],k=8))
+        for i in range(N):
+            for j in range(M + 1):
+                # i号size已经大于j，则不能装，那么，第
+                if A[i] > j:
+                    bp[i + 1][j] = bp[i][j]
+                else:
+                    # 不加入，或者加入物品。
+                    # 不加时，取钱i个物品，重量不超过j的最大重量，等价于取前i-1个物品，重量不超过j时的重量。（bp[i][j]）
+                    # 加入时，取钱i个物品，重量不超过j的最大重量，等价于取前i-1个物品，重量不超过j-A[i]时的重量 + z装下这个i号物品的重量A[i]。（bp[i][j - A[i]] + A[i]）
+                    bp[i + 1][j] = max(bp[i][j], bp[i][j - A[i]] + A[i])
+        # 数组前N-1个物品（全部物品）中，选出重量不超过M时总重量的最大值。（最优答案）
+        return bp[N - 1 + 1][M]
 
+
+if __name__ == '__main__':
+    # 0/1背包问题
+    print(Solution().backPack(11, [2, 3, 5, 7]))
+    print(Solution().backPack(12, [2, 3, 5, 7]))
 </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV
+    <p id="md_v" style="display:none"># SYL_9动态规划_2Backpack_01背包问题
 
 ```
-Say you have an array for
-which the ith element is the price of a given stock on day i.
 
-Design an algorithm to find the maximum profit.
-You may complete at most k transactions.
+Given n items with size
+A_i, an integer m denotes the size of a backpack. How full you can fill this backpack?
 
 Example
-Given prices = [4,4,6,1,1,4,2,5], and k = 2, return 6.
+If we have 4 items with size [2, 3, 5, 7], the backpack size is 11,
+
+we can select [2, 3, 5], so that the max size we can fill this backpack is 10.
+
+If the backpack size is 12. we can select [2, 3, 7] so that we can fulfill the backpack.
+
+You function should return the max size we can fill in the given backpack.
 
 Note
-You may not engage in multiple transactions at the same time
-(i.e., you must sell the stock before you buy again).
+You can not divide any item into small pieces.
 
 Challenge
-O(nk) time.
+O(n x m) time and O(m) memory.
+O(n x m) memory is also acceptable if you do not know how to optimize memory.
+
+
+本题是典型的01背包问题，每种类型的物品最多只能选择一件。
+题中可以将背包的 size 理解为传统背包中的重量；题目问的是能达到的最大 size, 故可将每个背包的 size 类比为传统背包中的价值。
+
+考虑到数组索引从0开始，故定义状态bp[i + 1][j]为 ：选数组中前i个物品，选出重量不超过j时，的最大总价值。
+状态转移方程则为分 A[i] > j 与否两种情况考虑。
+
+初始化均为0，相当于没有放任何物品。
+
+分为两种情况
+当前背包最大容量小于物品的重量，可容纳的最大重量是dp[i-1][j]
+当前背包最大容量小于物品重量，可容纳的最大重量是max(dp[i-1][j],dp[i-1][j-A[i]+A[i])
+
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>

@@ -30,13 +30,73 @@
     <h1 align="center" id="code_name"> Leetcode_095_Unique_Binary_Search_Trees_II </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">print('Leetcode_095_Unique_Binary_Search_Trees_II')</textarea>
+        <textarea id="editor" class="editor">
+class TreeNode:
+    def __init__(self, val):
+        self.val = val
+        self.left, self.right = None, None
+
+
+class Solution:
+    # @paramn n: An integer
+    # @return: A list of root
+    def generateTrees(self, n):
+        return self.helper(1, n)
+
+    def helper(self, start, end):
+        # 递归地构造左右子树并将其链接到相应的根节点中
+        result = []
+        if start > end:
+            result.append(None)
+            return result
+        for i in range(start, end + 1):
+            # 小于i的数作为左子树，大于i的数作为右子树
+            leftTree = self.helper(start, i - 1)
+            rightTree = self.helper(i + 1, end)
+            # 使用两重循环将左右子树所有可能的组合链接到以i为根节点的节点上。
+            for j in range(len(leftTree)):
+                for k in range(len(rightTree)):
+                    root = TreeNode(i)
+                    root.left = leftTree[j]
+                    root.right = rightTree[k]
+                    result.append(root)
+
+        return result
+
+
+s = Solution()
+res = s.generateTrees(3)
+print(res)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_095_Unique_Binary_Search_Trees_II</p>
+    <p id="md_v" style="display:none"># Leetcode_095_Unique_Binary_Search_Trees_II
+
+```
+
+Given n, generate all structurally unique BST's
+(binary search trees) that store values 1...n.
+
+Example
+Given n = 3, your program should return all 5 unique BST's shown below.
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+
+
+利用『二叉搜索树』的定义，如果以 i 为根节点，那么其左子树由[1, i - 1]构成，右子树由[i + 1, n] 构成
+
+要构建包含1到n的二叉搜索树，只需遍历1到n中的数作为根节点，以i为界将数列分为左右两部分，
+小于i的数作为左子树，大于i的数作为右子树，使用两重循环将左右子树所有可能的组合链接到以i为根节点的节点上。
+
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

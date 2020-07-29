@@ -30,8 +30,7 @@
     <h1 align="center" id="code_name"> Leetcode_039_Combination_Sum </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class Solution:
+        <textarea id="editor" class="editor">class Solution:
     def combinationSum(self, candidates, target):
         size = len(candidates)
         if size == 0:
@@ -59,7 +58,7 @@ class Solution:
                 break
             # 记住减去的路径，如果最后target==0，则拷贝此路径作为一个结果
             path.append(candidates[index])
-            # 因为不限次数的使用，[2, 3, 6, 7] 7，可以是 2+2+4，所以还能本index开始
+            # 因为不限次数的使用，[2, 3, 6, 7] 7，可以是 2+2+3，所以还能本index开始
             self.__dfs(candidates, index, path, res, residue)
             path.pop()
 

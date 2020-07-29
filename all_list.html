@@ -657,7 +657,22 @@ isMatch("aab", "c*a*b") → false
         <button><a href="/codes_html/Leetcode_045_Jump_Game_II.html" target="_blank">Leetcode 045 Jump Game II</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_045_Jump_Game_II.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_045_Jump_Game_II.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 045 Jump Game II</pre>
+        <pre> 
+Given an array of non-negative integers,
+you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Your goal is to reach the last index in the minimum number of jumps.
+
+Example
+Given array A = [2,3,1,1,4]
+
+The minimum number of jumps to reach the last index is 2.
+(Jump 1 step from index 0 to 1, then 3 steps to the last index.)
+
+ Jump Game 的延伸，那题是问能不能到达最后一个数字，而此题只让求到达最后一个位置的最少跳跃数，貌似是默认一定能到达最后位置的
+ </pre>
     </ul>
     
     <ul align="left">
@@ -757,9 +772,21 @@ Do it without recursion.
         <button><a href="/codes_html/Leetcode_053_Maximum_Subarray.html" target="_blank">Leetcode 053 Maximum Subarray</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_053_Maximum_Subarray.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_053_Maximum_Subarray.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> L 053 Maximum Subarray
- 
-[https://www.bilibili.com/video/BV1ek4y167E3](https://www.bilibili.com/video/BV1ek4y167E3)</pre>
+        <pre>
+Given an array of integers,
+find a contiguous subarray which has the largest sum.
+
+Example
+Given the array [−2,2,−3,4,−1,2,1,−5,3],
+the contiguous subarray [4,−1,2,1] has the largest sum = 6.
+
+Note
+The subarray should contain at least one number.
+
+Challenge
+Can you do it in time complexity O(n)?
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -773,9 +800,25 @@ Do it without recursion.
         <button><a href="/codes_html/Leetcode_055_Jump_Game.html" target="_blank">Leetcode 055 Jump Game</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_055_Jump_Game.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_055_Jump_Game.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> L 055 Jump Game
- 
-[https://www.bilibili.com/video/BV1NK4y1t7xZ](https://www.bilibili.com/video/BV1NK4y1t7xZ)</pre>
+        <pre>
+Given an array of non-negative integers, you are initially positioned at the first index of the array.
+
+Each element in the array represents your maximum jump length at that position.
+
+Determine if you are able to reach the last index.
+
+Example
+A = [2,3,1,1,4], return true.
+A = [3,2,1,0,4], return false.
+
+State: f[i] 从起点出发能否达到i
+
+从坐标i出发所能到达最远的位置为
+f[i] = i + A[i]
+如果要到达最终位置，即存在某个i使得
+f[i]≥N−1, 而想到达i, 则又需存在某个j
+使得f[j]≥i−1. 依此类推直到下标为0.
+</pre>
     </ul>
     
     <ul align="left">
@@ -850,23 +893,70 @@ rotate 2 steps to the right: 4->5->1->2->3->NULL
         <button><a href="/codes_html/Leetcode_062_Unique_Paths.html" target="_blank">Leetcode 062 Unique Paths</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_062_Unique_Paths.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_062_Unique_Paths.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 062 Unique Paths</pre>
+        <pre> 
+A robot is located at the top-left corner of a m x n grid
+(marked 'Start' in the diagram below).
+
+The robot can only move either down or right at any point in time.
+The robot is trying to reach the bottom-right corner of the grid
+(marked 'Finish' in the diagram below).
+
+How many possible unique paths are there?
+
+Note
+m and n will be at most 100.
+
+ </pre>
     </ul>
     
     <ul align="left">
         <button><a href="/codes_html/Leetcode_063_Unique_Paths_II.html" target="_blank">Leetcode 063 Unique Paths II</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_063_Unique_Paths_II.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_063_Unique_Paths_II.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 063 Unique Paths II</pre>
+        <pre> 
+
+Follow up for "Unique Paths":
+
+Now consider if some obstacles are added to the grids.
+How many unique paths would there be?
+
+An obstacle and empty space is marked as 1 and 0 respectively in the grid.
+Note
+m and n will be at most 100.
+
+Example
+For example,
+There is one obstacle in the middle of a 3x3 grid as illustrated below.
+
+[
+  [0,0,0],
+  [0,1,0],
+  [0,0,0]
+]
+The total number of unique paths is 2.
+
+在Unique Paths的基础上加了obstacal这么一个限制条件，那么也就意味着凡是遇到障碍点，其路径数马上变为0，需要注意的是初始化环节和上题有较大不同
+ </pre>
     </ul>
     
     <ul align="left">
         <button><a href="/codes_html/Leetcode_064_Minimum_Path_Sum.html" target="_blank">Leetcode 064 Minimum Path Sum</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_064_Minimum_Path_Sum.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_064_Minimum_Path_Sum.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> L 064 Minimum Path Sum
- 
-[https://www.bilibili.com/video/BV1aK411W7C7](https://www.bilibili.com/video/BV1aK411W7C7)</pre>
+        <pre>
+Given a m x n grid filled with non-negative numbers, find a path from top left to bottom right which minimizes the sum of all numbers along its path.
+
+Note
+You can only move either down or right at any point in time.
+
+题解
+State: f[x][y] 从坐标(0,0)走到(x,y)的最短路径和
+Function: f[x][y] = (x, y) + min{f[x-1][y], f[x][y-1]}
+Initialization: f[0][0] = A[0][0], f[i][0] = sum(0,0 -> i,0), f[0][i] = sum(0,0 -> 0,i)
+Answer: f[m-1][n-1]
+注意最后返回为f[m-1][n-1]而不是f[m][n].
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -937,7 +1027,23 @@ Output: 2
         <button><a href="/codes_html/Leetcode_070_Climbing_Stairs.html" target="_blank">Leetcode 070 Climbing Stairs</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_070_Climbing_Stairs.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_070_Climbing_Stairs.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 070 Climbing Stairs</pre>
+        <pre> L 070 Climbing Stairs
+ 
+ 
+ 
+ 
+You are climbing a stair case. It takes n steps to reach to the top.
+
+Each time you can either climb 1 or 2 steps.
+In how many distinct ways can you climb to the top?
+
+Example
+Given an example n=3 , 1+1+1=2+1=1+2=3
+
+return 3
+
+到达顶端的方法数
+ </pre>
     </ul>
     
     <ul align="left">
@@ -951,9 +1057,19 @@ Output: 2
         <button><a href="/codes_html/Leetcode_072_Edit_Distance.html" target="_blank">Leetcode 072 Edit Distance</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_072_Edit_Distance.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_072_Edit_Distance.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> L 072 Edit Distance
- 
-[https://www.bilibili.com/video/BV1sp4y1D7gt](https://www.bilibili.com/video/BV1sp4y1D7gt)</pre>
+        <pre>
+Given two words word1 and word2, find the minimum number of steps required 
+to convert word1 to word2. (each operation is counted as 1 step.)
+
+You have the following 3 operations permitted on a word:
+
+Insert a character
+Delete a character
+Replace a character
+Example
+Given word1 = "mart" and word2 = "karma", return 3.
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -1326,7 +1442,7 @@ Given binary tree {1,,2,3},
      2
     /
    3
-
+return [1,3,2].
  </pre>
     </ul>
     
@@ -1334,7 +1450,28 @@ Given binary tree {1,,2,3},
         <button><a href="/codes_html/Leetcode_095_Unique_Binary_Search_Trees_II.html" target="_blank">Leetcode 095 Unique Binary Search Trees II</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_095_Unique_Binary_Search_Trees_II.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_095_Unique_Binary_Search_Trees_II.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 095 Unique Binary Search Trees II</pre>
+        <pre>
+
+Given n, generate all structurally unique BST's
+(binary search trees) that store values 1...n.
+
+Example
+Given n = 3, your program should return all 5 unique BST's shown below.
+
+   1         3     3      2      1
+    \       /     /      / \      \
+     3     2     1      1   3      2
+    /     /       \                 \
+   2     1         2                 3
+
+
+利用『二叉搜索树』的定义，如果以 i 为根节点，那么其左子树由[1, i - 1]构成，右子树由[i + 1, n] 构成
+
+要构建包含1到n的二叉搜索树，只需遍历1到n中的数作为根节点，以i为界将数列分为左右两部分，
+小于i的数作为左子树，大于i的数作为右子树，使用两重循环将左右子树所有可能的组合链接到以i为根节点的节点上。
+
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -1370,7 +1507,20 @@ Given n = 3, there are a total of 5 unique BST's.
         <button><a href="/codes_html/Leetcode_097_Interleaving_String.html" target="_blank">Leetcode 097 Interleaving String</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_097_Interleaving_String.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_097_Interleaving_String.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 097 Interleaving String</pre>
+        <pre> 
+Given three strings: s1, s2, s3,
+determine whether s3 is formed by the interleaving of s1 and s2.
+
+Example
+For s1 = "aabcc", s2 = "dbbca"
+
+When s3 = "aadbbcbcac", return true.
+When s3 = "aadbbbaccc", return false.
+Challenge
+O(n2) time or better
+
+ s3 是否由 s1 和 s2 交叉构成，不允许跳着从 s1 和 s2 挑选字符
+ </pre>
     </ul>
     
     <ul align="left">
@@ -1764,12 +1914,20 @@ The minimum depth is 2
         <button><a href="/codes_html/Leetcode_1143_Longest_Common_Subsequence.html" target="_blank">Leetcode 1143 Longest Common Subsequence</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_1143_Longest_Common_Subsequence.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_1143_Longest_Common_Subsequence.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 1143 Longest Common Subsequence
+        <pre>
+Given two strings, find the longest common subsequence (LCS).
 
-[https://www.bilibili.com/video/BV1A5411s75E](https://www.bilibili.com/video/BV1A5411s75E)
+Your code should return the length of LCS.
 
+Have you met this question in a real interview? Yes
+Example
+For "ABCD" and "EDCA", the LCS is "A" (or "D", "C"), return 1.
 
-Longest Common Subsequence
+For "ABCD" and "EACB", the LCS is "AC", return 2.
+
+Clarification
+What's the definition of Longest Common Subsequence?
+
 
 注意「子串」和「子序列」的区别
 
@@ -1787,7 +1945,46 @@ Longest Common Subsequence
         <button><a href="/codes_html/Leetcode_115_Distinct_Subsequences.html" target="_blank">Leetcode 115 Distinct Subsequences</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_115_Distinct_Subsequences.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_115_Distinct_Subsequences.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 115 Distinct Subsequences</pre>
+        <pre> 
+Given a string S and a string T, count the number of distinct subsequences of S which equals T.
+
+A subsequence of a string is a new string which is formed from the original string by deleting some (can be none) of the characters without disturbing the relative positions of the remaining characters. (ie, "ACE" is a subsequence of "ABCDE" while "AEC" is not).
+
+Example 1:
+
+Input: S = "rabbbit", T = "rabbit"
+Output: 3
+Explanation:
+
+As shown below, there are 3 ways you can generate "rabbit" from S.
+(The caret symbol ^ means the chosen letters)
+
+rabbbit
+^^^^ ^^
+rabbbit
+^^ ^^^^
+rabbbit
+^^^ ^^^
+Example 2:
+
+Input: S = "babgbag", T = "bag"
+Output: 5
+Explanation:
+
+As shown below, there are 5 ways you can generate "bag" from S.
+(The caret symbol ^ means the chosen letters)
+
+babgbag
+^^ ^
+babgbag
+^^    ^
+babgbag
+^    ^^
+babgbag
+  ^  ^^
+babgbag
+    ^^^
+ </pre>
     </ul>
     
     <ul align="left">
@@ -1838,16 +2035,41 @@ Longest Common Subsequence
         <button><a href="/codes_html/Leetcode_121_Best_Time_to_Buy_and_Sell_Stock.html" target="_blank">Leetcode 121 Best Time to Buy and Sell Stock</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_121_Best_Time_to_Buy_and_Sell_Stock.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_121_Best_Time_to_Buy_and_Sell_Stock.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 121 Best Time to Buy and Sell Stock</pre>
+        <pre> 
+Say you have an array for
+which the ith element is the price of a given stock on day i.
+
+If you were only permitted to complete at most one transaction
+(ie, buy one and sell one share of the stock),
+design an algorithm to find the maximum profit.
+
+Example
+Given an example [3,2,3,1,2], return 1
+ </pre>
     </ul>
     
     <ul align="left">
         <button><a href="/codes_html/Leetcode_122_Best_Time_to_Buy_and_Sell_Stock_II.html" target="_blank">Leetcode 122 Best Time to Buy and Sell Stock II</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_122_Best_Time_to_Buy_and_Sell_Stock_II.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_122_Best_Time_to_Buy_and_Sell_Stock_II.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> L 122 Best Time to Buy and Sell Stock II
- 
-[https://www.bilibili.com/video/BV1oK4y147N8](https://www.bilibili.com/video/BV1oK4y147N8)</pre>
+        <pre>
+Say you have an array for
+which the ith element is the price of a given stock on day i.
+
+Design an algorithm to find the maximum profit.
+You may complete as many transactions as you like
+(ie, buy one and sell one share of the stock multiple times).
+However, you may not engage in multiple transactions at the same time
+(ie, you must sell the stock before you buy again).
+
+Example
+Given an example [2,1,2,0,1], return 2
+
+卖股票系列之二，允许进行多次交易，但是不允许同时进行多笔交易
+
+计算所有连续波谷波峰的差值之和。
+可以把数组看成时间序列，只需要计算相邻序列的差值即可，只累加大于0的差值。
+</pre>
     </ul>
     
     <ul align="left">
@@ -1863,7 +2085,23 @@ Longest Common Subsequence
         <button><a href="/codes_html/Leetcode_123_Best_Time_to_Buy_and_Sell_Stock_III.html" target="_blank">Leetcode 123 Best Time to Buy and Sell Stock III</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_123_Best_Time_to_Buy_and_Sell_Stock_III.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_123_Best_Time_to_Buy_and_Sell_Stock_III.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 123 Best Time to Buy and Sell Stock III</pre>
+        <pre> 
+Say you have an array for
+which the ith element is the price of a given stock on day i.
+
+Design an algorithm to find the maximum profit.
+You may complete at most two transactions.
+
+Example
+Given an example [4,4,6,1,1,4,2,5], return 6.
+
+Note
+You may not engage in multiple transactions at the same time
+(ie, you must sell the stock before you buy again).
+
+允许一次或者多次交易不同，这里只允许最多两次交易，且这两次交易不能交叉。
+
+ </pre>
     </ul>
     
     <ul align="left">
@@ -2006,7 +2244,21 @@ Return
         <button><a href="/codes_html/Leetcode_132_Palindrome_Partitioning_II.html" target="_blank">Leetcode 132 Palindrome Partitioning II</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_132_Palindrome_Partitioning_II.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_132_Palindrome_Partitioning_II.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 132 Palindrome Partitioning II</pre>
+        <pre>
+
+Given a string s, cut s into some substrings such that
+every substring is a palindrome.
+
+Return the minimum cuts needed for a palindrome partitioning of s.
+
+Example
+For example, given s = "aab",
+
+Return 1 since the palindrome partitioning ["aa","b"] could be produced
+using 1 cut.
+
+f[i] 索引i 处时需要的最少切割数
+ </pre>
     </ul>
     
     <ul align="left">
@@ -2175,9 +2427,20 @@ Return a deep copy of the list.
         <button><a href="/codes_html/Leetcode_139_Word_Break.html" target="_blank">Leetcode 139 Word Break</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_139_Word_Break.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_139_Word_Break.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> L 139 Word Break
- 
-[https://www.bilibili.com/video/BV1SZ4y1s7Xr](https://www.bilibili.com/video/BV1SZ4y1s7Xr)</pre>
+        <pre>
+Given a string s and a dictionary of words dict, determine if s can be
+segmented into a space-separated sequence of one or more dictionary words.
+
+For example, given
+s = "leetcode",
+dict = ["leet", "code"].
+
+Return true because "leetcode" can be segmented as "leet code".
+
+State: f[i] 表示前i个字符能否根据词典中的词被成功分词
+Initialization: f[0] = true, 数组长度为字符串长度 + 1，便于处理。
+Answer: f[s.length]
+</pre>
     </ul>
     
     <ul align="left">
@@ -2840,7 +3103,23 @@ Super Star: Extra memory usage O(1)
         <button><a href="/codes_html/Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV.html" target="_blank">Leetcode 188 Best Time to Buy and Sell Stock IV</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_188_Best_Time_to_Buy_and_Sell_Stock_IV.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 188 Best Time to Buy and Sell Stock IV</pre>
+        <pre>
+Say you have an array for
+which the ith element is the price of a given stock on day i.
+
+Design an algorithm to find the maximum profit.
+You may complete at most k transactions.
+
+Example
+Given prices = [4,4,6,1,1,4,2,5], and k = 2, return 6.
+
+Note
+You may not engage in multiple transactions at the same time
+(i.e., you must sell the stock before you buy again).
+
+Challenge
+O(nk) time.
+</pre>
     </ul>
     
     <ul align="left">
@@ -3947,7 +4226,20 @@ O(K log K) or O(K) time.
         <button><a href="/codes_html/Leetcode_300_Longest_Increasing_Subsequence.html" target="_blank">Leetcode 300 Longest Increasing Subsequence</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_300_Longest_Increasing_Subsequence.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_300_Longest_Increasing_Subsequence.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 300 Longest Increasing Subsequence</pre>
+        <pre>
+Given a sequence of integers, find the longest increasing subsequence (LIS).
+
+You code should return the length of the LIS.
+
+Example
+For [5, 4, 1, 2, 3], the LIS is [1, 2, 3], return 3
+
+For [4, 2, 4, 5, 3, 7], the LIS is [4, 4, 5, 7], return 4
+
+Challenge
+Time complexity O(n^2) or O(nlogn)
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -6730,11 +7022,20 @@ class ListNode():
         <button><a href="/codes_html/SYL_0排序_1选择排序.html" target="_blank">SYL 0排序 1选择排序</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_0排序_1选择排序.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_0排序_1选择排序.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> SYL L 001 0排序 1选择排序
+        <pre>
+是否原地排序	是否稳定	最好、最坏、平均时间复杂度	空间复杂度	是否基于比较
+冒泡排序	是	是	O(n)、 O(n^2)、 O(n^2)	O(1)	是
+插入排序	是	是	O(n)、 O(n^2)、 O(n^2)	O(1)	是
+选择排序	是	否	O(n^2)、 O(n2)、O(n2)	O(1)	是
+希尔排序	是	否	O(n)、O(n2)、O(n1.3)	O(1)	是
+快速排序	是	否	O(nlogn)、O(n^2)、O(nlogn)	O(logn)~O(n)	是
+归并排序	否	是	O(nlogn)、O(nlogn)、O(nlogn)	O(n)	是
+计数排序	否	是	O(n+k)、O(n+k)、O(n+k)，k 是数据范围	O(n+k)	否
+桶排序	  否	  是	O(n)、O(n)、O(n)	O(N+M)，N表示待排数据个数，M表示桶个数	否
+基数排序	否	是	O(nk)、O(nk)、O(n*k)，k 是维度	O(n+k)	否
+堆排序	  是	  否	O(nlogn)、O(nlogn)、O(nlogn)	O(1)	是
 
-- n^2遍历，每遍历一轮选择一个最小/大值，
-- 然后与当前位替换
-- 最终得到排序结果</pre>
+</pre>
     </ul>
     
     <ul align="left">
@@ -7189,13 +7490,6 @@ signed 32-bit integer in the test cases.
     </ul>
     
     <ul align="left">
-        <button><a href="/codes_html/SYL_4数学和位运算_13A plus B Problem.html" target="_blank">SYL 4数学和位运算 13A plus B Problem</a></button>
-        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_4数学和位运算_13A plus B Problem.py" target="_blank">Edit Github Code</a></button>
-        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_4数学和位运算_13A plus B Problem.md" target="_blank">Edit Github Markdown</a></button>
-        <pre></pre>
-    </ul>
-    
-    <ul align="left">
         <button><a href="/codes_html/SYL_4数学和位运算_13A_plus_B_Problem.html" target="_blank">SYL 4数学和位运算 13A plus B Problem</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_4数学和位运算_13A_plus_B_Problem.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_4数学和位运算_13A_plus_B_Problem.md" target="_blank">Edit Github Markdown</a></button>
@@ -7494,11 +7788,10 @@ Note: The length of path between two nodes is represented by the number of edges
     </ul>
     
     <ul align="left">
-        <button><a href="/codes_html/SYL_6二叉树_2Binary_Tree_Serialization.py.html" target="_blank">SYL 6二叉树 2Binary Tree Serialization.py</a></button>
-        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_6二叉树_2Binary_Tree_Serialization.py.py" target="_blank">Edit Github Code</a></button>
-        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_6二叉树_2Binary_Tree_Serialization.py.md" target="_blank">Edit Github Markdown</a></button>
+        <button><a href="/codes_html/SYL_6二叉树_2Binary_Tree_Serialization.html" target="_blank">SYL 6二叉树 2Binary Tree Serialization</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_6二叉树_2Binary_Tree_Serialization.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_6二叉树_2Binary_Tree_Serialization.md" target="_blank">Edit Github Markdown</a></button>
         <pre>
-
 Design an algorithm and write code to serialize and deserialize a binary tree.
 Writing the tree to a file is called 'serialization'
 and reading back from the file to reconstruct
@@ -7519,10 +7812,14 @@ Our data serialization use bfs traversal.
 This is just for when you got wrong answer and want to debug the input.
 
 You can use other method to do serializaiton and deserialization.
-
-
-
 </pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/SYL_6二叉树_2Binary_Tree_Serialization.py.html" target="_blank">SYL 6二叉树 2Binary Tree Serialization.py</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_6二叉树_2Binary_Tree_Serialization.py.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_6二叉树_2Binary_Tree_Serialization.py.md" target="_blank">Edit Github Markdown</a></button>
+        <pre></pre>
     </ul>
     
     <ul align="left">
@@ -7656,6 +7953,108 @@ Given n = 3, your program should return all 5 unique BST's shown below.
 小于i的数作为左子树，大于i的数作为右子树，使用两重循环将左右子树所有可能的组合链接到以i为根节点的节点上。
 
 </pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/SYL_9动态规划_1Triangle_Find_the_minimum_path_sum_from_top_to_bottom.html" target="_blank">SYL 9动态规划 1Triangle Find the minimum path sum from top to bottom</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_9动态规划_1Triangle_Find_the_minimum_path_sum_from_top_to_bottom.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_9动态规划_1Triangle_Find_the_minimum_path_sum_from_top_to_bottom.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+Given a triangle, find the minimum path sum from top to bottom. Each step you may move to adjacent numbers on the row below.
+
+Note
+Bonus point if you are able to do this using only O(n) extra space, where n is the total number of rows in the triangle.
+
+Example
+For example, given the following triangle
+
+[
+     [2],
+    [3,4],
+   [6,5,7],
+  [4,1,8,3]
+]
+The minimum path sum from top to bottom is 11 (i.e., 2 + 3 + 5 + 1 = 11).
+题中要求最短路径和，(每次只能访问下行的相邻元素)，将triangle视为二维坐标。
+
+1：首先考虑最容易想到的方法——递归遍历，逐个累加所有自上而下的路径长度，最后返回这些不同的路径长度的最小值。
+由于每个点往下都有2条路径，使用此方法的时间复杂度约为
+O(2n)O(2^n)
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/SYL_9动态规划_2Backpack_01背包问题.html" target="_blank">SYL 9动态规划 2Backpack 01背包问题</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_9动态规划_2Backpack_01背包问题.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_9动态规划_2Backpack_01背包问题.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+Given n items with size
+A i, an integer m denotes the size of a backpack. How full you can fill this backpack?
+
+Example
+If we have 4 items with size [2, 3, 5, 7], the backpack size is 11,
+
+we can select [2, 3, 5], so that the max size we can fill this backpack is 10.
+
+If the backpack size is 12. we can select [2, 3, 7] so that we can fulfill the backpack.
+
+You function should return the max size we can fill in the given backpack.
+
+Note
+You can not divide any item into small pieces.
+
+Challenge
+O(n x m) time and O(m) memory.
+O(n x m) memory is also acceptable if you do not know how to optimize memory.
+
+
+本题是典型的01背包问题，每种类型的物品最多只能选择一件。
+题中可以将背包的 size 理解为传统背包中的重量；题目问的是能达到的最大 size, 故可将每个背包的 size 类比为传统背包中的价值。
+
+考虑到数组索引从0开始，故定义状态bp[i + 1][j]为 ：选数组中前i个物品，选出重量不超过j时，的最大总价值。
+状态转移方程则为分 A[i] > j 与否两种情况考虑。
+
+初始化均为0，相当于没有放任何物品。
+
+分为两种情况
+当前背包最大容量小于物品的重量，可容纳的最大重量是dp[i-1][j]
+当前背包最大容量小于物品重量，可容纳的最大重量是max(dp[i-1][j],dp[i-1][j-A[i]+A[i])
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/SYL_9动态规划_2Backpack_II.html" target="_blank">SYL 9动态规划 2Backpack II</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_9动态规划_2Backpack_II.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_9动态规划_2Backpack_II.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+Given n items with size
+Ai
+and value Vi, and a backpack with size m. What's the maximum value can you put into the backpack?
+
+Example
+Given 4 items with size [2, 3, 5, 7] and value [1, 5, 2, 4], and a backpack with size 10. The maximum value is 9.
+
+Note
+You cannot divide item into small pieces and the total size of items you choose should smaller or equal to m.
+
+Challenge
+O(n x m) memory is acceptable, can you do it in O(m) memory?
+
+0-1背包问题
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/SYL_9动态规划_2Complete_Pack_完全背包问题.html" target="_blank">SYL 9动态规划 2Complete Pack 完全背包问题</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/SYL_9动态规划_2Complete_Pack_完全背包问题.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/SYL_9动态规划_2Complete_Pack_完全背包问题.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> SYL 9动态规划 2Complete Pack 完全背包问题</pre>
     </ul>
     
     <ul align="left">
