@@ -27,92 +27,58 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_001_变态跳台阶 </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
+        <textarea id="editor" class="editor">'''
 
+一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。求该青蛙跳上一个n级的台阶总共有多少种跳法。
 
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
+思路：n=0时,f(n)=0；n=1时,f(n)=1；n=2时,f(n)=2；假设到了n级台阶，我们可以n-1级一步跳上来，也可以不经过n-1级跳上来，所以f(n)=2*f(n-1)。
 
+推公式也能得出：
 
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
+n = n时：f(n) = f(n-1)+f(n-2)+...+f(n-(n-1)) + f(n-n) = f(0) + f(1) + f(2) + ... + f(n-1)
+
+由于f(n-1) = f(0)+f(1)+f(2)+ ... + f((n-1)-1) = f(0) + f(1) + f(2) + f(3) + ... + f(n-2)
+
+所以f(n) = f(n-1)+f(n-1)=2*f(n-1)
+'''
 
 
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def jumpFloorII(self, number):
+        if number <= 0:  return 0
+        if number == 1: return 1
+        if number == 2: return 2
+        result = [1, 2]
+        for i in range(2, number):
+            result.append(2 * result[-1])
+        return result[-1]
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_001_变态跳台阶
 
 ```
 
-'''
-Reverse a linked list.
-
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
-
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
+一个台阶总共有n级，如果一次可以跳1级，也可以跳2级......它也可以跳上n级。此时该青蛙跳上一个n级的台阶总共有多少种跳法？
+分析：用Fib(n)表示青蛙跳上n阶台阶的跳法数，青蛙一次性跳上n阶台阶的跳法数1(n阶跳)，设定Fib(0) = 1；
+当n = 1 时， 只有一种跳法，即1阶跳：Fib(1) = 1;
+当n = 2 时， 有两种跳的方式，一阶跳和二阶跳：Fib(2) = Fib(1) + Fib(0) = 2;
+当n = 3 时，有三种跳的方式，第一次跳出一阶后，后面还有Fib(3-1)中跳法； 第一次跳出二阶后，后面还有Fib(3-2)中跳法；第一次跳出三阶后，后面还有Fib(3-3)中跳法
+Fib(3) = Fib(2) + Fib(1)+Fib(0)=4;
+当n = n 时，共有n种跳的方式，第一次跳出一阶后，后面还有Fib(n-1)中跳法； 第一次跳出二阶后，后面还有Fib(n-2)中跳法..........................第一次跳出n阶后，后面还有 Fib(n-n)中跳法.
+Fib(n) = Fib(n-1)+Fib(n-2)+Fib(n-3)+..........+Fib(n-n)=Fib(0)+Fib(1)+Fib(2)+.......+Fib(n-1)
+又因为Fib(n-1)=Fib(0)+Fib(1)+Fib(2)+.......+Fib(n-2)
+两式相减得：Fib(n)-Fib(n-1)=Fib(n-1) =====》 Fib(n) = 2*Fib(n-1) n >= 2
+递归等式如下：
 
 ```
----
-
-</p>
+![](https://img-my.csdn.net/uploads/201205/21/1337590000_4578.png)</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

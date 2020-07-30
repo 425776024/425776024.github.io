@@ -27,92 +27,51 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_005_树的子结构 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
+class TreeNode:
     def __init__(self, x):
         self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
+        self.left = None
+        self.right = None
 
 
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
+    def HasSubtree(self, pRoot1, pRoot2):
+        if (pRoot1 == None):
+            return False
+        if (pRoot2 == None):
+            return False
+        return (self.dfs(pRoot1, pRoot2) or self.HasSubtree(pRoot1.left, pRoot2) or self.HasSubtree(pRoot1.right,
+                                                                                                    pRoot2))
 
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def dfs(self, R1, R2):
+        if (R2 == None):
+            return True
+        if (R1 == None):
+            return False
+        if (R1.val != R2.val):
+            return False
+        return self.dfs(R1.right, R2.right) and self.dfs(R1.left, R2.left)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_005_树的子结构
 
 ```
 
-'''
-Reverse a linked list.
+输入两棵二叉树A，B，判断B是不是A的子结构。（空树不是任意一个树的子结构）
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：采用递归的思路，单独定义一个函数判断B是不是从当前A的根节点开始的子树，
+这里判断是不是子树也需要一个递归的判断。如果是，则返回True，
+如果不是，再判断B是不是从当前A的根节点的左子节点或右子节点开始的子树。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

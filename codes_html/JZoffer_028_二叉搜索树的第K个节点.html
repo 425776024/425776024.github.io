@@ -27,92 +27,71 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_028_二叉搜索树的第K个节点 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
+class TreeNode:
     def __init__(self, x):
         self.val = x
-        self.next = None
+        self.left = None
+        self.right = None
 
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
 
 
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
+    def __init__(self):
+        self.my_list = []  # 用于保存中序遍历的序列的结点
 
-        return head
+    def in_order(self, pRoot):  # 中序遍历二叉树，并把结果保存到my_list中
+        if not pRoot:
+            return None
+        if pRoot.left:
+            self.in_order(pRoot.left)
+        self.my_list.append(pRoot)
+        if pRoot.right:
+            self.in_order(pRoot.right)
 
+    def KthNode(self, pRoot, k):
+        self.in_order(pRoot)
+        if k <= 0 or k > len(self.my_list):  # 越界
+            return None
+        return self.my_list[k - 1]
 
+    
+class Solution2:
+    # 返回对应节点TreeNode
+    def __init__(self):
+        self.count = 0
 
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def KthNode(self, pRoot, k):
+        if (pRoot != None):
+            ret = self.KthNode(pRoot.left, k)
+            if (ret != None):
+                return ret
+            self.count = self.count + 1
+            if (self.count == k):
+                return pRoot
+            ret = self.KthNode(pRoot.right, k)
+            if (ret != None):
+                return ret
+        return None
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_028_二叉搜索树的第K个节点
 
 ```
 
-'''
-Reverse a linked list.
+给定一棵二叉搜索树，请找出其中的第k小的结点。例如，（5，3，7，2，4，6，8）中，
+按结点数值大小顺序第三小结点的值为4。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：如果是按中序遍历二叉搜索树的话，遍历的结果是递增排序的。所以只需要中序遍历就很容易找到第K个节点。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

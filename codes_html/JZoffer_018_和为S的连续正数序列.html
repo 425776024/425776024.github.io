@@ -27,92 +27,44 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_018_和为S的连续正数序列 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def FindContinuousSequence(self, tsum):
+        res = []
+        i = 1
+        j = 2
+        curSum = i + j
+        while i <= tsum / 2:
+            if curSum == tsum:
+                res.append(range(i, j + 1))
+                j = j + 1
+                curSum += j
+            elif curSum > tsum:
+                curSum -= i
+                i += 1
+            else:
+                j += 1
+                curSum += j
+        return res
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_018_和为S的连续正数序列
 
 ```
 
-'''
-Reverse a linked list.
+输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：维护两个指针，一个指针指向这个连续正数序列的开始，一个指向连续正数序列的结束，
+判断当前的序列和与目标的关系，不断更新这两个指针的位置。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

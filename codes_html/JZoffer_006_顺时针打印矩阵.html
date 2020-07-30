@@ -27,92 +27,46 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_006_顺时针打印矩阵 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
+    # matrix类型为二维列表，需要返回列表
+    def printMatrix(self, matrix):
+        result = []
+        while (matrix):
+            result += matrix.pop(0)
+            if not matrix:
+                break
+            matrix = self.turn(matrix)
+        return result
 
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def turn(self, matrix):
+        num_r = len(matrix)
+        num_c = len(matrix[0])
+        newmat = []
+        for i in range(num_c):
+            newmat2 = []
+            for j in range(num_r):
+                newmat2.append(matrix[j][i])
+            newmat.append(newmat2)
+        newmat.reverse()
+        return newmat
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_006_顺时针打印矩阵
 
 ```
+输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，
+例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
 
-'''
-Reverse a linked list.
-
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
-
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+思路：输出第一行后逆时针翻转矩阵。
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

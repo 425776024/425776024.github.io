@@ -27,92 +27,40 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_019_和为S的两个数字 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def FindNumbersWithSum(self, array, tsum):
+        if len(array)<2:
+            return []
+        i = 0
+        j = len(array)-1
+        while i < j:
+            if array[i]+array[j] > tsum:
+                j -= 1
+            elif array[i]+array[j] < tsum:
+                i += 1
+            else:
+                return [array[i],array[j]]
+        return []</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_019_和为S的两个数字
 
 ```
 
-'''
-Reverse a linked list.
+输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，
+如果有多对数字的和等于S，输出两个数的乘积最小的。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：由于是排好序的数组，因此对于和相等的两个数来说，相互之间的差别越大，那么乘积越小，
+因此我们使用两个指针，一个从前往后遍历，另一个从后往前遍历数组即可。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

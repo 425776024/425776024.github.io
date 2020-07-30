@@ -27,92 +27,45 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_021_孩子们的游戏（圆圈中最后剩下的数） </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
+    def LastRemaining_Solution(self, n, m):
+        if not n and not m:
+            return -1
+        res = range(n)
+        i = 0
+        while len(res) > 1:
+            i = (m + i - 1) % len(res)
+            res.pop(i)
+        return res[0]
 
 
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+class Solution2:
+    def LastRemaining_Solution(self, n, m):
+        if n == 0:
+            return -1
+        s = 0
+        for i in range(2, n + 1):
+            s = (s + m) % i
+        return s
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_021_孩子们的游戏（圆圈中最后剩下的数）
 
 ```
 
-'''
-Reverse a linked list.
+游戏是这样的：首先，让小朋友们围成一个大圈。然后，他随机指定一个数m，让编号为0的小朋友开始报数。
+每次喊到m-1的那个小朋友要出列，不再回到圈中，从他的下一个小朋友开始，继续0...m-1报数....这样下去....
+直到剩下最后一个小朋友获胜，获胜的小朋友编号多少？(注：小朋友的编号是从0到n-1)
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
-
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

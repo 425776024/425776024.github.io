@@ -27,92 +27,38 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_017_统计一个数字在排序数组中的出现的次数 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
+    def GetNumberOfK(self, data, k):
+        if len(data) == 0:
+            return 0
+        i = 0
+        j = len(data) - 1
+        while i < j and data[i] != data[j]:
+            if data[i] < k:
+                i += 1
+            if data[j] > k:
+                j -= 1
+        if data[i] != k:
+            return 0
+        return j - i + 1
 
 
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+class Solution2:
+    def GetNumberOfK(self, data, k):
+        return data.count(k)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
+    <p id="md_v" style="display:none"># JZoffer_017_统计一个数字在排序数组中的出现的次数
 
-
----
-
-```
-
-'''
-Reverse a linked list.
-
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
-
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+思路：考虑数组为空的情况，直接返回0；用二分查找法，找到i和j的位置。</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

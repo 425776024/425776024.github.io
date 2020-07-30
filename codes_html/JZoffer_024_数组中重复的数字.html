@@ -27,92 +27,62 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_024_数组中重复的数字 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
+    # 这里要特别注意~找到任意重复的一个值并赋值到duplication[0]
+    # 函数返回True/False
+    def duplicate(self, numbers, duplication):
+        for i in range(len(numbers)):
+            while numbers[i] != i:
+                m = numbers[i]
+                if numbers[m] == numbers[i]:
+                    duplication[0] = m
+                    return True
+                else:
+                    numbers[i] = numbers[m]
+                    numbers[m] = m
+        return False
 
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    
+class Solution2:
+    # 这里要特别注意~找到任意重复的一个值并赋值到duplication[0]
+    # 函数返回True/False
+    def duplicate(self, numbers, duplication):
+        if(len(numbers)==0):return False
+        for i in numbers:
+            if numbers.count(i)>1:
+                duplication[0] = i
+                return True
+        return False
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_024_数组中重复的数字
 
 ```
 
-'''
-Reverse a linked list.
+在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。
+请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，
+那么对应的输出是第一个重复的数字2。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：一个简单的方法是先排序再查找，时间复杂度是O(nlogn)。还可以用哈希表来解决，遍历每个数字，
+每扫描到一个数字可以用O(1)的时间来判断哈希表中是否包含了这个数字，如果没有包含，则加到哈希表，
+如果包含了，就找到了一个重复的数字。时间复杂度O(n)。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
+我们注意到数组中的数字都在0~n-1范围内，如果这个数组中没有重复的数字，
+那么当数组排序后数字i在下标i的位置，由于数组中有重复的数字，有些位置可能存在多个数字，
+同时有些位置可能没有数字。
+遍历数组，当扫描到下标为i 的数字m时，首先看这个数字是否等于i，如果是，继续扫描，
+如果不是，拿它和第m个数字进行比较。如果它和第m个数字相等，就找到了一个重复的数字，
+如果不相等，就交换两个数字。继续比较。
 
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

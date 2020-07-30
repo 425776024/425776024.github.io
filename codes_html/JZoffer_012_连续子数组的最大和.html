@@ -27,92 +27,45 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_012_连续子数组的最大和 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
 
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def FindGreatestSumOfSubArray(self, array):
+        res = max(array)
+        temp = 0
+        for i in array:
+            temp = max(i, temp + i)
+            res = max(res, temp)
+        return res
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_012_连续子数组的最大和
 
 ```
 
-'''
-Reverse a linked list.
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+示例:
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
+输入: [-2,1,-3,4,-1,2,1,-5,4],
 
-```
----
+输出: 6
 
-</p>
+解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+
+思路：如果数组里所有的整数都是负数，那么选择最大的数即可，因为越累加越小。
+
+正负数都有的情况，需要两个变量，一个是global_max,从全局来看，每次最大的是什么组合，
+另一个是local_max，和global_max相比，更新global_max。
+
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

@@ -27,92 +27,48 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_029_机器人的运动范围 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
+    def __init__(self):  # 机器人可以倒回来，但不能重复计数。
+        self.count = 0
 
-        return head
+    def movingCount(self, threshold, rows, cols):
+        flag = [[1 for i in range(cols)] for j in range(rows)]
+        self.findWay(flag, 0, 0, threshold)  # 从（0，0）开始走
+        return self.count
 
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def findWay(self, flag, i, j, k):
+        if i >= 0 and j >= 0 and i < len(flag) and j < len(flag[0]) and sum(list(map(int, str(i)))) + sum(
+                list(map(int, str(j)))) <= k and flag[i][j] == 1:
+            flag[i][j] = 0
+            self.count += 1
+            self.findWay(flag, i - 1, j, k)
+            self.findWay(flag, i + 1, j, k)
+            self.findWay(flag, i, j - 1, k)
+            self.findWay(flag, i, j + 1, k)
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_029_机器人的运动范围
 
 ```
 
-'''
-Reverse a linked list.
+地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，
+每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 
+例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。
+但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：还是利用递归对矩阵进行深度优先搜索，从（0,0）位置出发，
+每成功走一步标记当前位置为true,然后从当前位置往四个方向探索，返回1 + 4 个方向的探索值之和。
+判断当前节点是否可达的标准为：当前节点在矩阵内；当前节点未被访问过；当前节点满足K的限制。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

@@ -27,7 +27,7 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_004_链表中的倒数第K个节点 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
@@ -37,82 +37,36 @@ class ListNode:
         self.next = None
 
 
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
+    def FindKthToTail(self, head, k):
+        p = head;
+        for i in range(k):
+            if p == None:
+                return None
+            else:
+                p = p.next
+        while (p != None):
+            p = p.next;
+            head = head.next
         return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_004_链表中的倒数第K个节点
 
 ```
 
-'''
-Reverse a linked list.
+输入一个链表，输出该链表中倒数第k个结点。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路：假设链表中的节点数大于等于k个，那么一定会存在倒数第k个节点，
+首先使用一个快指针先往前走k步，
+然后两个指针每次走一步，两个指针之间始终有k的距离，
+当快指针走到末尾时，慢指针所在的位置就是倒数第k个节点。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

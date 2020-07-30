@@ -27,92 +27,46 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_009_二叉树中和为某一值的路径 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
+class TreeNode:
     def __init__(self, x):
         self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
+        self.left = None
+        self.right = None
 
 
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    # 返回二维列表，内部每个列表表示找到的路径
+    def FindPath(self, root, expectNumber):
+        if root == None:
+            return []
+        if root and not root.left and not root.right and root.val == expectNumber:
+            return [[root.val]]
+        res = []
+        left = self.FindPath(root.left, expectNumber - root.val)
+        right = self.FindPath(root.right, expectNumber - root.val)
+        for i in left + right:
+            res.append([root.val] + i)
+        return res
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_009_二叉树中和为某一值的路径
 
 ```
+输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。
+路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
+(注意: 在返回值的list中，数组长度大的数组靠前)
 
-'''
-Reverse a linked list.
-
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
-
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+思路：定义一个子函数，输入的是当前的根节点、当前的路径以及还需要满足的数值，
+同时在子函数中运用回溯的方法进行判断。
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

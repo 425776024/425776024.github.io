@@ -27,92 +27,55 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_027_二叉树的下一个结点 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
+class TreeLinkNode:
     def __init__(self, x):
         self.val = x
+        self.left = None
+        self.right = None
         self.next = None
 
 
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
-
-
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
-
-        return head
-
-
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+    def GetNext(self, pNode):
+        if not pNode:
+            return None
+        if pNode.right:
+            res = pNode.right
+            while res.left:
+                res = res.left
+            return res
+        while pNode.next:
+            tmp = pNode.next
+            if tmp.left == pNode:
+                return tmp
+            pNode = tmp
+        return None
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_027_二叉树的下一个结点
 
 ```
+给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。
+注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。
 
-'''
-Reverse a linked list.
+思路：如下图所示，二叉树的中序遍历序列是{d,b,h,e,i,a,f,c,g}。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+1、如果该节点有右子树，那么它的下一个节点就是它的右子树的最左侧子节点；
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
+2、如果该节点没有右子树且是父节点的左子树，那么下一节点就是父节点；
 
-```
----
+3、如果该节点没有右子树且是父节点的右子树，比如i节点，那么我们往上找父节点，
+找到一个节点满足： 它是它的父节点的左子树的节点。
 
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

@@ -27,92 +27,52 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> Leetcode_206_Reverse_Linked_List </h1>
+    <h1 align="center" id="code_name"> JZoffer_014_把数组排成最小的数 </h1>
 
     <form action="" align="left">
         <textarea id="editor" class="editor">
-class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next = None
-
-
-def make_list(arr):
-    head_node = None
-    p_node = None
-    for a in arr:
-        new_node = ListNode(a)
-        if head_node is None:
-            head_node = new_node
-            p_node = new_node
-        else:
-            p_node.next = new_node
-            p_node = new_node
-    return head_node
-
-
-def print_list(head):
-    while head is not None:
-        print(head.val, end=',')
-        head = head.next
+from functools import cmp_to_key
 
 
 class Solution:
-    # @param {ListNode} head
-    # @return {ListNode}
-    def reverseList(self, head):
-        prev = None
-        curr = head
-        while curr is not None:
-            temp = curr.next
-            curr.next = prev
-            prev = curr
-            curr = temp
-        # fix head
-        head = prev
+    def cmp(self, a, b):
+        if a + b > b + a:
+            return 1
+        if a + b < b + a:
+            return -1
+        else:
+            return 0
 
-        return head
+    def PrintMinNumber(self, numbers):
+        if not numbers:
+            return ""
+        number = [str(x) for x in numbers]
+        number.sort(key=cmp_to_key(self.cmp))
+        #
+        return "".join(number).lstrip('0') or '0'
 
 
-
-s = Solution()
-a = [1, 2, 3, 4, 5]
-head = make_list(a)
-print_list(head)
-r_head=s.reverseList(head)
-print()
-print_list(r_head)</textarea>
+so = Solution()
+# .lstrip('0') or '0'
+print(so.PrintMinNumber([0, 32, 321]))
+print(so.PrintMinNumber([3, 32, 321]))
+</textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># Leetcode_206_Reverse_Linked_List
-
-
----
+    <p id="md_v" style="display:none"># JZoffer_014_把数组排成最小的数
 
 ```
+输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
 
-'''
-Reverse a linked list.
+例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。
 
-Example
-For linked list 1->2->3, the reversed linked list is 3->2->1
+思路： 根据题目的要求，两个数字m和n能拼接称数字mn和nm。如果mn<nm，也就是m应该拍在n的前面，
+我们定义此时m小于n；反之，如果nm<mn，我们定义n小于m。如果mn=nm,m等于n。
 
-Challenge
-Reverse it in-place and in one-pass
-'''
-# 建立头节点p，输入节点head，head_cur=head
-#       建立节点head_cur对输入进行遍历(tp_head_cur=head_cur.next)，
-#       head_cur.next=p.next;p.next=head_cur;
-#       head_cur=tp_head_cur
-#       return p
-
-```
----
-
-</p>
+```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
 

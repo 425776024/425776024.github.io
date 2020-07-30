@@ -36,6 +36,501 @@
     <b6></b6>
     
     <ul align="left">
+        <button><a href="/codes_html/JZoffer_001_变态跳台阶.html" target="_blank">JZoffer 001 变态跳台阶</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_001_变态跳台阶.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_001_变态跳台阶.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+一个台阶总共有n级，如果一次可以跳1级，也可以跳2级......它也可以跳上n级。此时该青蛙跳上一个n级的台阶总共有多少种跳法？
+分析：用Fib(n)表示青蛙跳上n阶台阶的跳法数，青蛙一次性跳上n阶台阶的跳法数1(n阶跳)，设定Fib(0) = 1；
+当n = 1 时， 只有一种跳法，即1阶跳：Fib(1) = 1;
+当n = 2 时， 有两种跳的方式，一阶跳和二阶跳：Fib(2) = Fib(1) + Fib(0) = 2;
+当n = 3 时，有三种跳的方式，第一次跳出一阶后，后面还有Fib(3-1)中跳法； 第一次跳出二阶后，后面还有Fib(3-2)中跳法；第一次跳出三阶后，后面还有Fib(3-3)中跳法
+Fib(3) = Fib(2) + Fib(1)+Fib(0)=4;
+当n = n 时，共有n种跳的方式，第一次跳出一阶后，后面还有Fib(n-1)中跳法； 第一次跳出二阶后，后面还有Fib(n-2)中跳法..........................第一次跳出n阶后，后面还有 Fib(n-n)中跳法.
+Fib(n) = Fib(n-1)+Fib(n-2)+Fib(n-3)+..........+Fib(n-n)=Fib(0)+Fib(1)+Fib(2)+.......+Fib(n-1)
+又因为Fib(n-1)=Fib(0)+Fib(1)+Fib(2)+.......+Fib(n-2)
+两式相减得：Fib(n)-Fib(n-1)=Fib(n-1) =====》 Fib(n) = 2*Fib(n-1) n >= 2
+递归等式如下：
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_002_矩阵覆盖.html" target="_blank">JZoffer 002 矩阵覆盖</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_002_矩阵覆盖.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_002_矩阵覆盖.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 002 矩阵覆盖
+
+
+
+我们可以用2*1的小矩形横着或者竖着去覆盖更大的矩形。请问用n个2*1的小矩形无重叠地覆盖一个2*n的大矩形，总共有多少种方法？
+
+思路：n = 1: f(n) = 1; n=2 : f(n) = 2;
+
+假设到了n，那么上一步就有两种情况，在n-1的时候，竖放一个矩形，或着是在n-2时，
+横放两个矩形（这里不能竖放两个矩形，因为放一个就变成了n-1，那样情况就重复了），
+所以总数是f(n)=f(n-1)+f(n-2)。
+时间复杂度O(n)。和跳台阶题一样。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_003_数值的整数次方.html" target="_blank">JZoffer 003 数值的整数次方</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_003_数值的整数次方.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_003_数值的整数次方.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 003 数值的整数次方
+
+
+
+给定一个double类型的浮点数base和int类型的整数exponent。求base的exponent次方。
+
+代码：考虑base=0/exponent=0/exponent<0的情况 。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_004_链表中的倒数第K个节点.html" target="_blank">JZoffer 004 链表中的倒数第K个节点</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_004_链表中的倒数第K个节点.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_004_链表中的倒数第K个节点.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 004 链表中的倒数第K个节点
+
+
+
+输入一个链表，输出该链表中倒数第k个结点。
+
+思路：假设链表中的节点数大于等于k个，那么一定会存在倒数第k个节点，
+首先使用一个快指针先往前走k步，
+然后两个指针每次走一步，两个指针之间始终有k的距离，
+当快指针走到末尾时，慢指针所在的位置就是倒数第k个节点。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_005_树的子结构.html" target="_blank">JZoffer 005 树的子结构</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_005_树的子结构.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_005_树的子结构.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 005 树的子结构
+
+
+
+输入两棵二叉树A，B，判断B是不是A的子结构。（空树不是任意一个树的子结构）
+
+思路：采用递归的思路，单独定义一个函数判断B是不是从当前A的根节点开始的子树，
+这里判断是不是子树也需要一个递归的判断。如果是，则返回True，
+如果不是，再判断B是不是从当前A的根节点的左子节点或右子节点开始的子树。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_006_顺时针打印矩阵.html" target="_blank">JZoffer 006 顺时针打印矩阵</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_006_顺时针打印矩阵.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_006_顺时针打印矩阵.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 006 顺时针打印矩阵
+
+
+输入一个矩阵，按照从外向里以顺时针的顺序依次打印出每一个数字，
+例如，如果输入如下4 X 4矩阵： 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 则依次打印出数字1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10.
+
+思路：输出第一行后逆时针翻转矩阵。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_007_包含min函数的栈.html" target="_blank">JZoffer 007 包含min函数的栈</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_007_包含min函数的栈.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_007_包含min函数的栈.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 007 包含min函数的栈
+
+
+
+定义栈的数据结构，请在该类型中实现一个能够得到栈中所含最小元素的min函数（时间复杂度应为O（1））。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_008_二叉搜索树的后序遍历序列.html" target="_blank">JZoffer 008 二叉搜索树的后序遍历序列</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_008_二叉搜索树的后序遍历序列.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_008_二叉搜索树的后序遍历序列.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 008 二叉搜索树的后序遍历序列
+
+
+
+输入一个整数数组，判断该数组是不是某二叉搜索树的后序遍历的结果。如果是则输出Yes,否则输出No。
+假设输入的数组的任意两个数字都互不相同。
+
+思路：递归判断。如果序列的长度小于2，那一定是后序遍历的结果。根据BST和后序遍历的性质，
+遍历结果的最后一个一定是根节点，那么序列中前面一部分小于根节点的数是左子树，
+后一部分是右子树，递归进行判断。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_009_二叉树中和为某一值的路径.html" target="_blank">JZoffer 009 二叉树中和为某一值的路径</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_009_二叉树中和为某一值的路径.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_009_二叉树中和为某一值的路径.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 009 二叉树中和为某一值的路径
+
+
+输入一颗二叉树的跟节点和一个整数，打印出二叉树中结点值的和为输入整数的所有路径。
+路径定义为从树的根结点开始往下一直到叶结点所经过的结点形成一条路径。
+(注意: 在返回值的list中，数组长度大的数组靠前)
+
+思路：定义一个子函数，输入的是当前的根节点、当前的路径以及还需要满足的数值，
+同时在子函数中运用回溯的方法进行判断。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_010_二叉搜索树与双向链表.html" target="_blank">JZoffer 010 二叉搜索树与双向链表</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_010_二叉搜索树与双向链表.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_010_二叉搜索树与双向链表.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 010 二叉搜索树与双向链表
+
+
+
+输入一棵二叉搜索树，将该二叉搜索树转换成一个排序的双向链表。
+要求不能创建任何新的结点，只能调整树中结点指针的指向。
+
+思路：题目很难理解，在网上找了个图。中序遍历，从中序遍历得到的第一个节点开始构造链表，定义两个辅助节点listHead(链表头节点)、listTail(链表尾节点)。
+listHead用于记录链表的头节点，用于最后算法的返回；listTail用于定位当前需要更改指向的节点。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_011_最小的K个数.html" target="_blank">JZoffer 011 最小的K个数</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_011_最小的K个数.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_011_最小的K个数.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 011 最小的K个数
+
+
+输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_012_连续子数组的最大和.html" target="_blank">JZoffer 012 连续子数组的最大和</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_012_连续子数组的最大和.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_012_连续子数组的最大和.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 012 连续子数组的最大和
+
+
+
+给定一个整数数组 nums ，找到一个具有最大和的连续子数组（子数组最少包含一个元素），返回其最大和。
+
+示例:
+
+输入: [-2,1,-3,4,-1,2,1,-5,4],
+
+输出: 6
+
+解释: 连续子数组 [4,-1,2,1] 的和最大，为 6。
+
+思路：如果数组里所有的整数都是负数，那么选择最大的数即可，因为越累加越小。
+
+正负数都有的情况，需要两个变量，一个是global max,从全局来看，每次最大的是什么组合，
+另一个是local max，和global max相比，更新global max。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_013_从1到n的整数中1出现的个数.html" target="_blank">JZoffer 013 从1到n的整数中1出现的个数</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_013_从1到n的整数中1出现的个数.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_013_从1到n的整数中1出现的个数.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 013 从1到n的整数中1出现的个数
+
+
+比如，1-13中，1出现6次，分别是1，10，11，12，13。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_014_把数组排成最小的数.html" target="_blank">JZoffer 014 把数组排成最小的数</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_014_把数组排成最小的数.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_014_把数组排成最小的数.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 014 把数组排成最小的数
+
+
+输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
+
+例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。
+
+思路： 根据题目的要求，两个数字m和n能拼接称数字mn和nm。如果mn<nm，也就是m应该拍在n的前面，
+我们定义此时m小于n；反之，如果nm<mn，我们定义n小于m。如果mn=nm,m等于n。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_015_第一个只出现一次的字符.html" target="_blank">JZoffer 015 第一个只出现一次的字符</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_015_第一个只出现一次的字符.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_015_第一个只出现一次的字符.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 015 第一个只出现一次的字符
+
+
+
+在一个字符串(0<=字符串长度<=10000，全部由字母组成)中找到第一个只出现一次的字符,并返回它的位置, 
+如果没有则返回 -1（需要区分大小写）。
+
+思路：创建哈希表，下标为ACII值，值为出现次数。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_016_数组中的逆序对.html" target="_blank">JZoffer 016 数组中的逆序对</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_016_数组中的逆序对.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_016_数组中的逆序对.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。
+输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_017_统计一个数字在排序数组中的出现的次数.html" target="_blank">JZoffer 017 统计一个数字在排序数组中的出现的次数</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_017_统计一个数字在排序数组中的出现的次数.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_017_统计一个数字在排序数组中的出现的次数.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 017 统计一个数字在排序数组中的出现的次数
+
+思路：考虑数组为空的情况，直接返回0；用二分查找法，找到i和j的位置。</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_018_和为S的连续正数序列.html" target="_blank">JZoffer 018 和为S的连续正数序列</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_018_和为S的连续正数序列.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_018_和为S的连续正数序列.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 018 和为S的连续正数序列
+
+
+
+输出所有和为S的连续正数序列。序列内按照从小至大的顺序，序列间按照开始数字从小到大的顺序。
+
+思路：维护两个指针，一个指针指向这个连续正数序列的开始，一个指向连续正数序列的结束，
+判断当前的序列和与目标的关系，不断更新这两个指针的位置。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_019_和为S的两个数字.html" target="_blank">JZoffer 019 和为S的两个数字</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_019_和为S的两个数字.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_019_和为S的两个数字.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 019 和为S的两个数字
+
+
+
+输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，
+如果有多对数字的和等于S，输出两个数的乘积最小的。
+
+思路：由于是排好序的数组，因此对于和相等的两个数来说，相互之间的差别越大，那么乘积越小，
+因此我们使用两个指针，一个从前往后遍历，另一个从后往前遍历数组即可。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_020_扑克牌顺子.html" target="_blank">JZoffer 020 扑克牌顺子</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_020_扑克牌顺子.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_020_扑克牌顺子.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 020 扑克牌顺子
+
+
+一副扑克牌,里面有2个大王，2个小王，从中随机抽出5张牌，如果牌能组成顺子就输出true，否则就输出false。
+为了方便起见，大小王是0，大小王可以当作任何数字。
+
+思路：
+1、将数组排序 ；
+2、统计数组中0的个数，即判断大小王的个数；
+3、统计数组中相邻数字之间的空缺总数，
+如果空缺数小于等于大小王的个数，可以组成顺子，否则不行。
+如果数组中出现了对子，那么一定是不可以组成顺子的。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_021_孩子们的游戏（圆圈中最后剩下的数）.html" target="_blank">JZoffer 021 孩子们的游戏（圆圈中最后剩下的数）</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_021_孩子们的游戏（圆圈中最后剩下的数）.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_021_孩子们的游戏（圆圈中最后剩下的数）.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 021 孩子们的游戏（圆圈中最后剩下的数）
+
+
+
+游戏是这样的：首先，让小朋友们围成一个大圈。然后，他随机指定一个数m，让编号为0的小朋友开始报数。
+每次喊到m-1的那个小朋友要出列，不再回到圈中，从他的下一个小朋友开始，继续0...m-1报数....这样下去....
+直到剩下最后一个小朋友获胜，获胜的小朋友编号多少？(注：小朋友的编号是从0到n-1)
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_022_求1+2+3+...+n.html" target="_blank">JZoffer 022 求1+2+3+...+n</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_022_求1+2+3+...+n.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_022_求1+2+3+...+n.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 022 求1+2+3+...+n
+
+
+求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等
+关键字及条件判断语句（A?B:C）。
+
+思路：将加法问题转化为递归进行求解即可。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_023_把字符串转换成整数.html" target="_blank">JZoffer 023 把字符串转换成整数</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_023_把字符串转换成整数.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_023_把字符串转换成整数.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 023 把字符串转换成整数
+
+
+将一个字符串转换成一个整数(实现Integer.valueOf(string)的功能，但是string不符合数字要求时返回0)，
+要求不能使用字符串转换整数的库函数。数值为0或者字符串不是一个合法的数值则返回0。
+
+输入描述
+输入一个字符串,包括数字字母符号,可以为空
+输出描述:
+
+如果是合法的数值表达则返回该数字，否则返回0
+示例1：
+
+输入：+2147483647 ，输出：2147483647；输入：1a33，输出：0。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_024_数组中重复的数字.html" target="_blank">JZoffer 024 数组中重复的数字</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_024_数组中重复的数字.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_024_数组中重复的数字.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。也不知道每个数字重复几次。
+请找出数组中任意一个重复的数字。 例如，如果输入长度为7的数组{2,3,1,0,2,5,3}，
+那么对应的输出是第一个重复的数字2。
+
+思路：一个简单的方法是先排序再查找，时间复杂度是O(nlogn)。还可以用哈希表来解决，遍历每个数字，
+每扫描到一个数字可以用O(1)的时间来判断哈希表中是否包含了这个数字，如果没有包含，则加到哈希表，
+如果包含了，就找到了一个重复的数字。时间复杂度O(n)。
+
+我们注意到数组中的数字都在0~n-1范围内，如果这个数组中没有重复的数字，
+那么当数组排序后数字i在下标i的位置，由于数组中有重复的数字，有些位置可能存在多个数字，
+同时有些位置可能没有数字。
+遍历数组，当扫描到下标为i 的数字m时，首先看这个数字是否等于i，如果是，继续扫描，
+如果不是，拿它和第m个数字进行比较。如果它和第m个数字相等，就找到了一个重复的数字，
+如果不相等，就交换两个数字。继续比较。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_025_表示数值的字符串.html" target="_blank">JZoffer 025 表示数值的字符串</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_025_表示数值的字符串.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_025_表示数值的字符串.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+请实现一个函数用来判断字符串是否表示数值（包括整数和小数）。例如，字符串"+100","5e2","-123","3.1416"和"-1E-16"都表示数值。 但是"12e","1a3.14","1.2.3","+-5"和"12e+4.3"都不是。
+
+思路：数字的格式可以用A[.[B]][E|eC]或者.B[E|eC]表示，其中A和C都是整数（可以有符号也可以没有），
+B是一个无符号数。
+
+如果遍历到e或E，那么之前不能有e或E，并且e或E不能在末尾；
+
+如果遍历到小数点,那么之前不能有小数点，并且之前不能有e或E；
+
+如果遍历到正负号，那么如果之前有正负号，只能够出现在e或E的后面，如果之前没符号，
+那么符号只能出现在第一位，或者出现在e或E的后面；
+
+如果遍历到不是上面所有的符号和0~9，返回False。
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_026_字符流中第一个不重复的字符.html" target="_blank">JZoffer 026 字符流中第一个不重复的字符</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_026_字符流中第一个不重复的字符.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_026_字符流中第一个不重复的字符.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 026 字符流中第一个不重复的字符
+
+
+
+请实现一个函数用来找出字符流中第一个只出现一次的字符。
+例如，当从字符流中只读出前两个字符"go"时，第一个只出现一次的字符是"g"。当从该字符流中读出前六个字符“google"时，第一个只出现一次的字符是"l"。
+
+如果当前字符流没有存在出现一次的字符，返回字符。
+思路：用一个字典保存下出现过的字符，以及字符出现的次数。
+
+除保存出现的字符之外，我们用一个字符数组保存出现过程字符顺序，如果不保存插入的char的话，
+我们可以遍历ascii码中的字符。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_027_二叉树的下一个结点.html" target="_blank">JZoffer 027 二叉树的下一个结点</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_027_二叉树的下一个结点.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_027_二叉树的下一个结点.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 027 二叉树的下一个结点
+
+
+给定一个二叉树和其中的一个结点，请找出中序遍历顺序的下一个结点并且返回。
+注意，树中的结点不仅包含左右子结点，同时包含指向父结点的指针。
+
+思路：如下图所示，二叉树的中序遍历序列是{d,b,h,e,i,a,f,c,g}。
+
+1、如果该节点有右子树，那么它的下一个节点就是它的右子树的最左侧子节点；
+
+2、如果该节点没有右子树且是父节点的左子树，那么下一节点就是父节点；
+
+3、如果该节点没有右子树且是父节点的右子树，比如i节点，那么我们往上找父节点，
+找到一个节点满足： 它是它的父节点的左子树的节点。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_028_二叉搜索树的第K个节点.html" target="_blank">JZoffer 028 二叉搜索树的第K个节点</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_028_二叉搜索树的第K个节点.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_028_二叉搜索树的第K个节点.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> JZoffer 028 二叉搜索树的第K个节点
+
+
+
+给定一棵二叉搜索树，请找出其中的第k小的结点。例如，（5，3，7，2，4，6，8）中，
+按结点数值大小顺序第三小结点的值为4。
+
+思路：如果是按中序遍历二叉搜索树的话，遍历的结果是递增排序的。所以只需要中序遍历就很容易找到第K个节点。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/JZoffer_029_机器人的运动范围.html" target="_blank">JZoffer 029 机器人的运动范围</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/JZoffer_029_机器人的运动范围.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/JZoffer_029_机器人的运动范围.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+
+地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，
+每一次只能向左，右，上，下四个方向移动一格，但是不能进入行坐标和列坐标的数位之和大于k的格子。 
+例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。
+但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？
+
+思路：还是利用递归对矩阵进行深度优先搜索，从（0,0）位置出发，
+每成功走一步标记当前位置为true,然后从当前位置往四个方向探索，返回1 + 4 个方向的探索值之和。
+判断当前节点是否可达的标准为：当前节点在矩阵内；当前节点未被访问过；当前节点满足K的限制。
+
+</pre>
+    </ul>
+    
+    <ul align="left">
         <button><a href="/codes_html/Leetcode_001_Two_Sum.html" target="_blank">Leetcode 001 Two Sum</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_001_Two_Sum.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_001_Two_Sum.md" target="_blank">Edit Github Markdown</a></button>
@@ -251,7 +746,13 @@ The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
         <button><a href="/codes_html/Leetcode_019_Remove_Nth_Node_From_End_of_List.html" target="_blank">Leetcode 019 Remove Nth Node From End of List</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_019_Remove_Nth_Node_From_End_of_List.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_019_Remove_Nth_Node_From_End_of_List.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 019 Remove Nth Node From End of List</pre>
+        <pre> L 019 Remove Nth Node From End of List
+ 
+ 
+ 
+ 
+
+ </pre>
     </ul>
     
     <ul align="left">
@@ -1586,7 +2087,13 @@ The above binary tree is serialized as "{1,2,3,,,4,,,5}".
         <button><a href="/codes_html/Leetcode_101_Symmetric_Tree.html" target="_blank">Leetcode 101 Symmetric Tree</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_101_Symmetric_Tree.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_101_Symmetric_Tree.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 101 Symmetric Tree</pre>
+        <pre> L 101 Symmetric Tree
+ 
+ 
+ 
+ 
+判断一个树是否左右对称
+ </pre>
     </ul>
     
     <ul align="left">
@@ -2784,7 +3291,14 @@ You may assume no duplicate exists in the array.
         <button><a href="/codes_html/Leetcode_160_Intersection_of_Two_Linked_Lists.html" target="_blank">Leetcode 160 Intersection of Two Linked Lists</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_160_Intersection_of_Two_Linked_Lists.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_160_Intersection_of_Two_Linked_Lists.md" target="_blank">Edit Github Markdown</a></button>
-        <pre>Leetcode 160 Intersection of Two Linked Lists</pre>
+        <pre> L 160 Intersection of Two Linked Lists
+ 
+ 
+ 
+ 
+找到两个单链表相交的起始节点。
+
+ </pre>
     </ul>
     
     <ul align="left">
@@ -3734,7 +4248,15 @@ For A=[1, 2, 3], return [6, 3, 2].
         <button><a href="/codes_html/Leetcode_239_Sliding_Window_Maximum.html" target="_blank">Leetcode 239 Sliding Window Maximum</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_239_Sliding_Window_Maximum.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_239_Sliding_Window_Maximum.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 239 Sliding Window Maximum</pre>
+        <pre>
+给定一个数组和滑动窗口的大小，找出所有滑动窗口里数值的最大值。
+例如，如针对数组{2,3,4,2,6,2,5,1}的滑动窗口有以下6个：
+{[2,3,4],2,6,2,5,1}，{2,[3,4,2],6,2,5,1}，{2,3,[4,2,6],2,5,1}，
+{2,3,4,[2,6,2],5,1}，{2,3,4,2,[6,2,5],1}，{2,3,4,2,6,[2,5,1]}。
+
+思路1：求每次窗口的最大值，时间复杂度O(n*size)。
+思路2：双向队列，queue存入num的位置，时间复杂度O(n)
+</pre>
     </ul>
     
     <ul align="left">
