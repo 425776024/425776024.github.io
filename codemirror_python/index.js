@@ -5,11 +5,23 @@ function mdSwitch() {
         document.getElementById("show-area").innerHTML = html;
 };
 
+// 要求： 随机生成颜色RGB  核心点 ：（0,0,0)   rgb  每一组的数字取值范围是  0~255
+        // 需要随机生成 0~255 之间的整数
+function getRandom(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+        // 返回我们要的颜色
+function getRandomColor() {
+            var c1 = getRandom(0, 255);
+            var c2 = getRandom(0, 255);
+            var c3 = getRandom(0, 255);
+            return 'rgb(' + c1 + ',' + c2 + ',' + c3 + ')'
+}
 
 
 window.onload = function () {
 
-
+    document.body.style.backgroundColor = getRandomColor();
     mdSwitch();
     var el = document.getElementById("editor");
 	var version = "# version: Python3\n";
