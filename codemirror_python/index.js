@@ -5,17 +5,21 @@ function mdSwitch() {
         document.getElementById("show-area").innerHTML = html;
 };
 
-// 要求： 随机生成颜色RGB  核心点 ：（0,0,0)   rgb  每一组的数字取值范围是  0~255
-        // 需要随机生成 0~255 之间的整数
+
 function getRandom(min, max) {
             return Math.floor(Math.random() * (max - min + 1)) + min;
 }
         // 返回我们要的颜色
 function getRandomColor() {
-            var c1 = getRandom(0, 255);
-            var c2 = getRandom(0, 255);
-            var c3 = getRandom(0, 255);
-            return 'rgb(' + c1 + ',' + c2 + ',' + c3 + ')'
+            var c1 = 'rgb(50, 222, 61)'
+            var c2 = 'rgb(195, 229, 14)'
+            var c3 = 'rgb(16 142 255 / 34%)'
+            var c4 = 'rgb(203, 149, 216)'
+            var c5 = 'rgb(44, 141, 211)'
+            var c6 = 'rgb(158, 188, 210)'
+            var c=[c1,c2,c3,c4,c5,c6]
+            var i=getRandom(0,5)
+            return c[i]
 }
 
 
