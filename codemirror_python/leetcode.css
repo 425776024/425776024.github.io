@@ -81,6 +81,7 @@
     float:center;
 }
 #show-area a{
+            text-decoration:none;
             margin:1%;
             float:right;
             width:40%;
