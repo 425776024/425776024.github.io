@@ -30,8 +30,7 @@
     <h1 align="center" id="code_name"> Leetcode_239_Sliding_Window_Maximum </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-class Solution:
+        <textarea id="editor" class="editor">class Solution2:
     def maxInWindows(self, num, size):
         res = []
         i = 0
@@ -73,6 +72,22 @@ class Solution:
 
 思路1：求每次窗口的最大值，时间复杂度O(n*size)。
 思路2：双向队列，queue存入num的位置，时间复杂度O(n)
+
+以数组{2,3,4,2,6,2,5,1}为例，滑动窗口大小为3，先把第一个数字2加入队列，第二个数字是3，
+比2大，所以2不可能是最大值，所以把2删除，3存入队列。第三个数是4，比3大，同样删3存4，
+此时滑动窗口以遍历三个数字，最大值4在队列的头部。
+
+  第4个数字是2，比队列中的数字4小，当4滑出去以后，2还是有可能成为最大值的，因此将2加入队列尾部，
+此时最大值4仍在队列的头部。
+
+  第五个数字是6，队列的数字4和2都比它小，所以删掉4和2，将6存入队列尾部，此时最大值6在队列头部。
+
+  第六个数字是2，此时队列中的数6比2大，所以2以后还有可能是最大值，所以加入队列尾部，
+此时最大值6在仍然队列头部。
+
+  ······
+
+  依次进行，这样每次的最大值都在队列头部。
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
