@@ -3807,9 +3807,30 @@ Reverse it in-place and in one-pass
         <button><a href="/codes_html/Leetcode_207_Course_Schedule.html" target="_blank">Leetcode 207 Course Schedule</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_207_Course_Schedule.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_207_Course_Schedule.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 207 Course Schedule
+        <pre>
+你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。
 
-[https://www.bilibili.com/video/BV1yk4y1B7ZC](https://www.bilibili.com/video/BV1yk4y1B7ZC)</pre>
+在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，
+我们用一个匹配来表示他们：[0,1]
+
+给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？
+
+ 
+
+示例 1:
+
+输入: 2, [[1,0]] 
+输出: true
+解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。
+示例 2:
+
+输入: 2, [[1,0],[0,1]]
+输出: false
+解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，
+你还应先完成课程 1。这是不可能的。
+ 
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -3832,7 +3853,31 @@ Reverse it in-place and in one-pass
         <button><a href="/codes_html/Leetcode_210_Course_Schedule_II.html" target="_blank">Leetcode 210 Course Schedule II</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_210_Course_Schedule_II.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_210_Course_Schedule_II.md" target="_blank">Edit Github Markdown</a></button>
-        <pre> Leetcode 210 Course Schedule II</pre>
+        <pre>
+现在你总共有 n 门课需要选，记为0到n-1。
+
+在选修某些课程之前需要一些先修课程。例如，想要学习课程 0 ，你需要先完成课程1
+我们用一个匹配来表示他们: [0,1]
+
+给定课程总量以及它们的先决条件，返回你为了学完所有课程所安排的学习顺序。
+
+可能会有多个正确的顺序，你只要返回一种就可以了。如果不可能完成所有课程，返回一个空数组。
+
+示例1:
+
+输入: 2, [[1,0]] 
+输出: [0,1]
+解释:总共有 2 门课程。要学习课程 1，你需要先完成课程 0。因此，正确的课程顺序为 [0,1] 。
+示例2:
+
+输入: 4, [[1,0],[2,0],[3,1],[3,2]]
+输出: [0,1,2,3] or [0,2,1,3]
+解释:总共有 4 门课程。要学习课程 3，你应该先完成课程 1 和课程 2。
+并且课程 1 和课程 2 都应该排在课程 0 之后。
+因此，一个正确的课程顺序是[0,1,2,3] 。另一个正确的排序是[0,2,1,3] 。
+
+
+</pre>
     </ul>
     
     <ul align="left">
@@ -8572,6 +8617,33 @@ O(n x m) memory is acceptable, can you do it in O(m) memory?
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Test_001_Numpy.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Test_001_Numpy.md" target="_blank">Edit Github Markdown</a></button>
         <pre> Test 001 Numpy</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/leetcode_630_Course_Schedule_III.html" target="_blank">leetcode 630 Course Schedule III</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/leetcode_630_Course_Schedule_III.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/leetcode_630_Course_Schedule_III.md" target="_blank">Edit Github Markdown</a></button>
+        <pre>
+There are n different online courses numbered from 1 to n. 
+Each course has some duration(course length) t and closed on dth day. 
+A course should be taken continuously for t days and must be finished before or 
+on the dth day. You will start at the 1st day.
+
+Given n online courses represented by pairs (t,d), your task is to find the maximal number of courses that can be taken.
+
+Example:
+Input: [[100, 200], [200, 1300], [1000, 1250], [2000, 3200]]
+Output: 3
+Explanation:
+There’re totally 4 courses, but you can take 3 courses at most:
+First, take the 1st course, it costs 100 days so you will finish it on the 100th day, and ready to take the next course on the 101st day.
+Second, take the 3rd course, it costs 1000 days so you will finish it on the 1100th day, and ready to take the next course on the 1101st day.
+Third, take the 2nd course, it costs 200 days so you will finish it on the 1300th day.
+The 4th course cannot be taken now, since you will finish it on the 3300th day, which exceeds the closed date.
+Note:
+The integer 1 <= d, t, n <= 10,000.
+You can’t take two courses simultaneously.
+</pre>
     </ul>
     
     <ul align="left">
