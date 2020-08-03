@@ -27,143 +27,41 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> SYL_6二叉树_2Binary_Tree_Serialization.py </h1>
+    <h1 align="center" id="code_name"> JZoffer_022_求1+2+3++n </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
+        <textarea id="editor" class="editor">class Solution:
+    def __init__(self):
+        self.sum = 0
 
-class TreeNode:
-    def __init__(self, val):
-        self.val = val
-        self.left, self.right = None, None
+    def Sum_Solution(self, n):
+        if n <= 0:
+            return 0
+        self.getSum(n)
+        return self.sum
 
-
-class Solution:
-
-    def serialize(self, root):
-        if not root:
-            return ''
-
-        def post_order(root):
-            if root:
-                # 先左->右->中
-                post_order(root.left)
-                post_order(root.right)
-                ret[0] += str(root.val) + ','
-            else:
-                ret[0] += '#,'
-
-        ret = ['']
-        post_order(root)
-
-        return ret[0][:-1]  # remove last ,
-
-    def deserialize(self, data):
-        if not data:
-            return
-
-        nodes = data.split(',')
-
-        def post_order(nodes):
-            if nodes[-1] == '#':
-                nodes.pop()
-                return None
-            # 从最后一个值开始pop， 构成tree的时候， 就应该先中->右->左。
-            v = nodes.pop()
-            root = TreeNode(int(v))
-            root.right = post_order(nodes)
-            root.left = post_order(nodes)
-            return root
-
-        return post_order(nodes)
-
-
-import collections
+    def getSum(self, n):
+        self.sum += n
+        n = n - 1
+        return n > 0 and self.getSum(n)
 
 
 class Solution2:
-    # serialize：根左右 顺序 变成 str
-    # deserialize：根左右 顺序 变成 解析成二叉树
-    def serialize(self, root):
-        if not root:
-            return
-
-        ret = []
-        queue = collections.deque()
-        queue.append(root)
-        # 前序遍历
-        while queue:
-            node = queue.popleft()
-            if node:
-                ret.append(str(node.val))
-                queue.append(node.left)
-                queue.append(node.right)
-            else:
-                ret.append('#')
-        # 根左右
-        return ','.join(ret)
-
-    def deserialize(self, data):
-        if not data:
-            return
-        nodes = data.split(',')
-        # 根
-        root = TreeNode(int(nodes[0]))
-        i = 1
-        queue = collections.deque()
-        queue.append(root)
-        while queue:
-            node = queue.popleft()
-            # 左
-            if nodes[i] == '#':
-                node.left = None
-            else:
-                t = TreeNode(int(nodes[i]))
-                node.left = t
-                queue.append(t)
-            i += 1
-            # 右
-            if nodes[i] == '#':
-                node.right = None
-            else:
-                t = TreeNode(int(nodes[i]))
-                node.right = t
-                queue.append(t)
-            i += 1
-        return root
+    def Sum_Solution(self, n):
+        return n and self.Sum_Solution(n - 1) + n
 </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># SYL_6二叉树_2Binary_Tree_Serialization
+    <p id="md_v" style="display:none"># JZoffer_022_求1+2+3+...+n
 
 ```
+求1+2+3+...+n，要求不能使用乘除法、for、while、if、else、switch、case等
+关键字及条件判断语句（A?B:C）。
 
-Design an algorithm and write code to serialize and deserialize a binary tree.
-Writing the tree to a file is called 'serialization'
-and reading back from the file to reconstruct
-the exact same binary tree is 'deserialization'.
-There is no limit of how you deserialize or serialize a binary tree,
-you only need to make sure you can serialize a binary tree to a string
-and deserialize this string to the original structure.
-Have you met this question in a real interview? Yes
-Example
-An example of testdata: Binary tree {3,9,20,#,#,15,7},
-denote the following structure:
-  3
- / \
-9  20
-  /  \
- 15   7
-Our data serialization use bfs traversal.
-This is just for when you got wrong answer and want to debug the input.
-
-You can use other method to do serializaiton and deserialization.
-
-
-
+思路：将加法问题转化为递归进行求解即可。
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
