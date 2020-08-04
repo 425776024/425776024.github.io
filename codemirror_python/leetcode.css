@@ -94,10 +94,14 @@ iframe{
 }
 
 button{
-    background-color: #F8F8F8;
-    height: 40px;
-    width: auto;
-    font-size:0.5em;
+    position: relative;
+    background: orangered;
+    border: none;
+    color: white;
+    padding: 15px 24px;
+    font-size: 1.4rem;
+    outline: none;
+    box-shadow: -6px 6px 0 hsl(16, 100%, 30%);
 }
 body{
     background:rgb(16 142 255 / 34%);
