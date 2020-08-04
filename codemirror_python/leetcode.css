@@ -47,6 +47,7 @@
 }
 
 #output{
+    background:white;
     float:center;
     text-align:left;
     line-height: 20px;
@@ -64,7 +65,8 @@
 
 
 #show-area {
-        width: 90%;
+    background:white;
+    width: 90%;
         float:center;
         margin:10;
         height: auto;
