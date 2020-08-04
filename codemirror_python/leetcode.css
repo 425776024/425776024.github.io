@@ -104,5 +104,10 @@ button{
     box-shadow: -6px 6px 0 hsl(16, 100%, 30%);
 }
 body{
-    background:rgb(16 142 255 / 34%);
+    background:hsl(20,40%,90%);
+    background-image:
+        linear-gradient(90deg,#fb3 11px,transparent 0),
+        linear-gradient(90deg,#ab4 23px,transparent 0),
+        linear-gradient(90deg,#655 41px,transparent 0);
+    background-size:41px 100%,61px 100%,83px 100%;
 }

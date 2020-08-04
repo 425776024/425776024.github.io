@@ -3808,27 +3808,24 @@ Reverse it in-place and in one-pass
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Leetcode_207_Course_Schedule.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Leetcode_207_Course_Schedule.md" target="_blank">Edit Github Markdown</a></button>
         <pre>
-你这个学期必须选修 numCourse 门课程，记为 0 到 numCourse-1 。
+你这个学期必须选修 numCourse 门课程，记为0到numCourse-1 。
 
-在选修某些课程之前需要一些先修课程。 例如，想要学习课程 0 ，你需要先完成课程 1 ，
+在选修某些课程之前需要一些先修课程。例如，想要学习课程 0 ，你需要先完成课程 1 ，
 我们用一个匹配来表示他们：[0,1]
 
 给定课程总量以及它们的先决条件，请你判断是否可能完成所有课程的学习？
-
- 
 
 示例 1:
 
 输入: 2, [[1,0]] 
 输出: true
-解释: 总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。
+解释:总共有 2 门课程。学习课程 1 之前，你需要完成课程 0。所以这是可能的。
 示例 2:
 
 输入: 2, [[1,0],[0,1]]
 输出: false
-解释: 总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，
+解释:总共有 2 门课程。学习课程 1 之前，你需要先完成​课程 0；并且学习课程 0 之前，
 你还应先完成课程 1。这是不可能的。
- 
 
 </pre>
     </ul>
@@ -3876,7 +3873,10 @@ Reverse it in-place and in one-pass
 并且课程 1 和课程 2 都应该排在课程 0 之后。
 因此，一个正确的课程顺序是[0,1,2,3] 。另一个正确的排序是[0,2,1,3] 。
 
-
+这题是之前那道 Course Schedule 的扩展，那道题只让我们判断是否能完成所有课程，即检测有向图中是否有环，
+而这道题我们得找出要上的课程的顺序，即有向图的拓扑排序 Topological Sort，
+我们从 queue 中每取出一个数组就将其存在结果中，最终若有向图中有环，则结果中元素的个数不等于总课程数，
+那我们将结果清空即可。
 </pre>
     </ul>
     
@@ -4303,6 +4303,22 @@ For A=[1, 2, 3], return [6, 3, 2].
 
 思路1：求每次窗口的最大值，时间复杂度O(n*size)。
 思路2：双向队列，queue存入num的位置，时间复杂度O(n)
+
+以数组{2,3,4,2,6,2,5,1}为例，滑动窗口大小为3，先把第一个数字2加入队列，第二个数字是3，
+比2大，所以2不可能是最大值，所以把2删除，3存入队列。第三个数是4，比3大，同样删3存4，
+此时滑动窗口以遍历三个数字，最大值4在队列的头部。
+
+  第4个数字是2，比队列中的数字4小，当4滑出去以后，2还是有可能成为最大值的，因此将2加入队列尾部，
+此时最大值4仍在队列的头部。
+
+  第五个数字是6，队列的数字4和2都比它小，所以删掉4和2，将6存入队列尾部，此时最大值6在队列头部。
+
+  第六个数字是2，此时队列中的数6比2大，所以2以后还有可能是最大值，所以加入队列尾部，
+此时最大值6在仍然队列头部。
+
+  ······
+
+  依次进行，这样每次的最大值都在队列头部。
 </pre>
     </ul>
     
@@ -8617,6 +8633,17 @@ O(n x m) memory is acceptable, can you do it in O(m) memory?
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/Test_001_Numpy.py" target="_blank">Edit Github Code</a></button>
         <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/Test_001_Numpy.md" target="_blank">Edit Github Markdown</a></button>
         <pre> Test 001 Numpy</pre>
+    </ul>
+    
+    <ul align="left">
+        <button><a href="/codes_html/create_heap建立堆.html" target="_blank">create heap建立堆</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes/create_heap建立堆.py" target="_blank">Edit Github Code</a></button>
+        <button style="float:right"><a href="https://github.com/425776024/easy_leetcode/blob/master/easyleetcode/leetcodes_md/create_heap建立堆.md" target="_blank">Edit Github Markdown</a></button>
+        <pre> create heap建立堆
+
+
+建立一个最大堆数据结构
+</pre>
     </ul>
     
     <ul align="left">
