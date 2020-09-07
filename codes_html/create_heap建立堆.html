@@ -27,94 +27,74 @@
 <div align="center">
     <button><a href="/" target="_blank"> Home </a></button>
     <button><a href="/all_list.html" target="_blank"> All Code List</a></button>
-    <h1 align="center" id="code_name"> 收藏链接：数字转中文 </h1>
+    <h1 align="center" id="code_name"> create_heap建立堆 </h1>
 
     <form action="" align="left">
-        <textarea id="editor" class="editor">
-MAPPING = ('零', '一', '二', '三', '四', '五', '六', '七', '八', '九', )
-P0 = ('', '十', '百', '千', )
-S4, S8, S16 = 10 ** 4 , 10 ** 8, 10 ** 16
-MIN, MAX = 0, 9999999999999999
+        <textarea id="editor" class="editor">class Heap:
+    def __init__(self, array):
+        self.heap = array
+        # 遍历非叶子节点，建立堆结构数组
+        self.up()
+    
+    def up(self):
+        for i in range(int(len(self.heap) / 2) - 1, -1, -1):
+            self.adjustHeap(self.heap, i, len(self.heap))
+        
+    def HeapPop(self):
+        data = self.heap[0]
+        self.heap.pop(0)
+        self.up()
 
-def to_chinese4(num):
-  '''转换[0, 10000)之间的阿拉伯数字
-  '''
-  assert(0 <= num and num < S4)
-  if num < 10:
-    return MAPPING[int(num)]
-  else:
-    lst = [ ]
-    while num >= 10:
-      lst.append(num % 10)
-      num = num / 10
-    lst.append(num)
-    c = len(lst)  # 位数
-    result = ''
-    
-    for idx, val in enumerate(lst):
-      if val != 0:
-        result += P0[int(idx)] + MAPPING[int(val)]
-       
-        if idx < c - 1 and lst[idx + 1] == 0:
-          result += '零'
-    
-    return result[::-1].replace('一十', '十')
-    
-def to_chinese8(num):
-  assert(num < S8)
-  to4 = to_chinese4
-  if num < S4:
-    return to4(num)
-  else:
-    mod = S4
-    high, low = num / mod, num % mod
-    if low == 0:
-      return to4(high) + '万'
-    else:
-      if low < S4 / 10:
-        return to4(high) + '万零' + to4(low)
-      else:
-        return to4(high) + '万' + to4(low)
-      
-def to_chinese16(num):
-  assert(num < S16)
-  to8 = to_chinese8
-  mod = S8
-  high, low = num / mod, num % mod
-  if low == 0:
-    return to8(high) + u'亿'
-  else:
-    if low < S8 / 10:
-      return to8(high) + u'亿零' + to8(low)
-    else:
-      return to8(high) + u'亿' + to8(low)
-    
-def to_chinese(num):
-  if num < MIN or num > MAX:
-    return None
-  
-  if num < S4:# 万
-    return to_chinese4(num)
-  elif num < S8:# 亿
-    return to_chinese8(num)
-  else:
-    return to_chinese16(num)
-  
-if __name__ == '__main__':
-	print(to_chinese(11234))
-	print(to_chinese(1123456789))
-  
+    def HeapInsert(self, data):
+        self.heap.append(data)
+        self.up()
+        
+        print('insert,adjust after:', self.heap)
+
+    def adjustHeap(self, array, i, length):
+        # 对第i号进行堆调整
+        # 获取非叶子节点的数据
+        temp = array[i]
+        # 非叶子节点的左子节点
+        k = 2 * i + 1
+        # 遍历对比k后面的节点，把temp放入合理位置
+        while k < length:
+            #  k + 1 < length 确保有左右节点才比较
+            if k + 1 < length and array[k] < array[k + 1]:  # 如果左子节点比右子节点小，k就切换到右子节点
+                k += 1
+            # 如果子节点有更大的
+            if array[k] > temp:
+                # 父节点替换为更大的
+                array[i] = array[k]
+                # 记录当前最大点位置
+                i = k
+            else:  # 直接打断，因为堆特点，后面层的更不满足
+                break
+            # k切换到下一个左子节点
+            k = 2 * k + 1
+        # 此时i是空位，i上层的都比temp大，temp放到这里
+        array[i] = temp
+
+
+a = [30, 50, 57, 77, 62, 78, 94, 80, 84]
+heap = Heap(a)
+print('heap array', heap.heap)
+heap.HeapInsert(100)
+print(heap.heap)
+
+num = heap.HeapPop()
+num = heap.HeapPop()
+print('heap pop array', heap.heap)
 </textarea>
     </form>
     <pre id="output"></pre>
     <!-- If you want turtle graphics include a canvas -->
     <div id="mycanvas"></div>
     <button id="run_btn">Run Code</button>
-    <p id="md_v" style="display:none"># 收藏链接：数字转中文
+    <p id="md_v" style="display:none"># create_heap建立堆
 
 ```
-(如:1234567     输出:一百二拾三万四千五百六拾七
-如：1205.5      输出一千二百零五点五
+建立一个最大堆数据结构
 ```</p>
     <div id="show-area" class="clearfix" align="left"></div>
 </div>
